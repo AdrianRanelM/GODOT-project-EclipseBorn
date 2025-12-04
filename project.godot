@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Eclipseborn: Realm of Eternal Night"
+run/main_scene="uid://copp5apqiluhj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
