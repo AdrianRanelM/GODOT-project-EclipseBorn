@@ -1,21 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://copp5apqiluhj"]
+[gd_scene load_steps=2 format=3 uid="uid://copp5apqiluhj"]
 
-[ext_resource type="Script" uid="uid://d3bfvlsea0hku" path="res://character_body_2d.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://imts0jmksq3k" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://PlayerChar.tscn" id="1_ig7tw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
+[node name="Game" type="Node2D"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(869, 221)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -28)
+zoom = Vector2(3, 3)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_0xm2m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_1bvp3")
-
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(97, 111)
-texture = ExtResource("2_h2yge")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
