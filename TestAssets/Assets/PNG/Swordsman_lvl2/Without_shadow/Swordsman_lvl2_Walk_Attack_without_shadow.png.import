@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bseofjwk4172v"
-path="res://.godot/imported/Swordsman_lvl2_Walk_Attack_without_shadow.png-a907d8ad82c8ba8909d2d029f9c3e636.ctex"
+path="res://.godot/imported/Swordsman_lvl2_Walk_Attack_without_shadow.png-192ba1e824961c0d259cc6a3f5749517.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TestAssets/craftpix-net-180537-free-swordsman-1-3-level-pixel-top-down-sprite-character/PNG/Swordsman_lvl2/Without_shadow/Swordsman_lvl2_Walk_Attack_without_shadow.png"
-dest_files=["res://.godot/imported/Swordsman_lvl2_Walk_Attack_without_shadow.png-a907d8ad82c8ba8909d2d029f9c3e636.ctex"]
+source_file="res://TestAssets/Assets/PNG/Swordsman_lvl2/Without_shadow/Swordsman_lvl2_Walk_Attack_without_shadow.png"
+dest_files=["res://.godot/imported/Swordsman_lvl2_Walk_Attack_without_shadow.png-192ba1e824961c0d259cc6a3f5749517.ctex"]
 
 [params]
 

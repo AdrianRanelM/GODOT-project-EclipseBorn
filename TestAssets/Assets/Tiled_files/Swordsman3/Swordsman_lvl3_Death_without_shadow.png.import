@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwi1kj43qby7i"
-path="res://.godot/imported/Swordsman_lvl3_Death_without_shadow.png-d73ee6ac9f7cd9e76073822167709800.ctex"
+path="res://.godot/imported/Swordsman_lvl3_Death_without_shadow.png-8867b1d58668381c111d0fa729e30d87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TestAssets/craftpix-net-180537-free-swordsman-1-3-level-pixel-top-down-sprite-character/Tiled_files/Swordsman3/Swordsman_lvl3_Death_without_shadow.png"
-dest_files=["res://.godot/imported/Swordsman_lvl3_Death_without_shadow.png-d73ee6ac9f7cd9e76073822167709800.ctex"]
+source_file="res://TestAssets/Assets/Tiled_files/Swordsman3/Swordsman_lvl3_Death_without_shadow.png"
+dest_files=["res://.godot/imported/Swordsman_lvl3_Death_without_shadow.png-8867b1d58668381c111d0fa729e30d87.ctex"]
 
 [params]
 
