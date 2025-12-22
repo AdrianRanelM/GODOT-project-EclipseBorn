@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccnv6k2tdnrw5"]
+[gd_scene load_steps=7 format=3 uid="uid://ccnv6k2tdnrw5"]
 
+[ext_resource type="Script" uid="uid://c8t22kcl6oiht" path="res://start_page.gd" id="1_c7vil"]
 [ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_cgf6o"]
 [ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_c7vil"]
 
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c7vil")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -74,3 +76,6 @@ text = "Eclipseborn
  Realm of Eternal Night"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

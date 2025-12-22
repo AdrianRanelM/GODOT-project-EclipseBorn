@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://chkk1c3x6thur"]
+
+[ext_resource type="Script" uid="uid://b61ds61g1364p" path="res://accounts.gd" id="1_bggv0"]
+[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_huxvn"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_bggv0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxtsl"]
+texture = ExtResource("1_huxvn")
+
+[sub_resource type="Theme" id="Theme_sy0od"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2wl2"]
+
+[node name="Accounts" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bggv0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yxtsl")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -111.0
+offset_right = 280.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme = SubResource("Theme_sy0od")
+theme_override_colors/font_color = Color(0.99705297, 0.99705297, 0.99705297, 1)
+theme_override_fonts/font = ExtResource("2_bggv0")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x2wl2")
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
