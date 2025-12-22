@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccnv6k2tdnrw5"]
 
-[ext_resource type="Texture2D" uid="uid://c6nlmvixagpo" path="res://pixel art wallpapers.jpg" id="1_cgf6o"]
+[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_cgf6o"]
 [ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_c7vil"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4wtt"]
@@ -34,25 +34,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -278.0
-offset_top = 44.0
-offset_right = 277.5
-offset_bottom = 231.0
+offset_left = -507.0
+offset_top = 85.0
+offset_right = 69.0
+offset_bottom = 269.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9794051, 0.979405, 0.979405, 1)
 theme_override_fonts/font = ExtResource("2_c7vil")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 67
 theme_override_styles/normal = SubResource("StyleBoxTexture_ef6ir")
 text = "Create Account"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9852814, 0.9852814, 0.9852814, 1)
 theme_override_fonts/font = ExtResource("2_c7vil")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 67
 theme_override_styles/normal = SubResource("StyleBoxTexture_oe7ah")
 text = "Log In"
 
@@ -61,12 +63,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.5
-offset_right = 89.5
-offset_bottom = 49.0
+offset_left = -475.0
+offset_top = 35.0
+offset_right = 474.0
+offset_bottom = 255.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_c7vil")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 85
 text = "Eclipseborn
  Realm of Eternal Night"
 horizontal_alignment = 1
