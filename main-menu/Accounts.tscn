@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chkk1c3x6thur"]
+[gd_scene load_steps=8 format=3 uid="uid://chkk1c3x6thur"]
 
 [ext_resource type="Script" uid="uid://b61ds61g1364p" path="res://accounts.gd" id="1_bggv0"]
 [ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_huxvn"]
@@ -10,6 +10,8 @@ texture = ExtResource("1_huxvn")
 [sub_resource type="Theme" id="Theme_sy0od"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2wl2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bggv0"]
 
 [node name="Accounts" type="Control"]
 layout_mode = 3
@@ -31,19 +33,70 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_yxtsl")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = -111.0
-offset_right = 280.0
-offset_bottom = -28.0
+offset_left = -220.0
+offset_top = -86.0
+grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_sy0od")
 theme_override_colors/font_color = Color(0.99705297, 0.99705297, 0.99705297, 1)
+theme_override_colors/font_focus_color = Color(0.0023445855, 0.0023445901, 0.0023446013, 1)
+theme_override_colors/font_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/font_hover_color = Color(0.0006938963, 0.0006938974, 0.00069390115, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_normal_color = Color(3.723037e-05, 3.723037e-05, 3.7230366e-05, 1)
+theme_override_colors/icon_focus_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_hover_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 theme_override_fonts/font = ExtResource("2_bggv0")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2wl2")
 text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -485.5
+offset_top = 50.0
+offset_right = 485.5
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_bggv0")
+theme_override_font_sizes/font_size = 85
+text = "Eclipseborn
+ Realm of Eternal Night"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -52.0
+offset_right = 520.0
+offset_bottom = 38.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+theme_override_colors/font_uneditable_color = Color(0.99705297, 0.99705297, 0.99705297, 0.5019608)
+theme_override_colors/font_selected_color = Color(0.973535, 0.9735351, 0.973535, 1)
+theme_override_colors/font_outline_color = Color(0.9852814, 0.9852814, 0.9852814, 1)
+theme_override_colors/font_placeholder_color = Color(0.9794051, 0.979405, 0.979405, 0.6)
+theme_override_colors/caret_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+theme_override_colors/selection_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+theme_override_colors/clear_button_color = Color(0.99705297, 0.99705297, 0.99705297, 1)
+theme_override_colors/clear_button_color_pressed = Color(0.99116415, 0.99116427, 0.99116415, 1)
+theme_override_fonts/font = ExtResource("2_bggv0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bggv0")
+placeholder_text = "Create Username"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
