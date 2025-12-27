@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp7li5l8iyhxh"]
+
+[ext_resource type="Texture2D" uid="uid://bhyjukoiyaod1" path="res://Assets/UI/InventoryUI/Inventory.png" id="1_5v8q7"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventorySprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 182.0
+offset_top = 134.0
+offset_right = 959.7865
+offset_bottom = 475.0
+mouse_filter = 2
+texture = ExtResource("1_5v8q7")
+expand_mode = 3
+
+[node name="SlotsLayer" type="Control" parent="."]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+offset_left = 182.0
+offset_top = 134.0
+offset_right = 960.0
+offset_bottom = 475.0
+
+[node name="MainGrid" type="GridContainer" parent="SlotsLayer"]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 31.0
+offset_right = 747.0
+offset_bottom = 310.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 6
+
+[node name="TextureButton" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton5" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton6" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton7" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton8" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton9" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton10" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton11" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton12" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton13" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton14" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton15" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton16" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton17" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton18" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton19" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton20" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton21" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton22" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton23" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="TextureButton24" type="TextureButton" parent="SlotsLayer/MainGrid"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+
+[node name="BigSlot" type="GridContainer" parent="SlotsLayer"]
+custom_minimum_size = Vector2(-0.815, 0)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 276.0
+offset_bottom = 237.0
+theme_override_constants/h_separation = 122
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SlotsLayer"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 261.0
+offset_right = 276.0
+offset_bottom = 296.0

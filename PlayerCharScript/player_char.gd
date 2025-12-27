@@ -3,6 +3,14 @@ extends CharacterBody2D
 var max_speed = 100
 var last_direction = Vector2(1,0)
 
+#inventory
+@onready var animated_inventory = $CanvasLayer/AnimatedInventory
+
+func _input(event):
+	if event.is_action_pressed("ToggleInventory"):
+		animated_inventory.visible = !animated_inventory.visible
+
+#movement
 func _physics_process(_delta):
 	var direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
 	velocity = direction * max_speed 
