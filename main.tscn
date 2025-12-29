@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://copp5apqiluhj"]
+[gd_scene load_steps=6 format=3 uid="uid://3sv1rllee308"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://PlayerChar.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bpvy4nbr0c74y" path="res://animated_inventory.tscn" id="2_0xm2m"]
+[ext_resource type="Resource" uid="uid://d2cr8w2k44t6w" path="res://red_orb.tres" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://06kmqu2adf07" path="res://world_item.tscn" id="3_h2yge"]
+[ext_resource type="Resource" uid="uid://dp6jwi7oiloo7" path="res://player_inventory.tres" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dcol4k00jc87c" path="res://inventory_ui.tscn" id="5_lquwl"]
 
 [node name="Game" type="Node2D"]
 
+[node name="WorldItem" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-50, -27)
+item_data = ExtResource("2_1bvp3")
+
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
+inventory = ExtResource("4_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -28)
@@ -13,4 +21,5 @@ zoom = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 
-[node name="AnimatedInventory" parent="Player/CanvasLayer" instance=ExtResource("2_0xm2m")]
+[node name="InventoryUI" parent="Player/CanvasLayer" instance=ExtResource("5_lquwl")]
+visible = false

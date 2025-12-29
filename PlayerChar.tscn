@@ -1,8 +1,8 @@
-[gd_scene load_steps=71 format=3 uid="uid://cc6tt345h07oc"]
+[gd_scene load_steps=72 format=3 uid="uid://cc6tt345h07oc"]
 
 [ext_resource type="Script" uid="uid://c8n7j53oipoft" path="res://PlayerCharScript/player_char.gd" id="1_1y1dc"]
-[ext_resource type="Texture2D" uid="uid://mc5l3s05j87w" path="res://TestAssets/craftpix-net-180537-free-swordsman-1-3-level-pixel-top-down-sprite-character/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Idle_without_shadow.png" id="1_sii85"]
-[ext_resource type="Texture2D" uid="uid://bjdr4gmu2q2mn" path="res://TestAssets/craftpix-net-180537-free-swordsman-1-3-level-pixel-top-down-sprite-character/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Walk_without_shadow.png" id="2_1y1dc"]
+[ext_resource type="Texture2D" uid="uid://mc5l3s05j87w" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Idle_without_shadow.png" id="1_sii85"]
+[ext_resource type="Texture2D" uid="uid://bjdr4gmu2q2mn" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Walk_without_shadow.png" id="2_1y1dc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpc5d"]
 atlas = ExtResource("1_sii85")
@@ -511,6 +511,9 @@ func _process(delta: float) -> void:
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sii85"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y1dc"]
+radius = 9.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1y1dc")
 
@@ -525,3 +528,9 @@ script = SubResource("GDScript_1y1dc")
 position = Vector2(0, -27)
 scale = Vector2(0.6446265, 0.6446265)
 shape = SubResource("CircleShape2D_sii85")
+
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_1y1dc")

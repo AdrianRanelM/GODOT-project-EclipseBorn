@@ -1,6 +1,201 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp7li5l8iyhxh"]
+[gd_scene load_steps=33 format=3 uid="uid://dcol4k00jc87c"]
 
 [ext_resource type="Texture2D" uid="uid://bhyjukoiyaod1" path="res://Assets/UI/InventoryUI/Inventory.png" id="1_5v8q7"]
+[ext_resource type="Script" uid="uid://b3tegcte8p23" path="res://inventory_ui.gd" id="1_gf3dx"]
+[ext_resource type="PackedScene" uid="uid://bpm2vbt2dg0ui" path="res://inventory_slot.tscn" id="3_34y5v"]
+[ext_resource type="Texture2D" uid="uid://bjdr4gmu2q2mn" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Walk_without_shadow.png" id="4_r57pj"]
+[ext_resource type="Texture2D" uid="uid://d012go1srbgq0" path="res://Assets/UI/Health/hpbr.png" id="5_5bopx"]
+[ext_resource type="Texture2D" uid="uid://dvmigmpxxd8sf" path="res://Assets/UI/Health/hpbar.png" id="6_o6um4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34y5v"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r57pj"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3b8"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bopx"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6um4"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5yu5"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbtsg"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4u5k"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjakb"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohhls"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67xb0"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo4r5"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c46v5"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irxrv"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_568vy"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebnwy"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybipx"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlbii"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oj57"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa663"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_330om"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxrat"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tagl8"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkod"]
+atlas = ExtResource("4_r57pj")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jn3b8"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_34y5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r57pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bopx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6um4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5yu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbtsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4u5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjakb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohhls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67xb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo4r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c46v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irxrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_568vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebnwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybipx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlbii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oj57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa663")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_330om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxrat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tagl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwkod")
+}],
+"loop": true,
+"name": &"WalkingInv",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_5bopx"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -9,6 +204,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gf3dx")
 
 [node name="InventorySprite" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(500, 0)
@@ -39,99 +235,99 @@ theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 6
 
-[node name="TextureButton" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton2" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot2" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton3" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot3" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton4" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot4" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton5" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot5" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton6" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot6" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton7" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot7" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton8" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot8" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton9" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot9" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton10" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot10" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton11" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot11" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton12" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot12" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton13" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot13" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton14" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot14" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton15" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot15" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton16" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot16" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton17" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot17" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton18" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot18" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton19" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot19" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton20" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot20" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton21" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot21" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton22" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot22" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton23" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot23" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
-[node name="TextureButton24" type="TextureButton" parent="SlotsLayer/MainGrid"]
+[node name="InventorySlot24" parent="SlotsLayer/MainGrid" instance=ExtResource("3_34y5v")]
 custom_minimum_size = Vector2(61, 61)
 layout_mode = 2
 
@@ -146,9 +342,22 @@ theme_override_constants/h_separation = 122
 theme_override_constants/v_separation = 12
 columns = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SlotsLayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SlotsLayer/BigSlot"]
+position = Vector2(126, 102.00003)
+scale = Vector2(3.65625, 3.65625)
+sprite_frames = SubResource("SpriteFrames_jn3b8")
+animation = &"WalkingInv"
+script = SubResource("GDScript_5bopx")
+
+[node name="HealthPointsBar" type="TextureProgressBar" parent="SlotsLayer"]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 261.0
+offset_top = 249.0
 offset_right = 276.0
-offset_bottom = 296.0
+offset_bottom = 284.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("5_5bopx")
+texture_progress = ExtResource("6_o6um4")

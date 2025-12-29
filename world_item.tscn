@@ -1,10 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5wk0jyr6aasw"]
+[gd_scene load_steps=3 format=3 uid="uid://06kmqu2adf07"]
 
-[ext_resource type="Script" uid="uid://cernn6n3trr31" path="res://world_item.gd" id="1_vd47n"]
+[sub_resource type="GDScript" id="GDScript_vd47n"]
+script/source = "extends Area2D
+
+@export var item_data: InvItem
+@export var amount: int = 1
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+var player_in_range: CharacterBody2D = null
+
+func _ready():
+	if item_data and item_data.icon:
+		sprite.texture = item_data.icon
+
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body):
+	if body.is_in_group(\"player\"):
+		player_in_range = body
+
+func _on_body_exited(body):
+	if body == player_in_range:
+		player_in_range = null
+
+func _input(event):
+	if player_in_range and event.is_action_pressed(\"PickItemUp\"):
+		pick_up(player_in_range)
+
+func pick_up(player):
+	var item := item_data.duplicate(true) as InvItem
+	item.amount = amount
+	player.receive_item(item)
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11hmn"]
+size = Vector2(12, 12)
 
 [node name="WorldItem" type="Area2D"]
-script = ExtResource("1_vd47n")
+script = SubResource("GDScript_vd47n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.43750003, 0.45639205)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_11hmn")
