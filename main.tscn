@@ -102,7 +102,7 @@ position = Vector2(-32, -24)
 item_data = ExtResource("2_1bvp3")
 
 [node name="WorldItem21" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(-88, 8)
+position = Vector2(-104, 24)
 item_data = ExtResource("2_1bvp3")
 
 [node name="WorldItem22" parent="." instance=ExtResource("3_h2yge")]
