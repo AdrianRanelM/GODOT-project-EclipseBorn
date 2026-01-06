@@ -29,11 +29,16 @@ func _input(event):
 	if player_in_range and event.is_action_pressed(\"PickItemUp\"):
 		pick_up(player_in_range)
 
-func pick_up(player):
+func pick_up(player: CharacterBody2D):
 	var item := item_data.duplicate(true) as InvItem
 	item.amount = amount
-	player.receive_item(item)
-	queue_free()
+	# Pass both the item and this world node to the player
+	player.receive_item(item, self)
+
+func get_item() -> InvItem:
+	var item := item_data.duplicate(true) as InvItem
+	item.amount = amount
+	return item
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11hmn"]

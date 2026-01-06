@@ -30,17 +30,22 @@ func _ready() -> void:
 	pickup_area.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node) -> void:
-	if body is Area2D and body.has_method("pick_up"):
+	# Detect if the body is a world item
+	if body is Area2D and body.has_method("get_item"):
 		nearby_item = body
 
 func _on_body_exited(body: Node) -> void:
 	if body == nearby_item:
 		nearby_item = null
 
-# Called by WorldItem
-func receive_item(item: InvItem) -> void:
-	inventory.add_item(item)
-	inventory_ui.update_inventory(inventory)
+# Called by WorldItem when picked up
+func receive_item(item: InvItem, world_item: Node) -> void:
+	if inventory.add_item(item):
+		inventory_ui.update_inventory(inventory)
+		world_item.queue_free()  # remove item from world
+	else:
+		print("Inventory full! Cannot pick up.")
+		# Optional: flash UI or play sound
 
 #movement
 func _physics_process(_delta):

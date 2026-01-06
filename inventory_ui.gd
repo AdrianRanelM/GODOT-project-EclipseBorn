@@ -4,7 +4,7 @@ const SLOT_COUNT := 24
 
 @onready var grid = $SlotsLayer/MainGrid
 @onready var sprite = $SlotsLayer/BigSlot/AnimatedSprite2D
-@onready var hp_bar = $SlotsLayer/CanvasLayer/HealthPointsBar  # adjust path
+@onready var hp_bar = $SlotsLayer/HealthPointsBar  # adjust path
 
 var slots: Array = []
 

@@ -8,11 +8,8 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="WorldItem" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(-50, -27)
-item_data = ExtResource("2_1bvp3")
-
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
+z_index = 4
 inventory = ExtResource("4_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -23,3 +20,103 @@ zoom = Vector2(3, 3)
 
 [node name="InventoryUI" parent="Player/CanvasLayer" instance=ExtResource("5_lquwl")]
 visible = false
+
+[node name="WorldItem" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-50, -27)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem2" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(64, 16)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem3" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(88, -16)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem4" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(56, -16)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem5" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(24, -56)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem6" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(32, -40)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem7" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(32, -8)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem8" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(56, -40)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem9" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-80, -56)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem10" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-48, -64)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem11" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-8, -56)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem12" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(24, 24)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem13" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-24, 32)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem14" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-72, 0)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem15" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-104, -8)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem16" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-56, -8)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem17" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-8, 0)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem18" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-40, -40)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem19" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-56, -40)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem20" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-32, -24)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem21" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-88, 8)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem22" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-32, 0)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem23" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-80, -40)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem24" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-80, -24)
+item_data = ExtResource("2_1bvp3")
+
+[node name="WorldItem25" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-48, 16)
+item_data = ExtResource("2_1bvp3")
