@@ -29,6 +29,11 @@ func _ready() -> void:
 	pickup_area.body_entered.connect(_on_body_entered)
 	pickup_area.body_exited.connect(_on_body_exited)
 
+	# Connect HP bar
+	inventory_ui.connect_player(self)
+	# Also initialize bar with current values
+	emit_signal("hp_changed", current_hp, max_hp)
+
 func _on_body_entered(body: Node) -> void:
 	# Detect if the body is a world item
 	if body is Area2D and body.has_method("get_item"):

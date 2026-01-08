@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dn08agvm7usb3" path="res://inventory_slot.gd" id="1_42eed"]
 
-[node name="InventorySlot" type="TextureButton"]
+[node name="InventorySlot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 36.0
 offset_bottom = 37.0
-stretch_mode = 0
 script = ExtResource("1_42eed")
 
-[node name="ItemDisplay" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Amount" type="Label" parent="."]
 layout_mode = 0
 offset_right = 90.0
 offset_bottom = 102.0
