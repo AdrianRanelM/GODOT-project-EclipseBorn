@@ -7,11 +7,20 @@ var last_direction = Vector2(1,0)
 @onready var animated_inventory = $CanvasLayer/InventoryUI
 @onready var pickup_area: Area2D = $PickupArea
 
+# Inventory lock flag
+var inventory_unlocked: bool = false
+
 func _input(event):
 	if event.is_action_pressed("ToggleInventory"):
-		animated_inventory.visible = !animated_inventory.visible
+		if inventory_unlocked:   # ✅ only works if unlocked
+			inventory_ui.visible = !inventory_ui.visible
+		else:
+			print("Inventory is locked!")  # optional feedback
 	elif event.is_action_pressed("PickItemUp") and nearby_item:
 		nearby_item.pick_up(self)
+
+func unlock_inventory() -> void:
+	inventory_unlocked = true
 
 #items
 @export var inv = Inv

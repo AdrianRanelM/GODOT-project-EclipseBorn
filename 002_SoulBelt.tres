@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://clve3sojkl1ui"]
+
+[ext_resource type="Texture2D" uid="uid://dn0cj0l2yno18" path="res://Assets/Items/potion_01e.png" id="1_env1t"]
+[ext_resource type="Script" uid="uid://b88v346phya8d" path="res://inventory_items.gd" id="2_woxe1"]
+
+[resource]
+script = ExtResource("2_woxe1")
+id = "002"
+display_name = "Soul Belt"
+icon = ExtResource("1_env1t")
+metadata/_custom_type_script = "uid://b88v346phya8d"
