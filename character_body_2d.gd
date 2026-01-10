@@ -1,25 +1,36 @@
 extends CharacterBody2D
 
+@onready var _focus = $focus
+@onready var progress_bar = $ProgressBar
+@onready var animation_player = $AnimationPlayer
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var MAX_HEALTH: float = 7
+@export var attack_damage: int = 1
 
+var health: float = 7:
+	set(value):
+		health = value
+		_update_progress_bar()
+		_play_animation()
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func _ready():
+	_update_progress_bar()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+func _update_progress_bar():
+	progress_bar.value = (health / MAX_HEALTH) * 100
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func _play_animation():
+	animation_player.play("hurt")
 
-	move_and_slide()
+func focus():
+	_focus.show()
+
+func unfocus():
+	_focus.hide()
+
+func take_damage(value):
+	health -= value
+
+# ✅ SHARED ATTACK
+func attack(target):
+	target.take_damage(attack_damage)
