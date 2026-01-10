@@ -1,0 +1,13 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1766727722
+accounts.gd::GDScript::4616164622043510565::1766386833::0::1::::<>Control<><>0<>0<><>::
+Accounts.tscn::PackedScene::5285460800350639165::1766386650::0::1::::<><><>0<>0<><>::uid://b61ds61g1364p::::res://accounts.gd<>uid://87lxk0kljkqp::::res://imagination.2.png<>uid://bq3qhq1g15yxo::::res://Minecraft.ttf
+icon.svg::CompressedTexture2D::2883251668853464162::1766225613::1766225627::1::::<><><>0<>0<>687063f681d88fd27d3343285092d92a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+imagination.2.png::CompressedTexture2D::2383001452688256847::1766380501::1766380590::1::::<><><>0<>0<>612da917a7683b42889ecd04e9d30fc8<>res://.godot/imported/imagination.2.png-4def5fdb1d9d1dc30ab12151a9576ead.ctex::
+LogIn.tscn::PackedScene::1342732615805073340::1766386833::0::1::::<><><>0<>0<><>::uid://87lxk0kljkqp::::res://imagination.2.png<>uid://bxp0ylw6ajbuh::::res://log_in.gd<>uid://bq3qhq1g15yxo::::res://Minecraft.ttf
+log_in.gd::GDScript::4033291150703024091::1766386833::0::1::::<>Control<><>0<>0<><>::
+main_menu.gd::GDScript::7672513877636738887::1766384020::0::1::::<>Control<><>0<>0<><>::
+main_menu.tscn::PackedScene::4668764177573676247::1766382646::0::1::::<><><>0<>0<><>::uid://dhkvghc1dryk2::::res://main_menu.gd<>uid://bq3qhq1g15yxo::::res://Minecraft.ttf<>uid://87lxk0kljkqp::::res://imagination.2.png
+Minecraft.ttf::FontFile::3568229612303972684::1766228630::1766228639::1::::<><><>0<>0<>dc2054da48617434ba373f830d7d7e8f<>res://.godot/imported/Minecraft.ttf-b4cc597ac42d1410cc55dc192f0c0e34.fontdata::
+Start-page.tscn::PackedScene::4941386949735225606::1766384159::0::1::::<><><>0<>0<><>::uid://c8t22kcl6oiht::::res://start_page.gd<>uid://87lxk0kljkqp::::res://imagination.2.png<>uid://bq3qhq1g15yxo::::res://Minecraft.ttf
+start_page.gd::GDScript::7129984488873419361::1766386833::0::1::::<>Control<><>0<>0<><>::
