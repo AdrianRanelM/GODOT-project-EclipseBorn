@@ -115,11 +115,11 @@ func _update_animation() -> void:
 			last_direction = Vector2.UP
 
 # --- Combat ---
-func _on_battle_trigger(body: Node) -> void:
-	if body.is_in_group("player"):
-		# Initiate battle sequence
-		var battle_scene = preload("res://Battle.tscn")
-		get_tree().change_scene_to_packed(battle_scene)
+#func _on_battle_trigger(body: Node) -> void:
+	#if body.is_in_group("player"):
+		## Initiate battle sequence
+		#var battle_scene = preload("res://Battle.tscn")
+		#get_tree().change_scene_to_packed(battle_scene)
 
 func take_damage(amount: int) -> void:
 	current_hp -= amount

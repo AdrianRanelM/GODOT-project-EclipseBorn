@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://3sv1rllee308"]
 
-[ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://PlayerChar.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
-[ext_resource type="PackedScene" uid="uid://06kmqu2adf07" path="res://world_item.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://06kmqu2adf07" path="res://Scenes/world_item.tscn" id="3_h2yge"]
 [ext_resource type="Resource" uid="uid://dp6jwi7oiloo7" path="res://player_inventory.tres" id="4_lquwl"]
-[ext_resource type="Resource" uid="uid://dqwv71nwykc0e" path="res://001.tres" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dcol4k00jc87c" path="res://inventory_ui.tscn" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://4yhtwgfgas4k" path="res://world_item_unlock.gd" id="6_7mycd"]
-[ext_resource type="Resource" uid="uid://clve3sojkl1ui" path="res://002_SoulBelt.tres" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://orc.tscn" id="9_kek77"]
+[ext_resource type="Resource" uid="uid://dqwv71nwykc0e" path="res://WorldItems/001.tres" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dcol4k00jc87c" path="res://Scenes/inventory_ui.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://4yhtwgfgas4k" path="res://Scripts/world_item_unlock.gd" id="6_7mycd"]
+[ext_resource type="Resource" uid="uid://clve3sojkl1ui" path="res://WorldItems/002_SoulBelt.tres" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/orc.tscn" id="9_kek77"]
 
 [node name="Game" type="Node2D"]
 
@@ -48,3 +48,7 @@ item_data = ExtResource("7_272bh")
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(184, -8)
+max_hp = 100
+damage = 10
+speed = 60.0
+roam_interval = 2.0
