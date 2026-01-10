@@ -16,8 +16,12 @@ func _input(event):
 			inventory_ui.visible = !inventory_ui.visible
 		else:
 			print("Inventory is locked!")  # optional feedback
+
 	elif event.is_action_pressed("PickItemUp") and nearby_item:
-		nearby_item.pick_up(self)
+		if inventory_unlocked:   # ✅ only allow pickup if unlocked
+			nearby_item.pick_up(self)
+		else:
+			print("Inventory is locked! Cannot pick up items.")
 
 func unlock_inventory() -> void:
 	inventory_unlocked = true
@@ -52,8 +56,13 @@ func _on_body_exited(body: Node) -> void:
 	if body == nearby_item:
 		nearby_item = null
 
+
 # Called by WorldItem when picked up
 func receive_item(item: InvItem, world_item: Node) -> void:
+	if not inventory_unlocked:
+		print("Inventory is locked! Cannot pick up items.")
+		return
+
 	if inventory.add_item(item):
 		inventory_ui.update_inventory(inventory)
 		world_item.queue_free()  # remove item from world
