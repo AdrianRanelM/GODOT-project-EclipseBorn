@@ -73,14 +73,19 @@ func receive_item(item: InvItem, world_item: Node) -> void:
 #movement
 func _physics_process(_delta):
 	var direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
-	velocity = direction * max_speed 
-	move_and_slide()
 	
 	if direction.length() > 0:
+		direction = direction.normalized()
+		velocity = direction * max_speed
+		move_and_slide()
+		
 		last_direction = direction
 		play_walk_animation(direction)
-	else: 
+	else:
+		velocity = Vector2.ZERO
+		move_and_slide()
 		play_idle_animation(last_direction)
+
 
 func play_walk_animation(direction):
 	if direction.x > 0:
