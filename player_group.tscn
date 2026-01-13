@@ -11,12 +11,22 @@ script = ExtResource("1_ao132")
 [node name="Sprite2D" parent="character" index="0"]
 scale = Vector2(0.35, 0.35)
 
+[node name="focus" parent="character" index="1"]
+scale = Vector2(3, 3)
+
 [node name="ProgressBar" parent="character" index="2"]
-offset_top = -24.999998
-offset_right = 645.3333
-offset_bottom = 28.666658
+offset_left = -4.0
+offset_top = -67.0
+offset_right = 4996.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 100
 
 [node name="ManaBar" parent="character" index="3"]
-offset_right = 645.3333
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 4996.0
+offset_bottom = 206.333
+theme_override_font_sizes/font_size = 100
+metadata/_edit_use_anchors_ = true
 
 [editable path="character"]

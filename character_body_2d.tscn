@@ -50,21 +50,21 @@ scale = Vector2(0.25, 0.25)
 visible = false
 texture_filter = 1
 position = Vector2(-16.999998, 0.99999994)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(3, 3)
 texture = ExtResource("2_ghijl")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -8.0
-offset_top = -21.0
-offset_right = 92.0
-offset_bottom = 6.0
+offset_top = -26.0
+offset_right = 338.66666
+offset_bottom = 34.33333
 scale = Vector2(0.15, 0.15)
 value = 100.0
 
 [node name="ManaBar" type="ProgressBar" parent="."]
 offset_left = -8.0
 offset_top = -16.0
-offset_right = 92.0
+offset_right = 338.66666
 offset_bottom = 11.0
 scale = Vector2(0.15, 0.15)
 theme_override_colors/font_color = Color(0, 0.9499975, 0.9499975, 1)

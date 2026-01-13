@@ -1,3 +1,4 @@
+
 extends Node2D
 
 var enemies: Array = []
@@ -6,7 +7,7 @@ func _ready():
 	# Ignore AnimationPlayers/Sprites when setting positions
 	var character_nodes = get_children().filter(func(n): return n is CharacterBody2D)
 	
-	var spacing = 50 # Change this value to adjust the gap between enemies
+	var spacing = 350 # Change this value to adjust the gap between enemies
 	
 	for i in character_nodes.size():
 		# FIX: Multiply the index 'i' by 'spacing' on the X axis (the first number)

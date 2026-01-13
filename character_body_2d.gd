@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 
 @onready var _focus = $focus
@@ -76,7 +77,7 @@ func show_floating_text(amount: int, type: String = "damage"):
 func focus():
 	if not is_dead:
 		_focus.show()
-		_focus.position = Vector2(-15, 0) # Adjust -50 to fit your sprite height
+		_focus.position = Vector2(-50, 20) # Adjust -50 to fit your sprite height
 		_start_pulse_animation()
 		_start_bounce_animation()
 
@@ -97,9 +98,9 @@ func _start_bounce_animation():
 	
 	bounce_tween = create_tween().set_loops()
 	# Hardcode the start_y so it doesn't grab the current "mid-air" position
-	var start_y = 0 
+	var start_y = 20
 	
-	bounce_tween.tween_property(_focus, "position:y", start_y - 10, 0.4).set_trans(Tween.TRANS_SINE)
+	bounce_tween.tween_property(_focus, "position:y", start_y - 20, 0.4).set_trans(Tween.TRANS_SINE)
 	bounce_tween.tween_property(_focus, "position:y", start_y, 0.4).set_trans(Tween.TRANS_SINE)
 
 func _stop_animations():
