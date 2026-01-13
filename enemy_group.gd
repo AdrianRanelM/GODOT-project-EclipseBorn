@@ -5,8 +5,8 @@ var action_queue: Array = []
 var is_battling: bool = false
 var index: int = 0
 
-# Track what kind of move is being queued
 var selected_move_type: String = "attack"
+var is_targeting_allies: bool = false
 
 signal next_player
 
@@ -15,160 +15,172 @@ signal next_player
 @onready var player_group = $"../PlayerGroup"
 
 func _ready():
-	# Initial positioning of enemies
-	var children = get_children()
-	for i in children.size():
-		children[i].position = Vector2(0, i * 32)
+	# FIX 1: Only try to position actual CharacterBody2D nodes
+	# This prevents the AnimationPlayer error seen in your screenshot
+	var character_nodes = get_children().filter(func(node): return node is CharacterBody2D)
+	
+	for i in character_nodes.size():
+		character_nodes[i].position = Vector2(0, i * 32)
 	
 	refresh_enemies()
 	show_choice()
 
 func refresh_enemies():
-	# Only includes children who are not dead
-	enemies = get_children().filter(func(node): return node.health > 0)
+	# FIX 2: Only filter nodes that actually HAVE a health variable
+	# This prevents the 'Invalid access to property health' error
+	enemies = get_children().filter(func(node): 
+		return node is CharacterBody2D and node.health > 0
+	)
 
-func _process(_delta):
-	# Selection logic only runs if UI is hidden and we aren't currently animating a battle
+func _unhandled_input(event):
 	if not choice.visible and not skill_container.visible and not is_battling:
-		if enemies.size() == 0: return
+		var targets = player_group.players if is_targeting_allies else enemies
+		if targets.size() == 0: return
 
-		if Input.is_action_just_pressed("ui_up"):
-			if index > 0:
-				index -= 1
-				switch_focus(index, index + 1)
+		if event.is_action_pressed("ui_up"):
+			var old_index = index
+			index = max(0, index - 1)
+			_switch_target_focus(index, old_index, targets)
+			get_viewport().set_input_as_handled()
 
-		if Input.is_action_just_pressed("ui_down"):
-			if index < enemies.size() - 1:
-				index += 1
-				switch_focus(index, index - 1)
+		if event.is_action_pressed("ui_down"):
+			var old_index = index
+			index = min(targets.size() - 1, index + 1)
+			_switch_target_focus(index, old_index, targets)
+			get_viewport().set_input_as_handled()
 
-		if Input.is_action_just_pressed("ui_accept"):
-			# Store the Node itself so we hit the right target even if indices change
-			var active_player = player_group.players[player_group.index]
-			
-			action_queue.push_back({
-				"attacker": active_player,
-				"target": enemies[index],
-				"type": selected_move_type
-			})
-			
-			# Reset move type for next player selection
-			selected_move_type = "attack"
-			emit_signal("next_player")
+		if event.is_action_pressed("ui_accept"):
+			get_viewport().set_input_as_handled()
+			_confirm_selection(targets)
 
-	# Check if all players have chosen an action
-	if action_queue.size() == player_group.get_children().size() and not is_battling:
-		is_battling = true
-		_action(action_queue)
-		_reset_focus()
+func _confirm_selection(targets):
+	var active_player = player_group.players[player_group.index]
+	
+	action_queue.push_back({
+		"attacker": active_player,
+		"target": targets[index],
+		"type": selected_move_type
+	})
+	
+	targets[index].unfocus()
+	is_targeting_allies = false 
+	selected_move_type = "attack"
+	
+	if action_queue.size() < player_group.get_children().filter(func(n): return n is CharacterBody2D).size():
+		emit_signal("next_player")
+		show_choice()
+	else:
+		_start_battle_phase()
+
+func _start_battle_phase():
+	is_battling = true
+	_action(action_queue)
+	_reset_focus()
+
+func _switch_target_focus(new_idx, old_idx, list):
+	if old_idx < list.size(): list[old_idx].unfocus()
+	if new_idx < list.size(): list[new_idx].focus()
 
 func _action(stack):
-	# PLAYER ATTACK PHASE
 	for action in stack:
 		var attacker = action["attacker"]
 		var target = action["target"]
 		var type = action["type"]
 		
-		if is_instance_valid(target) and target.health > 0 and is_instance_valid(attacker):
-			if type == "fireball":
-				# Deduct mana if the character has the mana variable
-				attacker.mana -= 3 
-				target.take_damage(attacker.attack_damage * 3)
-				print("Fireball cast!")
-			else:
-				attacker.attack(target)
+		if is_instance_valid(target) and is_instance_valid(attacker):
+			match type:
+				"fireball":
+					attacker.mana -= 3
+					target.take_damage(attacker.attack_damage * 3)
+				"heal":
+					attacker.mana -= 2
+					target.health += 5
+				"attack":
+					attacker.attack(target)
 			
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(1.0).timeout
 	
 	refresh_enemies()
-	
-	# Check if battle ended
 	if enemies.size() <= 0:
 		print("Victory!")
 		return
 
-	# ENEMY ATTACK PHASE
 	await _enemy_turn()
-
 	action_queue.clear()
 	is_battling = false
-	refresh_enemies()
 	show_choice()
 
 func _enemy_turn():
 	for enemy in enemies:
-		if enemy.health > 0:
-			var living_players = player_group.get_children().filter(func(node): return node.health > 0)
-			if living_players.size() > 0:
-				enemy.attack(living_players.pick_random())
-				await get_tree().create_timer(0.8).timeout
-
-func switch_focus(x, y):
-	if x < enemies.size(): enemies[x].focus()
-	if y < enemies.size(): enemies[y].unfocus()
+		var living_players = player_group.get_children().filter(func(node): return node is CharacterBody2D and node.health > 0)
+		if living_players.size() > 0:
+			enemy.attack(living_players.pick_random())
+			await get_tree().create_timer(0.8).timeout
 
 func show_choice():
+	is_battling = false
 	skill_container.hide()
 	choice.show()
-	# Ensure the button name in find_child matches your Scene Tree exactly
-	var attack_btn = choice.find_child("attack")
-	if attack_btn:
-		attack_btn.grab_focus()
-	
+	var atk_btn = choice.find_child("attack")
+	if atk_btn: atk_btn.grab_focus()
+
 func _on_magic_pressed():
 	choice.hide()
 	skill_container.show()
-	var fireball_btn = skill_container.find_child("fireball")
-	if fireball_btn:
-		fireball_btn.grab_focus()
-
-func _on_back_pressed():
-	skill_container.hide()
-	choice.show()
-	var magic_btn = choice.find_child("magic")
-	if magic_btn:
-		magic_btn.grab_focus()
+	var fb_btn = skill_container.find_child("fireball")
+	if fb_btn: fb_btn.grab_focus()
 
 func _on_fireball_pressed():
+	_prepare_targeting("fireball", false, 3)
+
+func _on_heal_pressed():
+	_prepare_targeting("heal", true, 2)
+
+func _prepare_targeting(move_name: String, target_allies: bool, mana_cost: int):
 	var active_player = player_group.players[player_group.index]
-	if active_player.mana >= 3:
-		selected_move_type = "fireball"
-		
-		# Hide the UI menus
+	if active_player.mana >= mana_cost:
+		selected_move_type = move_name
+		is_targeting_allies = target_allies
 		skill_container.hide()
 		choice.hide()
 		
-		# Clear UI focus so it doesn't block keyboard input
-		var current_focus = get_viewport().gui_get_focus_owner()
-		if current_focus:
-			current_focus.release_focus()
+		# FIX 3: Safe focus release to prevent the crash in your screenshot
+		var focus_owner = get_viewport().gui_get_focus_owner()
+		if focus_owner != null:
+			focus_owner.release_focus()
 
-		# IMPORTANT: Wait for the frame to end so the 'Enter' key 
-		# doesn't trigger the enemy selection immediately
-		await get_tree().process_frame
-
-		_start_choosing()
+		_start_choosing.call_deferred()
 	else:
 		print("Not enough mana!")
+
+func _start_choosing():
+	index = 0
+	refresh_enemies()
+	for e in get_children(): if e.has_method("unfocus"): e.unfocus()
+	for p in player_group.players: if p.has_method("unfocus"): p.unfocus()
+	
+	if is_targeting_allies:
+		player_group.players[0].focus()
+	else:
+		if enemies.size() > 0:
+			enemies[0].focus()
+
+func _on_attack_pressed():
+	selected_move_type = "attack"
+	is_targeting_allies = false
+	choice.hide()
+	skill_container.hide()
+	var focus_owner = get_viewport().gui_get_focus_owner()
+	if focus_owner: focus_owner.release_focus()
+	_start_choosing.call_deferred()
 
 func _reset_focus():
 	index = 0
 	for enemy in get_children():
-		enemy.unfocus()
+		if enemy.has_method("unfocus"): enemy.unfocus()
 
-func _start_choosing():
-	print("Targeting mode started!")
-	refresh_enemies()
-	_reset_focus()
-	if enemies.size() > 0:
-		enemies[0].focus()
-		print("Focused on enemy 0")	
-
-func _on_attack_pressed():
-	selected_move_type = "attack"
-	choice.hide()
-	_start_choosing()
-
-# This connects to your "Return" or "Cancel" button in the skill menu
 func _on_return_pressed():
-	_on_back_pressed()
+	skill_container.hide()
+	choice.show()
+	var mag_btn = choice.find_child("magic")
+	if mag_btn: mag_btn.grab_focus()

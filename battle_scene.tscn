@@ -38,7 +38,7 @@ grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-mouse_filter = 0
+mouse_filter = 2
 
 [node name="attack" type="Button" parent="CanvasLayer/choice"]
 layout_mode = 2
@@ -46,7 +46,6 @@ text = "ATTACK"
 
 [node name="magic" type="Button" parent="CanvasLayer/choice"]
 layout_mode = 2
-mouse_filter = 2
 text = "SKILLS"
 
 [node name="run" type="Button" parent="CanvasLayer/choice"]
@@ -70,6 +69,7 @@ grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="fireball" type="Button" parent="CanvasLayer/skill"]
 layout_mode = 2
