@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://veq8m46km8yo"]
+[gd_scene load_steps=6 format=3 uid="uid://veq8m46km8yo"]
 
 [ext_resource type="Script" uid="uid://bwja1f1cyult" path="res://character_body_2d.gd" id="1_ghijl"]
-[ext_resource type="Texture2D" uid="uid://bb4r5log85i31" path="res://Battlers/Battlers/World01_007_Pirate.png" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://5lch6f4ymdpk" path="res://hand_cursor_16.png" id="2_ghijl"]
 
 [sub_resource type="Animation" id="Animation_ghijl"]
@@ -46,7 +45,6 @@ script = ExtResource("1_ghijl")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_ij6vw")
 
 [node name="focus" type="Sprite2D" parent="."]
 visible = false

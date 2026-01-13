@@ -76,6 +76,7 @@ func show_floating_text(amount: int, type: String = "damage"):
 func focus():
 	if not is_dead:
 		_focus.show()
+		_focus.position = Vector2(-15, 0) # Adjust -50 to fit your sprite height
 		_start_pulse_animation()
 		_start_bounce_animation()
 
@@ -86,13 +87,18 @@ func unfocus():
 func _start_pulse_animation():
 	if pulse_tween: pulse_tween.kill()
 	pulse_tween = create_tween().set_loops()
+	
 	pulse_tween.tween_property(sprite, "modulate", Color(1.8, 1.8, 1.8), 0.6).set_trans(Tween.TRANS_SINE)
 	pulse_tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.6).set_trans(Tween.TRANS_SINE)
 
 func _start_bounce_animation():
-	if bounce_tween: bounce_tween.kill()
+	if bounce_tween: 
+		bounce_tween.kill() # Stop any existing movement immediately
+	
 	bounce_tween = create_tween().set_loops()
-	var start_y = _focus.position.y
+	# Hardcode the start_y so it doesn't grab the current "mid-air" position
+	var start_y = 0 
+	
 	bounce_tween.tween_property(_focus, "position:y", start_y - 10, 0.4).set_trans(Tween.TRANS_SINE)
 	bounce_tween.tween_property(_focus, "position:y", start_y, 0.4).set_trans(Tween.TRANS_SINE)
 

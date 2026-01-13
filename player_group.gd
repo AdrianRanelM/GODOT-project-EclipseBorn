@@ -61,9 +61,9 @@ func _unhandled_input(event):
 		var targets = players if targeting_allies else enemy_group.enemies
 		if targets.size() == 0: return
 
-		if event.is_action_pressed("ui_up"):
+		if event.is_action_pressed("ui_left"):
 			_change_target(-1, targets)
-		elif event.is_action_pressed("ui_down"):
+		elif event.is_action_pressed("ui_right"):
 			_change_target(1, targets)
 		elif event.is_action_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()

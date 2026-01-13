@@ -5,8 +5,14 @@ var enemies: Array = []
 func _ready():
 	# Ignore AnimationPlayers/Sprites when setting positions
 	var character_nodes = get_children().filter(func(n): return n is CharacterBody2D)
+	
+	var spacing = 50 # Change this value to adjust the gap between enemies
+	
 	for i in character_nodes.size():
-		character_nodes[i].position = Vector2(0, i * 32)
+		# FIX: Multiply the index 'i' by 'spacing' on the X axis (the first number)
+		# Keep Y at 0 (the second number) so they all stay at the same height
+		character_nodes[i].position = Vector2(i * spacing, 0)
+	
 	refresh_enemies()
 
 func refresh_enemies():
