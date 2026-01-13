@@ -31,3 +31,4 @@ func take_damage(amount: int):
 	var living_players = get_children().filter(func(node): return node.health > 0)
 	if living_players.size() > 0:
 		living_players.pick_random().take_damage(amount)
+		

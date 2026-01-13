@@ -4,21 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bb4r5log85i31" path="res://Battlers/Battlers/World01_007_Pirate.png" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://5lch6f4ymdpk" path="res://hand_cursor_16.png" id="2_ghijl"]
 
-[sub_resource type="Animation" id="Animation_ij6vw"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19660579, 0.40339425, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(4.2973084, 4.2973084, 4.2973084, 1), Color(1, 1, 1, 1), Color(4.2973084, 4.2973084, 4.2973084, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_ghijl"]
 length = 0.001
 tracks/0/type = "value"
@@ -32,6 +17,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ij6vw"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19660579, 0.40339425, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(4.2973084, 4.2973084, 4.2973084, 1), Color(1, 1, 1, 1), Color(4.2973084, 4.2973084, 4.2973084, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_44cfe"]
@@ -57,10 +57,19 @@ texture = ExtResource("2_ghijl")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -8.0
-offset_top = -18.0
+offset_top = -21.0
 offset_right = 92.0
-offset_bottom = 9.0
+offset_bottom = 6.0
 scale = Vector2(0.15, 0.15)
+value = 100.0
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 92.0
+offset_bottom = 11.0
+scale = Vector2(0.15, 0.15)
+theme_override_colors/font_color = Color(0, 0.9499975, 0.9499975, 1)
 value = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
