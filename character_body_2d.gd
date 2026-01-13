@@ -26,9 +26,27 @@ func show_floating_text(amount: int, is_heal: bool = false):
 		
 	add_child(text_instance)
 
+# Make sure this matches the name of your sprite node
+@onready var sprite = $Sprite2D 
 
+func shake_sprite():
+	if not sprite: return
+	
+	var original_pos = sprite.position
+	var shake_tween = create_tween()
+	
+	# We move the sprite left and right very quickly
+	# Duration is 0.05 seconds for each "jump"
+	shake_tween.tween_property(sprite, "position", original_pos + Vector2(4, 0), 0.05)
+	shake_tween.tween_property(sprite, "position", original_pos + Vector2(-4, 0), 0.05)
+	shake_tween.tween_property(sprite, "position", original_pos + Vector2(4, 0), 0.05)
+	shake_tween.tween_property(sprite, "position", original_pos + Vector2(-4, 0), 0.05)
+	
+	# Finally, move it back to exactly where it started
+	shake_tween.tween_property(sprite, "position", original_pos, 0.05)
 
 var is_dead: bool = false
+
 var health: float = 7:
 	set(value):
 		var old_health = health
@@ -36,6 +54,7 @@ var health: float = 7:
 		_update_progress_bar()
 		if health < old_health:
 			_play_animation()
+			shake_sprite()
 		if health <= 0 and not is_dead:
 			die()
 

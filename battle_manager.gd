@@ -1,49 +1,51 @@
 extends Node2D
 
-@onready var player_group = $"../PlayerGroup"
-@onready var enemy_group = $"../EnemyGroup"
+@onready var player_group = $PlayerGroup
+@onready var enemy_group = $EnemyGroup
 
 func _ready():
-	# Start the game by asking the first player for an action
+	# Wait for children to finish their _ready calls
+	await get_tree().process_frame
 	player_group.start_player_turn()
 
-# Called when all players have finished picking moves
+# This is called by PlayerGroup once all players have picked their moves
 func resolve_turn(player_actions: Array):
-	# 1. Get AI moves from the enemies
+	# 1. Gather what the enemies are going to do
 	var enemy_actions = enemy_group.get_enemy_actions()
 	
-	# 2. Execute player actions then enemy actions
+	# 2. Run the sequence of animations and damage
 	await run_action_queue(player_actions)
 	await run_action_queue(enemy_actions)
 	
-	# 3. Clean up and start next round
+	# 3. Check for victory and reset for next round
 	enemy_group.refresh_enemies()
 	if enemy_group.enemies.size() > 0:
 		player_group.start_player_turn()
 	else:
-		print("Victory!")
+		print("Victory! All enemies defeated.")
 
 func run_action_queue(queue):
 	for action in queue:
 		var attacker = action["attacker"]
 		var target = action["target"]
 		
-		# Skip if attacker or target died during the turn
+		# Ensure both are still valid and alive before acting
 		if is_instance_valid(attacker) and not attacker.is_dead:
 			if is_instance_valid(target) and not target.is_dead:
-				execute_move(attacker, target, action["type"])
+				_execute_move_logic(attacker, target, action["type"])
+				# Pause for the "floating text" and shake to be seen
 				await get_tree().create_timer(1.0).timeout
 
-func execute_move(attacker, target, type):
+func _execute_move_logic(attacker, target, type):
 	match type:
 		"attack":
 			attacker.attack(target)
 			target.show_floating_text(attacker.attack_damage)
 		"fireball":
 			attacker.mana -= 3
-			var damage = attacker.attack_damage * 3
-			target.take_damage(damage)
-			target.show_floating_text(damage)
+			var dmg = attacker.attack_damage * 3
+			target.take_damage(dmg)
+			target.show_floating_text(dmg)
 		"heal":
 			attacker.mana -= 2
 			target.health += 5
