@@ -10,14 +10,23 @@ func _ready():
 
 # This is called by PlayerGroup once all players have picked their moves
 func resolve_turn(player_actions: Array):
-	# 1. Gather what the enemies are going to do
+	# 1. FIX: Declare enemy_actions before using it
 	var enemy_actions = enemy_group.get_enemy_actions()
 	
-	# 2. Run the sequence of animations and damage
+	# 2. Run sequences
 	await run_action_queue(player_actions)
 	await run_action_queue(enemy_actions)
 	
-	# 3. Check for victory and reset for next round
+	# 3. MANA REGEN PHASE
+	for player in player_group.players:
+		if is_instance_valid(player) and not player.is_dead:
+			if player.mana < player.MAX_MANA:
+				player.mana += 1
+				if player.has_method("show_floating_text"):
+					# FIX: Change 'true' to "mana" to match the String argument
+					player.show_floating_text(1, "mana") 
+
+	# 4. Victory Check
 	enemy_group.refresh_enemies()
 	if enemy_group.enemies.size() > 0:
 		player_group.start_player_turn()

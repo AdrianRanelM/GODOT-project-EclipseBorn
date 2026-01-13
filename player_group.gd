@@ -9,12 +9,19 @@ var is_selecting_target: bool = false
 var current_move_type: String = ""
 var targeting_allies: bool = false
 
+# Dictionary to manage skill costs in one place
+var move_costs = {
+	"attack": 0,
+	"fireball": 3,
+	"heal": 2
+}
+
 @onready var choice_menu = $"../CanvasLayer/choice"
 @onready var skill_menu = $"../CanvasLayer/skill"
 @onready var enemy_group = $"../EnemyGroup"
 
 func _ready():
-	# Fill the array so it is not empty when show_menu runs
+	# Fill the array with living players
 	players = get_children().filter(func(n): return n is CharacterBody2D)
 
 func start_player_turn():
@@ -24,20 +31,30 @@ func start_player_turn():
 	show_menu()
 
 func show_menu():
-	# If we exceed the player count, tell the manager to run the turn
+	# SAFETY: If everyone is dead, stop the loop to prevent recursion crashes
+	var living_players = players.filter(func(p): return not p.is_dead)
+	if living_players.size() == 0:
+		print("Game Over: All players are dead.")
+		return
+		
+	# If all players have picked their moves, send queue to the Battle Manager
 	if index >= players.size():
 		get_parent().resolve_turn(action_queue)
 		return
 
+	# If the current player is dead, skip to the next one
 	if players[index].is_dead:
 		_advance_player()
 		return
 		
+	# Setup the UI
 	choice_menu.show()
 	skill_menu.hide()
-	# Set focus on the first button for controller/keyboard support
+	
+	# Set focus for controller/keyboard support
 	var atk_btn = choice_menu.find_child("attack")
-	if atk_btn: atk_btn.grab_focus()
+	if atk_btn: 
+		atk_btn.grab_focus()
 
 func _unhandled_input(event):
 	if is_selecting_target:
@@ -51,63 +68,126 @@ func _unhandled_input(event):
 		elif event.is_action_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()
 			_confirm_target(targets[target_index])
+		# --- NEW: Cancel Logic ---
+		elif event.is_action_pressed("cancel"):
+			get_viewport().set_input_as_handled()
+			_cancel_targeting(targets)
 
 func _change_target(dir, targets):
 	targets[target_index].unfocus()
+	# Wrap around the index or clamp it
 	target_index = clampi(target_index + dir, 0, targets.size() - 1)
 	targets[target_index].focus()
 
 func _confirm_target(target):
 	is_selecting_target = false
 	target.unfocus()
+	
+	# Add the action to the queue
 	action_queue.push_back({
 		"attacker": players[index], 
 		"target": target, 
 		"type": current_move_type
 	})
+	
 	_advance_player()
+
+# --- NEW: Function to handle exiting targeting mode ---
+func _cancel_targeting(targets):
+	is_selecting_target = false
+	
+	# Stop animations on the current target
+	if targets.size() > 0:
+		targets[target_index].unfocus()
+	
+	# Go back to the correct menu based on what action was being picked
+	if current_move_type == "attack":
+		choice_menu.show()
+		var atk_btn = choice_menu.find_child("attack")
+		if atk_btn: atk_btn.grab_focus()
+	else:
+		# Returns to magic menu for fireball/heal
+		skill_menu.show()
+		var skill_btn = skill_menu.find_child(current_move_type)
+		if skill_btn and not skill_btn.disabled:
+			skill_btn.grab_focus()
+		else:
+			skill_menu.find_child("return").grab_focus()
 
 func _advance_player():
 	index += 1
-	show_menu()
+	# Using call_deferred prevents the "Stack Overflow" error
+	show_menu.call_deferred()
 
-# --- Reconnect these button signals in the Editor! ---
-func _on_attack_pressed(): _start_targeting("attack", false)
-func _on_fireball_pressed(): _start_targeting("fireball", false)
-func _on_heal_pressed(): _start_targeting("heal", true)
+# --- Button Signal Handlers ---
 
-func _start_targeting(type, allies):
-	current_move_type = type
-	targeting_allies = allies
-	choice_menu.hide()
-	skill_menu.hide()
-	
-	# Release UI focus so "Enter" doesn't click the button again
-	var focus_owner = get_viewport().gui_get_focus_owner()
-	if focus_owner: focus_owner.release_focus()
-	
-	is_selecting_target = true
-	target_index = 0
-	var targets = players if targeting_allies else enemy_group.enemies
-	if targets.size() > 0: targets[0].focus()
+func _on_attack_pressed():
+	_start_targeting("attack", false)
 
+func _on_fireball_pressed():
+	_start_targeting("fireball", false)
+
+func _on_heal_pressed():
+	_start_targeting("heal", true)
 
 func _on_magic_pressed() -> void:
-	# Hide the main "Attack/Magic/Run" menu
 	choice_menu.hide()
-	# Show the "Fireball/Heal/Return" menu
 	skill_menu.show()
-	# Focus the first skill button so keyboard/controller works
+	
+	var active_player = players[index]
+	
+	# Visual Mana Check: Disable buttons if player can't afford the spell
 	var fireball_btn = skill_menu.find_child("fireball")
+	var heal_btn = skill_menu.find_child("heal")
+	
 	if fireball_btn:
+		fireball_btn.disabled = active_player.mana < move_costs["fireball"]
+	if heal_btn:
+		heal_btn.disabled = active_player.mana < move_costs["heal"]
+		
+	# Focus logic: grab first available skill or the return button
+	if fireball_btn and not fireball_btn.disabled:
 		fireball_btn.grab_focus()
+	elif heal_btn and not heal_btn.disabled:
+		heal_btn.grab_focus()
+	else:
+		var ret_btn = skill_menu.find_child("return")
+		if ret_btn: ret_btn.grab_focus()
 
 func _on_return_pressed() -> void:
-	# Hide the skill menu
 	skill_menu.hide()
-	# Show the main choice menu again
 	choice_menu.show()
-	# Refocus the "magic" button so the user is back where they started
 	var magic_btn = choice_menu.find_child("magic")
 	if magic_btn:
 		magic_btn.grab_focus()
+
+# --- Internal Logic ---
+
+func _start_targeting(type, allies):
+	var active_player = players[index]
+	var cost = move_costs.get(type, 0)
+	
+	# Functional Mana Check
+	if active_player.mana < cost:
+		print("NOT ENOUGH MANA! Needs: ", cost, " Has: ", active_player.mana)
+		return 
+	
+	current_move_type = type
+	targeting_allies = allies
+	
+	# Hide menus so the player can see the targets
+	choice_menu.hide()
+	skill_menu.hide()
+	
+	# Release UI focus so "Enter/Space" doesn't re-trigger a button
+	var focus_owner = get_viewport().gui_get_focus_owner()
+	if focus_owner: 
+		focus_owner.release_focus()
+	
+	is_selecting_target = true
+	target_index = 0
+	
+	# Start targeting indicator
+	var targets = players if targeting_allies else enemy_group.enemies
+	if targets.size() > 0: 
+		targets[0].focus()
