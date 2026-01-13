@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dd3ahf4tpfjjh"]
 
 [ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_6gwin"]
-[ext_resource type="Script" uid="uid://bl3kb3vi5e53x" path="res://load.gd" id="1_74lda"]
+[ext_resource type="Script" uid="uid://bunxneptehx87" path="res://load.gd" id="1_74lda"]
 [ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_74lda"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7pnu"]
@@ -81,7 +81,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0.021434637, 0.021434635,
 theme_override_fonts/font = ExtResource("2_74lda")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6gwin")
-text = "Gab 69"
+text = "No File"
 
 [node name="Button2" type="Button" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -174,5 +174,4 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_q7pnu")
 text = "Start"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

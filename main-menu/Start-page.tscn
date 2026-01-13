@@ -59,7 +59,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0.008202022, 0.008202025,
 theme_override_fonts/font = ExtResource("2_c7vil")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_ef6ir")
-text = "Create Account"
+text = "New Game"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -76,7 +76,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0.0023445897, 0.00234459,
 theme_override_fonts/font = ExtResource("2_c7vil")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_oe7ah")
-text = "Log In"
+text = "Load Save "
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

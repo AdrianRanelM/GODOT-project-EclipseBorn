@@ -58,6 +58,34 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x2wl2")
 text = "Back"
 
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -86.0
+offset_right = -195.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_sy0od")
+theme_override_colors/font_color = Color(0.99705297, 0.99705297, 0.99705297, 1)
+theme_override_colors/font_focus_color = Color(0.0023445855, 0.0023445901, 0.0023446013, 1)
+theme_override_colors/font_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/font_hover_color = Color(0.0006938963, 0.0006938974, 0.00069390115, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_normal_color = Color(3.723037e-05, 3.723037e-05, 3.7230366e-05, 1)
+theme_override_colors/icon_focus_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_hover_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_fonts/font = ExtResource("2_bggv0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x2wl2")
+text = "Start"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -100,3 +128,4 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_bggv0")
 placeholder_text = "Create Username"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
