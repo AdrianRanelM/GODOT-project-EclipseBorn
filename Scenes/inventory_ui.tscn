@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcol4k00jc87c"]
+[gd_scene load_steps=34 format=3 uid="uid://dcol4k00jc87c"]
 
 [ext_resource type="Texture2D" uid="uid://bhyjukoiyaod1" path="res://Assets/UI/InventoryUI/Inventory.png" id="1_5v8q7"]
 [ext_resource type="Script" uid="uid://b3tegcte8p23" path="res://Scripts/inventory_ui.gd" id="1_gf3dx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjdr4gmu2q2mn" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Walk_without_shadow.png" id="4_r57pj"]
 [ext_resource type="Texture2D" uid="uid://d012go1srbgq0" path="res://Assets/UI/Health/hpbr.png" id="5_5bopx"]
 [ext_resource type="Texture2D" uid="uid://dvmigmpxxd8sf" path="res://Assets/UI/Health/hpbar.png" id="6_o6um4"]
+[ext_resource type="Texture2D" uid="uid://c7g0uqnbofxgt" path="res://Assets/UI/Health/mnbr.png" id="7_m65me"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34y5v"]
 atlas = ExtResource("4_r57pj")
@@ -361,3 +362,16 @@ stretch_margin_top = 4
 stretch_margin_bottom = 4
 texture_under = ExtResource("5_5bopx")
 texture_progress = ExtResource("6_o6um4")
+
+[node name="ManaPointsBar" type="TextureProgressBar" parent="SlotsLayer"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 274.0
+offset_bottom = 60.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("5_5bopx")
+texture_progress = ExtResource("7_m65me")

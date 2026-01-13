@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var max_speed = 100
+var max_speed = 75
 var last_direction = Vector2(1,0)
 
 #inventory
@@ -120,3 +120,9 @@ func take_damage(amount: int) -> void:
 func heal(amount: int) -> void:
 	current_hp = min(current_hp + amount, max_hp)
 	emit_signal("hp_changed", current_hp, max_hp)
+
+#manapoints
+signal mp_changed(current_mp, max_mp)
+
+var max_mp: int = 100
+var current_mp: int = max_mp

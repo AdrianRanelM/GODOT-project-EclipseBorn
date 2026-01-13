@@ -9,6 +9,7 @@ const SLOT_COUNT := 24
 @onready var grid: GridContainer = $SlotsLayer/MainGrid
 @onready var sprite: AnimatedSprite2D = $SlotsLayer/BigSlot/AnimatedSprite2D
 @onready var hp_bar: TextureProgressBar = $SlotsLayer/HealthPointsBar
+@onready var mp_bar: TextureProgressBar = $SlotsLayer/ManaPointsBar
 
 var slots: Array[ItemSlot] = []
 var last_dragged_slot: ItemSlot = null
@@ -21,6 +22,11 @@ func connect_player(player: Node) -> void:
 func _on_player_hp_changed(current_hp: int, max_hp: int) -> void:
 	hp_bar.max_value = max_hp
 	hp_bar.value = current_hp
+
+func _on_player_mp_changed(current_mp: int, max_mp: int) -> void:
+	mp_bar.max_value = max_mp
+	mp_bar.value = current_mp
+
 
 func _ready():
 	sprite.play("WalkingInv")
