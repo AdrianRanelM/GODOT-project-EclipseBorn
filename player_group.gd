@@ -68,13 +68,13 @@ func _unhandled_input(event):
 		elif event.is_action_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()
 			_confirm_target(targets[target_index])
-		# --- NEW: Cancel Logic ---
+		# --- Cancel Logic ---
 		elif event.is_action_pressed("cancel"):
 			get_viewport().set_input_as_handled()
 			_cancel_targeting(targets)
 
 func _change_target(dir, targets):
-	targets[target_index].unfocus()
+	targets[target_index].unfocus() #
 	# Wrap around the index or clamp it
 	target_index = clampi(target_index + dir, 0, targets.size() - 1)
 	targets[target_index].focus()
@@ -92,7 +92,7 @@ func _confirm_target(target):
 	
 	_advance_player()
 
-# --- NEW: Function to handle exiting targeting mode ---
+# --- Function to handle exiting targeting mode ---
 func _cancel_targeting(targets):
 	is_selecting_target = false
 	
@@ -128,6 +128,12 @@ func _on_fireball_pressed():
 	_start_targeting("fireball", false)
 
 func _on_heal_pressed():
+	var active_player = players[index]
+	# PREVENT HEAL IF AT FULL HP: Checks if player needs healing before targeting
+	if active_player.health >= active_player.MAX_HEALTH:
+		print("Player is already at full health!")
+		return
+		
 	_start_targeting("heal", true)
 
 func _on_magic_pressed() -> void:
@@ -142,8 +148,12 @@ func _on_magic_pressed() -> void:
 	
 	if fireball_btn:
 		fireball_btn.disabled = active_player.mana < move_costs["fireball"]
+	
 	if heal_btn:
-		heal_btn.disabled = active_player.mana < move_costs["heal"]
+		# Disable if not enough mana OR if already at max health
+		var out_of_mana = active_player.mana < move_costs["heal"]
+		var health_full = active_player.health >= active_player.MAX_HEALTH
+		heal_btn.disabled = out_of_mana or health_full
 		
 	# Focus logic: grab first available skill or the return button
 	if fireball_btn and not fireball_btn.disabled:

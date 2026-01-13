@@ -58,4 +58,4 @@ func _execute_move_logic(attacker, target, type):
 		"heal":
 			attacker.mana -= 2
 			target.health += 5
-			target.show_floating_text(5, true)
+			target.show_floating_text(5, "heal")
