@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 @onready var _focus = $focus
 @onready var progress_bar = $ProgressBar
 @onready var mana_bar = $ManaBar 
@@ -8,6 +10,23 @@ extends CharacterBody2D
 @export var MAX_HEALTH: float = 7
 @export var MAX_MANA: float = 10
 @export var attack_damage: int = 1
+
+var floating_text_scene = preload("res://FloatingText.tscn")
+
+func show_floating_text(amount: int, is_heal: bool = false):
+	var text_instance = floating_text_scene.instantiate()
+	
+	# Position it slightly above the character
+	text_instance.position = Vector2(-20, -50) 
+	
+	if is_heal:
+		text_instance.setup("+" + str(amount), Color.GREEN)
+	else:
+		text_instance.setup("-" + str(amount), Color.RED)
+		
+	add_child(text_instance)
+
+
 
 var is_dead: bool = false
 var health: float = 7:

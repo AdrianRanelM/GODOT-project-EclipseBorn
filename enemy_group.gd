@@ -91,12 +91,16 @@ func _action(stack):
 			match type:
 				"fireball":
 					attacker.mana -= 3
-					target.take_damage(attacker.attack_damage * 3)
+					var damage = attacker.attack_damage * 3
+					target.take_damage(damage)
+					target.show_floating_text(damage) # Spawn red text
 				"heal":
 					attacker.mana -= 2
 					target.health += 5
+					target.show_floating_text(5, true) # Spawn green text
 				"attack":
 					attacker.attack(target)
+					target.show_floating_text(attacker.attack_damage) # Spawn red text
 			
 			await get_tree().create_timer(1.0).timeout
 	
