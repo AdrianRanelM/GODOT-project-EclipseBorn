@@ -15,6 +15,10 @@ run/main_scene="uid://b7rt4mwk31wbn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+PlayerGroup=""
+
 [input]
 
 MoveUp={

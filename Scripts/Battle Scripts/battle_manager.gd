@@ -11,20 +11,152 @@ extends Node2D
 @onready var hp_battle = $PlayerGroup/Sonny/ProgressBar
 @onready var mp_battle = $PlayerGroup/Sonny/ManaBar
 
-func _process(_delta):
-	health_bar.value = hp_battle.value
-	mana_bar.value   = mp_battle.value
-	
-	var hp_tooltip = str(hp_battle.value)
-	var mp_tooltip = str(mp_battle.value)
-	
-	health_bar.tooltip_text = hp_tooltip
-	mana_bar.tooltip_text = mp_tooltip
+# Fallback global sprite (kept for compatibility)
+@onready var fallback_sprite: AnimatedSprite2D = $CanvasLayer/AnimatedSprite2D
 
-func _ready():
+# Protagonist refs
+var protagonist: Node = null
+var protagonist_sprite: AnimatedSprite2D = null
+
+# Previous HP value (uses the same units as hp_battle.value)
+var previous_hp: float = -1.0
+
+# Optional: minimum drop threshold to trigger hurt (useful if hp_battle is percent)
+const HP_DROP_THRESHOLD: float = 0.01
+
+func _ready() -> void:
 	action_label.text = "" # Clear it at the start
 	await get_tree().process_frame
 	player_group.start_player_turn()
+
+	# Cache protagonist node
+	if has_node("PlayerGroup/Sonny"):
+		protagonist = get_node("PlayerGroup/Sonny")
+		# Try to find an AnimatedSprite2D inside the protagonist
+		if protagonist.has_node("AnimatedSprite2D"):
+			protagonist_sprite = protagonist.get_node("AnimatedSprite2D") as AnimatedSprite2D
+		elif protagonist.has_node("Sprite2D"):
+			protagonist_sprite = null
+	else:
+		protagonist = null
+		protagonist_sprite = null
+
+	# Connect animation finished signals for protagonist-local sprite or fallback
+	_connect_animation_finished_signals()
+
+	# Initialize previous_hp from the progress bar value so first frame doesn't trigger
+	if hp_battle:
+		previous_hp = float(hp_battle.value)
+	else:
+		previous_hp = 0.0
+
+func _process(_delta: float) -> void:
+	# Update UI bars and tooltips
+	if hp_battle and health_bar:
+		health_bar.value = hp_battle.value
+		health_bar.tooltip_text = str(hp_battle.value)
+	if mp_battle and mana_bar:
+		mana_bar.value = mp_battle.value
+		mana_bar.tooltip_text = str(mp_battle.value)
+
+	# Continuous HP comparator for the protagonist
+	if hp_battle:
+		var current_hp: float = float(hp_battle.value)
+
+		# Only compare if previous_hp was initialized
+		if previous_hp >= 0.0:
+			# If HP decreased by more than the threshold, trigger hurt
+			if current_hp + HP_DROP_THRESHOLD < previous_hp:
+				_on_protagonist_hurt(previous_hp, current_hp)
+
+		# Update previous_hp for next frame
+		previous_hp = current_hp
+
+# --- helper to connect signals safely ---
+func _connect_animation_finished_signals() -> void:
+	# If protagonist has AnimatedSprite2D, connect its signal
+	if protagonist_sprite:
+		var callable_sprite = Callable(self, "_on_sprite_animation_finished")
+		if not protagonist_sprite.is_connected("animation_finished", callable_sprite):
+			protagonist_sprite.connect("animation_finished", callable_sprite)
+		return
+
+	# If protagonist uses AnimationPlayer instead, connect that (AnimationPlayer passes the animation name)
+	if protagonist and protagonist.has_node("AnimationPlayer"):
+		var ap = protagonist.get_node("AnimationPlayer") as AnimationPlayer
+		var callable_ap = Callable(self, "_on_animation_player_finished")
+		if not ap.is_connected("animation_finished", callable_ap):
+			ap.connect("animation_finished", callable_ap)
+		return
+
+	# Fallback: connect the global/fallback AnimatedSprite2D if present
+	if fallback_sprite:
+		var callable_fallback = Callable(self, "_on_sprite_animation_finished")
+		if not fallback_sprite.is_connected("animation_finished", callable_fallback):
+			fallback_sprite.connect("animation_finished", callable_fallback)
+
+# Called when protagonist HP drops
+func _on_protagonist_hurt(old_hp: float, new_hp: float) -> void:
+	# Choose the sprite to play the animation on: protagonist-local if available, else fallback
+	var anim_sprite: AnimatedSprite2D = protagonist_sprite if protagonist_sprite else fallback_sprite
+
+	if anim_sprite:
+		# Avoid restarting the hurt animation if it's already playing
+		if anim_sprite.animation != "hurt":
+			anim_sprite.play("hurt")
+
+	# Optional: call a shake function if the protagonist has one or use fallback
+	if protagonist and protagonist.has_method("shake_sprite"):
+		protagonist.call("shake_sprite")
+	elif has_method("shake_sprite"):
+		call_deferred("shake_sprite")
+
+# --- AnimatedSprite2D signal handler (no args) ---
+func _on_sprite_animation_finished() -> void:
+	var anim_sprite: AnimatedSprite2D = protagonist_sprite if protagonist_sprite else fallback_sprite
+	if not anim_sprite:
+		return
+
+	# If protagonist is dead, don't switch back to idle
+	if protagonist and protagonist.has_method("is_dead") and protagonist.is_dead:
+		return
+
+	# If the finished animation was "hurt", return to "idle"
+	if anim_sprite.animation == "hurt":
+		if anim_sprite.sprite_frames and anim_sprite.sprite_frames.has_animation("idle"):
+			anim_sprite.play("idle")
+
+# --- AnimationPlayer signal handler (passes animation name) ---
+func _on_animation_player_finished(anim_name: String) -> void:
+	# If protagonist is dead, don't switch back to idle
+	if protagonist and protagonist.has_method("is_dead") and protagonist.is_dead:
+		return
+
+	# Only react to the hurt animation finishing
+	if anim_name == "hurt":
+		# If protagonist has an AnimatedSprite2D idle, prefer that
+		if protagonist and protagonist.has_node("AnimatedSprite2D"):
+			var local_sprite = protagonist.get_node("AnimatedSprite2D") as AnimatedSprite2D
+			if local_sprite and local_sprite.sprite_frames and local_sprite.sprite_frames.has_animation("idle"):
+				local_sprite.play("idle")
+				return
+
+		# Otherwise, try to play idle on the AnimationPlayer itself
+		if protagonist and protagonist.has_node("AnimationPlayer"):
+			var ap = protagonist.get_node("AnimationPlayer") as AnimationPlayer
+			if ap and ap.has_animation("idle"):
+				ap.play("idle")
+				return
+
+		# Fallback to global sprite
+		if fallback_sprite and fallback_sprite.sprite_frames and fallback_sprite.sprite_frames.has_animation("idle"):
+			fallback_sprite.play("idle")
+
+func death():
+	if hp_battle.value == 0:
+		fallback_sprite.play("death")
+	else:
+		fallback_sprite.play("idle")	
 
 # battle_manager.gd
 

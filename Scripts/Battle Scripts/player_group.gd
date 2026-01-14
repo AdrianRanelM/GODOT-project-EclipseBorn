@@ -20,12 +20,13 @@ var move_costs = {
 @onready var skill_menu = $"../CanvasLayer/skill"
 @onready var enemy_group = $"../EnemyGroup"
 
+#---animation---
+@onready var sprite = $"../CanvasLayer/AnimatedSprite2D"
+
 func _ready():
+	sprite.play("idle")
 	# Fill the array with living players
 	players = get_children().filter(func(n): return n is CharacterBody2D)
-	print("Choice menu:", choice_menu)
-	print("Skill menu:", skill_menu)
-	print("Enemy group:", enemy_group)
 
 func start_player_turn():
 	index = 0
@@ -38,6 +39,7 @@ func show_menu():
 	var living_players = players.filter(func(p): return not p.is_dead)
 	if living_players.size() == 0:
 		print("Game Over: All players are dead.")
+		sprite.play("death")
 		return
 		
 	# If all players have picked their moves, send queue to the Battle Manager
@@ -92,7 +94,9 @@ func _confirm_target(target):
 		"target": target, 
 		"type": current_move_type
 	})
-	
+	 # --- Play attack animation if it's an attack ---
+	if current_move_type == "attack":
+		sprite.play("attack")
 	_advance_player()
 
 # --- Function to handle exiting targeting mode ---
@@ -125,7 +129,6 @@ func _advance_player():
 # --- Button Signal Handlers ---
 
 func _on_attack_pressed():
-	print("done")
 	_start_targeting("attack", false)
 
 func _on_fireball_pressed():
