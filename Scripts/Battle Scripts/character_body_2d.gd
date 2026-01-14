@@ -1,6 +1,8 @@
 
 extends CharacterBody2D
 
+signal damaged(intensity: float)
+
 @onready var _focus = $focus
 @onready var progress_bar = $ProgressBar
 @onready var mana_bar = $ManaBar 
@@ -10,6 +12,8 @@ extends CharacterBody2D
 @export var MAX_HEALTH: float = 7
 @export var MAX_MANA: float = 10
 @export var attack_damage: int = 1
+
+@export var unit_name: String = "Character"
 
 var floating_text_scene = preload("res://Scenes/Battle scenes/FloatingText.tscn")
 var is_dead: bool = false
@@ -45,6 +49,9 @@ func _update_mana_bar():
 func take_damage(value):
 	if is_dead: return
 	health -= value
+	# Emit the signal whenever damage is taken
+	# We send an intensity value (e.g., 5.0) to tell the camera how hard to shake
+	damaged.emit(5.0)
 
 func attack(target):
 	if is_dead: return

@@ -16,9 +16,9 @@ var move_costs = {
 	"heal": 2
 }
 
-@onready var choice_menu = $"../choice"
-@onready var skill_menu = $"../skill"
-@onready var enemy_group = $"../../../EnemyGroup"
+@onready var choice_menu = $"../CanvasLayer/choice"
+@onready var skill_menu = $"../CanvasLayer/skill"
+@onready var enemy_group = $"../EnemyGroup"
 
 func _ready():
 	# Fill the array with living players
@@ -205,3 +205,11 @@ func _start_targeting(type, allies):
 	var targets = players if targeting_allies else enemy_group.enemies
 	if targets.size() > 0: 
 		targets[0].focus()
+
+@onready var inventory_ui = $"../CanvasLayer/InventoryUI"
+#--item usage by inventory--
+func _on_items_pressed() -> void:
+	inventory_ui.show()
+
+func _on_inv_ui_back_pressed() -> void:
+	inventory_ui.hide() # Replace with function body.
