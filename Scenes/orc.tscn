@@ -1,7 +1,7 @@
 [gd_scene load_steps=47 format=3 uid="uid://ca7ms7b8fo6p7"]
 
 [ext_resource type="Texture2D" uid="uid://qdkkuew7rrn4" path="res://Assets/Enemies/orc2_idle_with_shadow.png" id="1_3xw0u"]
-[ext_resource type="Script" uid="uid://fttghlgbpfc8" path="res://enemy.gd" id="1_kapy6"]
+[ext_resource type="Script" uid="uid://fttghlgbpfc8" path="res://Scripts/enemy.gd" id="1_kapy6"]
 [ext_resource type="Texture2D" uid="uid://c27gyh0wthf8q" path="res://Assets/Enemies/orc2_walk_with_shadow.png" id="2_kapy6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hc3a"]
@@ -328,28 +328,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kapy6"]
+size = Vector2(22.5, 22.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ehh3"]
 radius = 168.0
 
 [node name="Orc" type="CharacterBody2D"]
 script = ExtResource("1_kapy6")
-max_hp = null
-damage = null
-speed = null
-roam_interval = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_y2w26")
 animation = &"IdleUp"
 
-[node name="BattleTrigger" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+[node name="BattleTriggerArea" type="Area2D" parent="."]
+
+[node name="BattleTrigger" type="CollisionShape2D" parent="BattleTriggerArea"]
 shape = SubResource("RectangleShape2D_kapy6")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8ehh3")

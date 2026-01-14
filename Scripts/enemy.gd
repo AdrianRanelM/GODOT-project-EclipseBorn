@@ -6,6 +6,10 @@ class_name Enemy
 @export var damage: int = 10
 @export var speed: float = 60.0
 
+# Separate speeds for roaming vs chasing
+@export var roam_speed: float = 20.0   # slow wander
+@export var chase_speed: float = 70.0 # fast pursuit
+
 var current_hp: int
 var target: Node = null   # player reference when detected
 
@@ -17,7 +21,7 @@ var roam_direction: Vector2 = Vector2.ZERO
 # --- References ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $Area2D
-@onready var battle_trigger: CollisionShape2D = $BattleTrigger
+@onready var battle_trigger: Area2D = $BattleTriggerArea
 
 # --- Signals ---
 signal enemy_died(enemy: Enemy)
@@ -31,9 +35,9 @@ func _ready() -> void:
 	current_hp = max_hp
 	if sprite and sprite.sprite_frames.has_animation("IdleDown"):
 		sprite.play("IdleDown")
-
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
+	battle_trigger.body_entered.connect(_on_battle_trigger)
 
 func _physics_process(delta: float) -> void:
 	if target:
@@ -46,21 +50,20 @@ func _physics_process(delta: float) -> void:
 
 # --- Chase logic without diagonal jitter ---
 func _chase_target() -> void:
+	if not target: return
 	var raw_dir = target.global_position - global_position
 
-	# Decide axis once if not set
 	if chase_axis == "":
 		chase_axis = "x" if abs(raw_dir.x) > abs(raw_dir.y) else "y"
 
-	# Move along chosen axis until close enough, then switch
 	if chase_axis == "x":
-		if abs(raw_dir.x) > 4:   # tolerance so it doesn’t flicker
-			velocity = Vector2(sign(raw_dir.x), 0) * speed
+		if abs(raw_dir.x) > 4:
+			velocity = Vector2(sign(raw_dir.x), 0) * chase_speed
 		else:
 			chase_axis = "y"
 	else:
 		if abs(raw_dir.y) > 4:
-			velocity = Vector2(0, sign(raw_dir.y)) * speed
+			velocity = Vector2(0, sign(raw_dir.y)) * chase_speed
 		else:
 			chase_axis = "x"
 
@@ -71,7 +74,7 @@ func _roam(delta: float) -> void:
 	if roam_timer <= 0:
 		_pick_new_roam_direction()
 		roam_timer = roam_interval
-	velocity = roam_direction * speed
+	velocity = roam_direction * roam_speed
 
 func _pick_new_roam_direction() -> void:
 	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2.ZERO]
@@ -114,12 +117,15 @@ func _update_animation() -> void:
 			sprite.play("WalkUp")
 			last_direction = Vector2.UP
 
-# --- Combat ---
-#func _on_battle_trigger(body: Node) -> void:
-	#if body.is_in_group("player"):
-		## Initiate battle sequence
-		#var battle_scene = preload("res://Battle.tscn")
-		#get_tree().change_scene_to_packed(battle_scene)
+#--- Combat ---
+func _on_battle_trigger(body: Node) -> void:
+	if body.is_in_group("player"):
+		var battle_scene = preload("res://Scenes/Battle scenes/battle_scene.tscn")
+		# Defer the scene change to avoid removing during physics callback
+		call_deferred("_start_battle", battle_scene)
+
+func _start_battle(battle_scene: PackedScene) -> void:
+	get_tree().change_scene_to_packed(battle_scene)
 
 func take_damage(amount: int) -> void:
 	current_hp -= amount

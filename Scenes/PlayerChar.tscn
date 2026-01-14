@@ -518,19 +518,17 @@ radius = 9.0
 script = ExtResource("1_1y1dc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_8rsr7")
 animation = &"IdleLeft"
 frame_progress = 0.10774114
+offset = Vector2(0, -2.98)
 script = SubResource("GDScript_1y1dc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -27)
 scale = Vector2(0.6446265, 0.6446265)
 shape = SubResource("RectangleShape2D_5jrxl")
 
 [node name="PickupArea" type="Area2D" parent="."]
-position = Vector2(0, -27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_1y1dc")

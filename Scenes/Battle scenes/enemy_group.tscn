@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyshkl86q1p3f"]
+
+[ext_resource type="Script" uid="uid://ejfblofdms4t" path="res://enemy_group.gd" id="1_5vdyj"]
+[ext_resource type="PackedScene" uid="uid://veq8m46km8yo" path="res://character_body_2d.tscn" id="2_am1p3"]
+[ext_resource type="Texture2D" uid="uid://c8071c44kwbtb" path="res://Battlers/Battlers/World04_003_ Outlaw.png" id="3_am1p3"]
+
+[node name="EnemyGroup" type="Node2D"]
+script = ExtResource("1_5vdyj")
+
+[node name="character" parent="." instance=ExtResource("2_am1p3")]
+
+[node name="Sprite2D" parent="character" index="0"]
+position = Vector2(50.5, 80.49999)
+scale = Vector2(1.828125, 1.9270833)
+texture = ExtResource("3_am1p3")
+
+[node name="focus" parent="character" index="1"]
+scale = Vector2(3, 3)
+
+[node name="ProgressBar" parent="character" index="2"]
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 984.6667
+offset_bottom = 80.66664
+theme_override_font_sizes/font_size = 64
+
+[node name="ManaBar" parent="character" index="3"]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 966.6666
+offset_bottom = 59.66667
+theme_override_font_sizes/font_size = 64
+
+[node name="character2" parent="." instance=ExtResource("2_am1p3")]
+
+[node name="Sprite2D" parent="character2" index="0"]
+position = Vector2(50.5, 80.49999)
+scale = Vector2(1.828125, 1.9270833)
+texture = ExtResource("3_am1p3")
+
+[node name="focus" parent="character2" index="1"]
+scale = Vector2(3, 3)
+
+[node name="ProgressBar" parent="character2" index="2"]
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 984.6667
+offset_bottom = 80.66664
+theme_override_font_sizes/font_size = 64
+
+[node name="ManaBar" parent="character2" index="3"]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 966.6666
+offset_bottom = 59.66667
+theme_override_font_sizes/font_size = 64
+
+[editable path="character"]
+[editable path="character2"]

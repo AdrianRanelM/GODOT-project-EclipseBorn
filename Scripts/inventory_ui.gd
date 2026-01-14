@@ -27,7 +27,6 @@ func _on_player_mp_changed(current_mp: int, max_mp: int) -> void:
 	mp_bar.max_value = max_mp
 	mp_bar.value = current_mp
 
-
 func _ready():
 	sprite.play("WalkingInv")
 	slots.clear()

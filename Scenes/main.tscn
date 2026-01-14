@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3sv1rllee308"]
+[gd_scene load_steps=10 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -14,20 +14,24 @@
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
 z_index = 4
+position = Vector2(0, -19)
 inventory = ExtResource("4_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -28)
 zoom = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="Vignette" type="ColorRect" parent="Player/Camera2D/CanvasLayer"]
 material = ExtResource("3_5vw27")
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = -0.0026041667
+anchor_top = -0.012345679
+anchor_right = 0.9973958
 anchor_bottom = 1.0
-offset_bottom = -8.0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -35,7 +39,17 @@ metadata/_edit_use_anchors_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 
 [node name="InventoryUI" parent="Player/CanvasLayer" instance=ExtResource("5_lquwl")]
-visible = false
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="WorldItem" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(-50, -27)
@@ -48,7 +62,3 @@ item_data = ExtResource("7_272bh")
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(184, -8)
-max_hp = 100
-damage = 10
-speed = 60.0
-roam_interval = 2.0

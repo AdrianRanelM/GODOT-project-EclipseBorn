@@ -4,7 +4,7 @@ var max_speed = 75
 var last_direction = Vector2(1,0)
 
 #inventory
-@onready var animated_inventory = $CanvasLayer/InventoryUI
+@onready var animated_inventory = $CanvasLayer/CenterContainer/InventoryUI
 @onready var pickup_area: Area2D = $PickupArea
 
 # Inventory lock flag
@@ -29,7 +29,7 @@ func unlock_inventory() -> void:
 #items
 @export var inv = Inv
 @export var inventory: Inv
-@onready var inventory_ui = $CanvasLayer/InventoryUI
+@onready var inventory_ui = $CanvasLayer/CenterContainer/InventoryUI
 
 func add_item(item: InvItem):
 	inventory.add_item(item)
