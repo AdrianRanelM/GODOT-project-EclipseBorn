@@ -7,53 +7,49 @@
 [node name="EnemyGroup" type="Node2D"]
 script = ExtResource("1_5vdyj")
 
-[node name="character" parent="." instance=ExtResource("2_am1p3")]
+[node name="Enemy1" parent="." groups=["characters"] instance=ExtResource("2_am1p3")]
+unit_name = "Enemy1"
 
-[node name="Sprite2D" parent="character" index="0"]
+[node name="Sprite2D" parent="Enemy1" index="0"]
 position = Vector2(50.5, 80.49999)
 scale = Vector2(1.828125, 1.9270833)
 texture = ExtResource("3_am1p3")
 
-[node name="focus" parent="character" index="1"]
-scale = Vector2(3, 3)
-
-[node name="ProgressBar" parent="character" index="2"]
+[node name="ProgressBar" parent="Enemy1" index="2"]
 offset_left = -22.0
 offset_top = -46.0
-offset_right = 984.6667
+offset_right = 998.0
 offset_bottom = 80.66664
 theme_override_font_sizes/font_size = 64
 
-[node name="ManaBar" parent="character" index="3"]
+[node name="ManaBar" parent="Enemy1" index="3"]
 offset_left = -20.0
 offset_top = -27.0
 offset_right = 966.6666
 offset_bottom = 59.66667
 theme_override_font_sizes/font_size = 64
 
-[node name="character2" parent="." instance=ExtResource("2_am1p3")]
+[node name="Enemy2" parent="." groups=["characters"] instance=ExtResource("2_am1p3")]
+unit_name = "Enemy2"
 
-[node name="Sprite2D" parent="character2" index="0"]
+[node name="Sprite2D" parent="Enemy2" index="0"]
 position = Vector2(50.5, 80.49999)
 scale = Vector2(1.828125, 1.9270833)
 texture = ExtResource("3_am1p3")
 
-[node name="focus" parent="character2" index="1"]
-scale = Vector2(3, 3)
-
-[node name="ProgressBar" parent="character2" index="2"]
+[node name="ProgressBar" parent="Enemy2" index="2"]
 offset_left = -22.0
 offset_top = -46.0
-offset_right = 984.6667
+offset_right = 998.0
 offset_bottom = 80.66664
 theme_override_font_sizes/font_size = 64
 
-[node name="ManaBar" parent="character2" index="3"]
+[node name="ManaBar" parent="Enemy2" index="3"]
 offset_left = -20.0
 offset_top = -27.0
 offset_right = 966.6666
 offset_bottom = 59.66667
 theme_override_font_sizes/font_size = 64
 
-[editable path="character"]
-[editable path="character2"]
+[editable path="Enemy1"]
+[editable path="Enemy2"]

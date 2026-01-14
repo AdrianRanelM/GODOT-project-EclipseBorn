@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://64oy0e0d1qyp"]
+[gd_scene load_steps=6 format=3 uid="uid://64oy0e0d1qyp"]
 
 [ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://battle_manager.gd" id="1_5joda"]
 [ext_resource type="Texture2D" uid="uid://cvlh5io6ckd02" path="res://battleback9.png" id="1_r5l0u"]
 [ext_resource type="PackedScene" uid="uid://cyshkl86q1p3f" path="res://enemy_group.tscn" id="2_5g7vw"]
+[ext_resource type="Script" uid="uid://dmanmawmg4el" path="res://battle_camera.gd" id="2_gf131"]
 [ext_resource type="PackedScene" uid="uid://c0li4c8lap1in" path="res://player_group.tscn" id="3_5g7vw"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_5joda")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 324)
+script = ExtResource("2_gf131")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.6955032, 0.6955031, 0.6955031, 1)
@@ -18,12 +23,25 @@ texture = ExtResource("1_r5l0u")
 expand_mode = 1
 
 [node name="EnemyGroup" parent="." instance=ExtResource("2_5g7vw")]
-position = Vector2(271, 126)
+position = Vector2(267, 154)
 
 [node name="PlayerGroup" parent="." instance=ExtResource("3_5g7vw")]
 position = Vector2(114, 555)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ActionDescription" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.5
+offset_top = 15.0
+offset_right = 257.5
+offset_bottom = 70.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
 
 [node name="choice" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
