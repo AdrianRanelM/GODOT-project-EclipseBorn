@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyg1vyhtlw1m6"
+path="res://.godot/imported/Wisteria - Intro BGM.mp3-86bbd5e9f37865bac4a928860a4a8fae.mp3str"
+
+[deps]
+
+source_file="res://Cinematic Audio/BGM/Wisteria - Intro BGM.mp3"
+dest_files=["res://.godot/imported/Wisteria - Intro BGM.mp3-86bbd5e9f37865bac4a928860a4a8fae.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

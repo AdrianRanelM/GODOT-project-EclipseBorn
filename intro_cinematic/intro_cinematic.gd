@@ -4,7 +4,12 @@ extends Control
 @export var subtitles: Array[String] = ["", "", ""]
 @onready var texture_rect = $TextureRect
 @onready var prompt_label = $PromptLabel
-@onready var subtitle_label = $SubtitleLabel  # Configured in editor
+@onready var subtitle_label = $SubtitleLabel
+@onready var bgm_player = $BGMPlayer  # Background music player
+@onready var sfx_player = $SFXPlayer  # Sound effects player 
+
+@export var background_music: AudioStream
+@export var sound_effects: Array[AudioStream]  # For button clicks, transitions, etc.
 
 var current_index = 0
 var can_advance = false
@@ -16,16 +21,24 @@ func _ready():
 	texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	
 	var stylebox = StyleBoxFlat.new()
-	stylebox.bg_color = Color(0, 0, 0, 1)  # Black, 70% opacity
-	stylebox.corner_radius_top_left = 25
-	stylebox.corner_radius_top_right = 25
-	stylebox.corner_radius_bottom_left = 25
-	stylebox.corner_radius_bottom_right = 25
+	stylebox.bg_color = Color(0, 0, 0, 1)  # Black
+
+	stylebox.content_margin_left = 20   
+	stylebox.content_margin_right = 20 
+	stylebox.content_margin_top = 10   
+	stylebox.content_margin_bottom = 10 
 	
 	# Apply to label 
 	subtitle_label.add_theme_stylebox_override("normal", stylebox)
 	prompt_label.add_theme_stylebox_override("normal", stylebox)
+	
+	if background_music:
+		bgm_player.stream = background_music
+		bgm_player.play()
+	
 	show_image(0)
+	
+	#
 
 func show_image(index):
 	if index < images.size() and index < subtitles.size():

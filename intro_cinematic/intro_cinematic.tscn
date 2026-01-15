@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ipeyg2a52cw5"]
+[gd_scene load_steps=13 format=3 uid="uid://ipeyg2a52cw5"]
 
 [ext_resource type="Script" uid="uid://dju1caywh7g7c" path="res://intro_cinematic.gd" id="1_6ydyj"]
 [ext_resource type="Texture2D" uid="uid://y2n6hf7drk5i" path="res://Cinematic Scenes/Scene 1-1.png" id="2_5pgor"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://jdnbk0wwhaxx" path="res://Cinematic Scenes/Scene 5-1.png" id="9_m46jl"]
 [ext_resource type="Texture2D" uid="uid://c2yxeswtiua0" path="res://Cinematic Scenes/Scene 4-2.png" id="9_pnu8h"]
 [ext_resource type="Texture2D" uid="uid://b007332ba5pas" path="res://Cinematic Scenes/Scene 5-2.png" id="10_cxjvu"]
+[ext_resource type="AudioStream" uid="uid://dyg1vyhtlw1m6" path="res://Cinematic Audio/BGM/Wisteria - Intro BGM.mp3" id="12_uabi4"]
 
 [node name="IntroCinematic" type="Control"]
 layout_mode = 3
@@ -46,3 +47,10 @@ offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 14
+
+[node name="bgmplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_uabi4")
+volume_db = -30.0
+autoplay = true
+
+[node name="sfxplayer" type="AudioStreamPlayer" parent="."]
