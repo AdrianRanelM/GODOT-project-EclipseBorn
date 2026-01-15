@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ipeyg2a52cw5"]
+[gd_scene load_steps=15 format=3 uid="uid://ipeyg2a52cw5"]
 
 [ext_resource type="Script" uid="uid://dju1caywh7g7c" path="res://intro_cinematic.gd" id="1_6ydyj"]
 [ext_resource type="Texture2D" uid="uid://y2n6hf7drk5i" path="res://Cinematic Scenes/Scene 1-1.png" id="2_5pgor"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c2yxeswtiua0" path="res://Cinematic Scenes/Scene 4-2.png" id="9_pnu8h"]
 [ext_resource type="Texture2D" uid="uid://b007332ba5pas" path="res://Cinematic Scenes/Scene 5-2.png" id="10_cxjvu"]
 [ext_resource type="AudioStream" uid="uid://dyg1vyhtlw1m6" path="res://Cinematic Audio/BGM/Wisteria - Intro BGM.mp3" id="12_uabi4"]
+[ext_resource type="AudioStream" uid="uid://b2chihc801hhh" path="res://Cinematic Audio/SFX/pageturn.mp3" id="13_bdypj"]
+[ext_resource type="AudioStream" uid="uid://ci42sxrdb4r0t" path="res://Cinematic Audio/SFX/glassbreak.mp3" id="14_2ff7f"]
 
 [node name="IntroCinematic" type="Control"]
 layout_mode = 3
@@ -23,6 +25,9 @@ grow_vertical = 2
 script = ExtResource("1_6ydyj")
 images = Array[Texture2D]([ExtResource("2_5pgor"), ExtResource("3_jamx0"), ExtResource("4_pnu8h"), ExtResource("5_uabi4"), ExtResource("6_bdypj"), ExtResource("7_2ff7f"), ExtResource("8_kc251"), ExtResource("9_pnu8h"), ExtResource("9_m46jl"), ExtResource("10_cxjvu")])
 subtitles = Array[String](["[ A thread of silk, a single fate. A forest of threads, a great weave: the fabric of dream and reality  ]", "[ A single spider—the Weaver.  From its dream, reality was spun ]", "[ From its death, nightmare was born. ]", "[ The cosmic tapestry, a forest of threads, infinite in number and stretching into a luminous void. ]", "[ The first thread goes. Then a hundred. Then a thousand. A contagion of ruin. ]", "[ Dream and Reality unfold. ]", " [ From the tangled wreck, black oil bleeds out. ]", "[ It twists the fused threads into jagged landscapes and a sickly sky, and births shadowy monsters from the gloom. ]", "[ Darkness. A heartbeat. A stone lid is pushed aside. A hand reaches into a misty, twilight graveyard. ] ", "[ \"Awaken, Sunless...\" ] "])
+background_music = ExtResource("12_uabi4")
+button_click_sound = ExtResource("13_bdypj")
+mirror_break_sound = ExtResource("14_2ff7f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -49,8 +54,12 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 14
 
 [node name="bgmplayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_uabi4")
-volume_db = -30.0
-autoplay = true
 
-[node name="sfxplayer" type="AudioStreamPlayer" parent="."]
+[node name="sfxplayer_ui" type="AudioStreamPlayer" parent="."]
+
+[node name="sfxplayer_mirrorbreak" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
