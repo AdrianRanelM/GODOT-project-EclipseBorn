@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7rt4mwk31wbn"]
 
-[ext_resource type="Script" uid="uid://dhkvghc1dryk2" path="res://main_menu.gd" id="1_fu7sn"]
-[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="2_jix8l"]
+[ext_resource type="Script" uid="uid://dhkvghc1dryk2" path="res://Scripts/Mainmenu Scripts/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://Assets/UI/Mainmenu/imagination.2.png" id="2_jix8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("2_jix8l")
