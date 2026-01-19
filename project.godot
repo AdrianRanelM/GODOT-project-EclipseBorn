@@ -15,6 +15,14 @@ run/main_scene="uid://copp5apqiluhj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+scene_manager="*res://Scripts/scene-scripts/scene_manager.gd"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
 [layer_names]
 
 2d_physics/layer_1="player"
