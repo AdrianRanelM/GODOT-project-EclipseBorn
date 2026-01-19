@@ -15,6 +15,13 @@ run/main_scene="uid://copp5apqiluhj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="hitboxes"
+2d_physics/layer_4="triggers"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

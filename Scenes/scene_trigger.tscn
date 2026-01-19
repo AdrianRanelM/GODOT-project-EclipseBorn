@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bslaimi150hm1"]
+
+[ext_resource type="Script" uid="uid://bunsqlx4hm044" path="res://Scripts/scene-scripts/scene_trigger.gd" id="1_mgjgu"]
+
+[node name="SceneTrigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_mgjgu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
