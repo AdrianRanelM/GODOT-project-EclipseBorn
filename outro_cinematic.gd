@@ -145,13 +145,6 @@ func play_slide_transition_sfx(old_index: int, new_index: int):
         change_bgm(final_bgm, 0.2)  # Changed from 0 to 2.0 for proper fade
 
 func change_bgm(new_music: AudioStream, fade_duration: float = 2.0):  # Default to 2.0 seconds
-    if not new_music:
-        print("WARNING: No new music provided to change_bgm")
-        return
-    
-    print("Changing BGM from ", bgm_player.stream.resource_path if bgm_player.stream else "None", 
-          " to ", new_music.resource_path)
-    
     # Fade out current BGM if it's playing
     if bgm_player.playing and fade_duration > 0:
         var tween = create_tween()
@@ -256,7 +249,7 @@ func set_all_sfx_volume(vol: float):
     sfx_player_crystal.volume_db = volume_db
 
 # DEBUG FUNCTION - Add this to check BGM status
-func _process(delta):
+func _process(_delta):
     # You can remove this after debugging
     if Engine.get_frames_drawn() % 60 == 0:  # Print every second
         if bgm_player.playing:
