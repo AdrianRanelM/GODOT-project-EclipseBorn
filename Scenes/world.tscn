@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dnhmanvf55237"]
+[gd_scene load_steps=64 format=3 uid="uid://dnhmanvf55237"]
 
 [ext_resource type="Texture2D" uid="uid://consg4v0w8d2j" path="res://Art/Tileset/dungeon-asset/Tiled_files/doors_lever_chest_animation.png" id="1_hmc15"]
 [ext_resource type="Texture2D" uid="uid://e8uu1dd331og" path="res://Art/Tileset/forest-objects/PNG/Assets_source.png" id="1_pt3ps"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://r65yu2gcwd8i" path="res://Art/Tileset/fields/2 Objects/4 Stone/6.png" id="19_hmc15"]
 [ext_resource type="Texture2D" uid="uid://cu83jihf1u2gr" path="res://Art/Tileset/fields/2 Objects/4 Stone/10.png" id="20_dt0r1"]
 [ext_resource type="Texture2D" uid="uid://c8bsp6hid3mq5" path="res://Art/Tileset/forest-objects/PNG/Assets_no_shadow/Tree_idol_human.png" id="23_no8kt"]
-[ext_resource type="PackedScene" uid="uid://b26rgpiytmtvk" path="res://Actors/Sunny/sunny.tscn" id="24_xbk3s"]
 [ext_resource type="Texture2D" uid="uid://duxt00einda43" path="res://Art/Tileset/cave-objects/PNG/Objects_separately/32/Human_skeleton_light_shadow.png" id="25_pt3ps"]
 [ext_resource type="Texture2D" uid="uid://b1efs02tugxqq" path="res://Art/Tileset/cursed-land/PNG/Objects_separetely/Bones_shadow1_9.png" id="26_dt0r1"]
 
@@ -8214,8 +8213,3 @@ shape = SubResource("RectangleShape2D_dt0r1")
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1999.5, 4.5)
 shape = SubResource("RectangleShape2D_qebug")
-
-[node name="MainChar" parent="." instance=ExtResource("24_xbk3s")]
-y_sort_enabled = true
-position = Vector2(1877, 60)
-up_direction = Vector2(0, 1)
