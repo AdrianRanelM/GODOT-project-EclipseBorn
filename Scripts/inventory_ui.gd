@@ -38,6 +38,13 @@ func _ready():
 			slot.clear()
 			# 👇 connect the signal so double‑click works
 			slot.slot_used.connect(_on_slot_used)
+	# Connect to global PlayerStats signals
+	PlayerStats.hp_changed.connect(_on_player_hp_changed)
+	PlayerStats.mp_changed.connect(_on_player_mp_changed)
+
+	# Initialize bars with current values
+	_on_player_hp_changed(PlayerStats.current_hp, PlayerStats.max_hp)
+	_on_player_mp_changed(PlayerStats.current_mp, PlayerStats.max_mp)
 
 	if inv:
 		update_inventory(inv)
@@ -51,6 +58,8 @@ func _on_slot_used(slot_index: int) -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	var item := inv.get_item(slot_index)
 	if item and item.use(player):
+		# Example: if item heals, call PlayerStats.heal(amount)
+		# if item costs mana, call PlayerStats.spend_mana(cost)
 		if item.amount <= 0:
 			inv.clear_slot(slot_index)
 		update_inventory(inv)

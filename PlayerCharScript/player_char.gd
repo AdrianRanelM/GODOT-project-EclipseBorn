@@ -46,10 +46,16 @@ func _ready() -> void:
 	pickup_area.body_entered.connect(_on_body_entered)
 	pickup_area.body_exited.connect(_on_body_exited)
 
-	# Connect HP bar
+	# Connect HP/MP signals from GlobalStats
+	PlayerStats.hp_changed.connect(_on_hp_changed)
+	PlayerStats.mp_changed.connect(_on_mp_changed)
+
+	# Initialize UI with current values
+	_on_hp_changed(PlayerStats.current_hp, PlayerStats.max_hp)
+	_on_mp_changed(PlayerStats.current_mp, PlayerStats.max_mp)
+
+	# Connect HP bar (no need to emit here)
 	inventory_ui.connect_player(self)
-	# Also initialize bar with current values
-	emit_signal("hp_changed", current_hp, max_hp)
 
 	var rect = tilemap.get_used_rect()
 	var cell_size = tilemap.tile_set.tile_size
@@ -119,22 +125,8 @@ func play_idle_animation(direction):
 	elif direction.y < 0:
 		$AnimatedSprite2D.play("IdleUp")
 
-#healthpoints
-signal hp_changed(current_hp, max_hp)
+func _on_hp_changed(current_hp: int, max_hp: int) -> void:
+	inventory_ui._on_player_hp_changed(current_hp, max_hp)
 
-var max_hp: int = 100
-var current_hp: int = max_hp
-
-func take_damage(amount: int) -> void:
-	current_hp = max(current_hp - amount, 0)
-	emit_signal("hp_changed", current_hp, max_hp)
-
-func heal(amount: int) -> void:
-	current_hp = min(current_hp + amount, max_hp)
-	emit_signal("hp_changed", current_hp, max_hp)
-
-#manapoints
-signal mp_changed(current_mp, max_mp)
-
-var max_mp: int = 100
-var current_mp: int = max_mp
+func _on_mp_changed(current_mp: int, max_mp: int) -> void:
+	inventory_ui._on_player_mp_changed(current_mp, max_mp)

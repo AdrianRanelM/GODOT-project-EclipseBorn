@@ -26,6 +26,6 @@ func add_amount(value: int) -> int:
 func use(target) -> bool:
 	if heal_amount <= 0 or amount <= 0 or target == null:
 		return false
-	target.heal(heal_amount)
+	PlayerStats.heal(heal_amount)
 	amount -= 1
 	return true

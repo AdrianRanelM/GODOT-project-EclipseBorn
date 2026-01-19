@@ -39,18 +39,41 @@ func _ready():
 	_update_progress_bar()
 	_update_mana_bar()
 
+	# Connect to global PlayerStats signals
+	PlayerStats.hp_changed.connect(_on_hp_changed)
+	PlayerStats.mp_changed.connect(_on_mp_changed)
+
+	# Initialize bars with current values
+	_on_hp_changed(PlayerStats.current_hp, PlayerStats.max_hp)
+	_on_mp_changed(PlayerStats.current_mp, PlayerStats.max_mp)
+
+func take_damage(value: int) -> void:
+	if is_dead: return
+	PlayerStats.take_damage(value)  # updates global + emits signal
+	damaged.emit(5.0)               # still shake camera
+
+func heal(value: int) -> void:
+	if is_dead: return
+	PlayerStats.heal(value)         # updates global + emits signal
+
+func spend_mana(cost: int) -> void:
+	PlayerStats.spend_mana(cost)    # updates global + emits signal
+
+func _on_hp_changed(current_hp: int, max_hp: int) -> void:
+	health = current_hp
+	MAX_HEALTH = max_hp
+	_update_progress_bar()
+
+func _on_mp_changed(current_mp: int, max_mp: int) -> void:
+	mana = current_mp
+	MAX_MANA = max_mp
+	_update_mana_bar()
+
 func _update_progress_bar():
 	if progress_bar: progress_bar.value = (health / MAX_HEALTH) * 100
 
 func _update_mana_bar():
 	if mana_bar: mana_bar.value = (mana / MAX_MANA) * 100
-
-func take_damage(value):
-	if is_dead: return
-	health -= value
-	# Emit the signal whenever damage is taken
-	# We send an intensity value (e.g., 5.0) to tell the camera how hard to shake
-	damaged.emit(5.0)
 
 func attack(target):
 	if is_dead: return
