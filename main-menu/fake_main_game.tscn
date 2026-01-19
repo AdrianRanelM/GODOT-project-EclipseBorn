@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://tmnpmqndc5b7"]
+
+[ext_resource type="Script" uid="uid://dmvasl6gk5cv7" path="res://fake_main_game.gd" id="1_cdowp"]
+[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://imagination.2.png" id="1_scyxi"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Minecraft.ttf" id="2_cdowp"]
+[ext_resource type="Texture2D" uid="uid://dv72p4hb8kwqi" path="res://download (3).jpg" id="3_bkjcs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tx6l1"]
+texture = ExtResource("1_scyxi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdowp"]
+texture = ExtResource("3_bkjcs")
+
+[node name="FakeMainGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdowp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tx6l1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 262.0
+offset_right = 663.0
+offset_bottom = 327.0
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("2_cdowp")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_cdowp")
+text = "Quest"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
