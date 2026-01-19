@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://veq8m46km8yo"]
 
-[ext_resource type="Script" uid="uid://bwja1f1cyult" path="res://Scripts/Battle Scripts/character_body_2d.gd" id="1_ghijl"]
+[ext_resource type="Script" uid="uid://bwja1f1cyult" path="res://Scripts/Battle Scripts/player_body.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://5lch6f4ymdpk" path="res://Assets/Battles/hand_cursor_16.png" id="2_ghijl"]
 
 [sub_resource type="Animation" id="Animation_ghijl"]

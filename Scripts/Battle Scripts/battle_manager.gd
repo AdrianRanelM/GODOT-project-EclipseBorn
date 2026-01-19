@@ -209,6 +209,7 @@ func resolve_turn(player_actions: Array):
 		player_group.start_player_turn()
 	else:
 		update_description("Victory! All enemies defeated.")
+		end_battle(true)
 		print("Victory!")
 
 func run_action_queue(queue):

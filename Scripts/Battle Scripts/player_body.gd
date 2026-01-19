@@ -8,9 +8,9 @@ signal damaged(intensity: float)
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D 
 
-@export var MAX_HEALTH: float = 1
-@export var MAX_MANA: float = 1
-@export var attack_damage: int = 10
+@export var MAX_HEALTH: float = 7
+@export var MAX_MANA: float = 10
+@export var attack_damage: int = 1
 
 @export var unit_name: String = "Character"
 
