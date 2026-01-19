@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cr80pahwjb42q"
+path="res://.godot/imported/finalbgm - skyrim ost - awake.mp3-030fe95c565479e6a210ee54a3031ec8.mp3str"
+
+[deps]
+
+source_file="res://Cinematic Audio/BGM/finalbgm - skyrim ost - awake.mp3"
+dest_files=["res://.godot/imported/finalbgm - skyrim ost - awake.mp3-030fe95c565479e6a210ee54a3031ec8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,33 @@
-[gd_scene format=3 uid="uid://idx3gp1bulgj"]
+[gd_scene load_steps=14 format=3 uid="uid://idx3gp1bulgj"]
+
+[ext_resource type="Script" uid="uid://b8fx4eyp4bk0t" path="res://outro_cinematic.gd" id="1_0l72s"]
+[ext_resource type="Texture2D" uid="uid://cx67jwmt7yh00" path="res://Cinematic Scenes/Scene 1-1.png" id="2_upkyl"]
+[ext_resource type="Texture2D" uid="uid://4d47enrj67ae" path="res://Cinematic Scenes/Scene 1-2.png" id="3_28qr1"]
+[ext_resource type="Texture2D" uid="uid://bwr6gw5x75us6" path="res://Cinematic Scenes/Scene 2-1.png" id="4_8vrgd"]
+[ext_resource type="Texture2D" uid="uid://g7lh365a41ut" path="res://Cinematic Scenes/Scene 2-2.png" id="5_l75do"]
+[ext_resource type="Texture2D" uid="uid://cj8xkfustdcvy" path="res://Cinematic Scenes/Scene 3-1.png" id="6_0scca"]
+[ext_resource type="Texture2D" uid="uid://cmm2o8be4xk8q" path="res://Cinematic Scenes/Scene 3-2.png" id="7_cxiwy"]
+[ext_resource type="AudioStream" uid="uid://dxhc1tei1dda2" path="res://Cinematic Audio/SFX/pageturn.mp3" id="8_8vrgd"]
+[ext_resource type="AudioStream" uid="uid://c1cjx7muld4pd" path="res://Cinematic Audio/BGM/dark_ambience.mp3" id="8_cxiwy"]
+[ext_resource type="AudioStream" uid="uid://cr80pahwjb42q" path="res://Cinematic Audio/BGM/finalbgm - skyrim ost - awake.mp3" id="8_upkyl"]
+[ext_resource type="AudioStream" uid="uid://dt0o3xodqylbj" path="res://Cinematic Audio/SFX/glassbreak.mp3" id="9_l75do"]
+[ext_resource type="AudioStream" uid="uid://c35iqe0lidxtf" path="res://Cinematic Audio/SFX/wind.mp3" id="10_0scca"]
+[ext_resource type="AudioStream" uid="uid://b1y6pm12l8h0l" path="res://Cinematic Audio/SFX/crystal.mp3" id="11_cxiwy"]
 
 [node name="OutroCinematic" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_0l72s")
+images = Array[Texture2D]([ExtResource("2_upkyl"), ExtResource("3_28qr1"), ExtResource("4_8vrgd"), ExtResource("5_l75do"), ExtResource("6_0scca"), ExtResource("7_cxiwy")])
+subtitles = Array[String](["asd", "asd", "asd", "asd", "[ The drifting motes coalesce. They spiral, condense, and solidify into a Crystalline Heart. It hovers, pulsing with a slow, steady, living light. Not a trophy. A key. The final shard. Your journey’s end, resting in the palm of the morning. ]", "[ Awake. A new Dawn Arises ] "])
+background_music = ExtResource("8_cxiwy")
+button_click_sound = ExtResource("8_8vrgd")
+mirror_break_sound = ExtResource("9_l75do")
+wind_sound = ExtResource("10_0scca")
+crystal_sound = ExtResource("11_cxiwy")
+final_bgm = ExtResource("8_upkyl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="FadeOverlay" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -18,10 +36,11 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+text = "Press [Space] to Continue"
 
 [node name="SubtitleLabel" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 1.0
 offset_bottom = 23.0
 
 [node name="bgmplayer" type="AudioStreamPlayer" parent="."]
@@ -31,3 +50,10 @@ offset_bottom = 23.0
 [node name="sfxplayer_mirrorbreak" type="AudioStreamPlayer" parent="."]
 
 [node name="sfxplayer_wind" type="AudioStreamPlayer" parent="."]
+
+[node name="sfxplayer_crystal" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

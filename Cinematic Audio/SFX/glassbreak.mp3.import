@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt0o3xodqylbj"
+path="res://.godot/imported/glassbreak.mp3-e113e0198137d4a7af849062eabc9810.mp3str"
+
+[deps]
+
+source_file="res://Cinematic Audio/SFX/glassbreak.mp3"
+dest_files=["res://.godot/imported/glassbreak.mp3-e113e0198137d4a7af849062eabc9810.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
