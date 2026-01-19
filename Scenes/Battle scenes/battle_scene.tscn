@@ -350,6 +350,7 @@ z_index = 3
 position = Vector2(192, 292)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_left = 160.0

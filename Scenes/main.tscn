@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnwlb8ka76nev"]
+[gd_scene load_steps=11 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://4yhtwgfgas4k" path="res://Scripts/world_item_unlock.gd" id="6_7mycd"]
 [ext_resource type="Resource" uid="uid://clve3sojkl1ui" path="res://WorldItems/002_SoulBelt.tres" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/orc.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://64oy0e0d1qyp" path="res://Scenes/Battle scenes/battle_scene.tscn" id="10_hptm8"]
 
 [node name="Game" type="Node2D"]
 
@@ -63,3 +64,10 @@ item_data = ExtResource("7_272bh")
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(184, -8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="BattleScene" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+process_mode = 2
+visible = false

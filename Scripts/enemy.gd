@@ -118,14 +118,18 @@ func _update_animation() -> void:
 			last_direction = Vector2.UP
 
 #--- Combat ---
+@onready var battle_scene: Node2D = get_tree().current_scene.get_node("CanvasLayer/BattleScene")
+
 func _on_battle_trigger(body: Node) -> void:
 	if body.is_in_group("player"):
-		var battle_scene = preload("res://Scenes/Battle scenes/battle_scene.tscn")
-		# Defer the scene change to avoid removing during physics callback
-		call_deferred("_start_battle", battle_scene)
+		battle_scene.start_battle()
+		get_tree().paused = true
+		battle_scene.battle_finished.connect(_on_battle_finished)
 
-func _start_battle(battle_scene: PackedScene) -> void:
-	get_tree().change_scene_to_packed(battle_scene)
+func _on_battle_finished(victory: bool) -> void:
+	if victory:
+		get_tree().paused = false
+		die()
 
 func take_damage(amount: int) -> void:
 	current_hp -= amount

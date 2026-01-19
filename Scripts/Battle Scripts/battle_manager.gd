@@ -1,9 +1,27 @@
 extends Node2D
 
+# ===============================
+# Battle lifecycle (ADDED)
+# ===============================
+signal battle_finished(victory: bool)
+
+func start_battle() -> void:
+	visible = true
+	canvas_layer.visible = true
+ 
+func end_battle(victory: bool) -> void:
+	visible = false
+	canvas_layer.visible = false
+	emit_signal("battle_finished", victory)
+
+# ===============================
+# Existing code
+# ===============================
+
 @onready var player_group = $PlayerGroup
 @onready var enemy_group = $EnemyGroup
-# Ensure ActionDescription is a Label inside your CanvasLayer
 @onready var action_label = $CanvasLayer/ActionDescription
+@onready var canvas_layer = $CanvasLayer
 
 #---health and mana---
 @onready var health_bar = $CanvasLayer/HealthPointsBar
@@ -11,47 +29,37 @@ extends Node2D
 @onready var hp_battle = $PlayerGroup/Sonny/ProgressBar
 @onready var mp_battle = $PlayerGroup/Sonny/ManaBar
 
-# Fallback global sprite (kept for compatibility)
 @onready var fallback_sprite: AnimatedSprite2D = $CanvasLayer/AnimatedSprite2D
 
-# Protagonist refs
 var protagonist: Node = null
 var protagonist_sprite: AnimatedSprite2D = null
 
-# Previous HP value (uses the same units as hp_battle.value)
 var previous_hp: float = -1.0
-
-# Optional: minimum drop threshold to trigger hurt (useful if hp_battle is percent)
 const HP_DROP_THRESHOLD: float = 0.01
 
 func _ready() -> void:
-	action_label.text = "" # Clear it at the start
+	visible = false # IMPORTANT: start hidden
+
+	action_label.text = ""
 	await get_tree().process_frame
 	player_group.start_player_turn()
 
-	# Cache protagonist node
 	if has_node("PlayerGroup/Sonny"):
 		protagonist = get_node("PlayerGroup/Sonny")
-		# Try to find an AnimatedSprite2D inside the protagonist
 		if protagonist.has_node("AnimatedSprite2D"):
-			protagonist_sprite = protagonist.get_node("AnimatedSprite2D") as AnimatedSprite2D
-		elif protagonist.has_node("Sprite2D"):
-			protagonist_sprite = null
+			protagonist_sprite = protagonist.get_node("AnimatedSprite2D")
 	else:
 		protagonist = null
 		protagonist_sprite = null
 
-	# Connect animation finished signals for protagonist-local sprite or fallback
 	_connect_animation_finished_signals()
 
-	# Initialize previous_hp from the progress bar value so first frame doesn't trigger
 	if hp_battle:
 		previous_hp = float(hp_battle.value)
 	else:
 		previous_hp = 0.0
 
 func _process(_delta: float) -> void:
-	# Update UI bars and tooltips
 	if hp_battle and health_bar:
 		health_bar.value = hp_battle.value
 		health_bar.tooltip_text = str(hp_battle.value)
@@ -59,17 +67,10 @@ func _process(_delta: float) -> void:
 		mana_bar.value = mp_battle.value
 		mana_bar.tooltip_text = str(mp_battle.value)
 
-	# Continuous HP comparator for the protagonist
 	if hp_battle:
-		var current_hp: float = float(hp_battle.value)
-
-		# Only compare if previous_hp was initialized
-		if previous_hp >= 0.0:
-			# If HP decreased by more than the threshold, trigger hurt
-			if current_hp + HP_DROP_THRESHOLD < previous_hp:
-				_on_protagonist_hurt(previous_hp, current_hp)
-
-		# Update previous_hp for next frame
+		var current_hp := float(hp_battle.value)
+		if previous_hp >= 0.0 and current_hp + HP_DROP_THRESHOLD < previous_hp:
+			_on_protagonist_hurt(previous_hp, current_hp)
 		previous_hp = current_hp
 
 # --- helper to connect signals safely ---
