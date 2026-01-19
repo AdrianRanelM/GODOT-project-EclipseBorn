@@ -55,7 +55,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_bottom = 323.0
+offset_left = -5.0
+offset_top = -109.0
+offset_right = -1.0
+offset_bottom = 327.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -69,7 +72,156 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
 theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 50
+text = " MAIN QUEST #1
+ The Rusted Awakening"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
 theme_override_font_sizes/font_size = 35
+text = " 
+Player needs to find 3 items in order to make
+ the soul belt  
+(Nail,  Rusted Scrap,  Magic Glowing Item (to combine everything)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 50
+text = "
+
+SIDE QUEST #1
+ (The Gathering Phase and Shop) "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "
+Sunny must go to the said cave
+After defeating skeleton, moves screen to 2 more skeletons to 
+obtain an item called Orb of Cycling
+ (the orb to wield a weapon properly)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "Sunny sees the tree then intro to the tree-of-all-knowing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "
+The tree will initiate a trade with Sunny and the tree gives sunny 
+a divine sword of intervention"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 50
+text = "
+
+MAIN QUEST #2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "
+Must go to the Spire of Silence (Wizard’s Lair) after talking to the 
+tree-of-all-knowing and must navigate the Door of layers 
+they will enter 2 doors to fight 2 enemies–which drops healing 
+potions or power-ups.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 50
+text = "
+SIDE QUEST #2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "
+After going to all 2 doors, one semi-final door must be opened
+ by the player and must navigate their way to obtain a weapon 
+upgrade to fight the boss.
+There’ll be a door to the top of the tower to fight
+ Valerius (The Altar of the Eclipse)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 50
+text = "
+FINAL QUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 35
+text = "
+ KILL THE FKN BOZZ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1764706, 0.105882354, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2edx")
+theme_override_font_sizes/font_size = 70
+text = "
+
+
+
+
+
+
+
+
+
+THE END"
 horizontal_alignment = 1
 vertical_alignment = 1
 
