@@ -26,6 +26,10 @@ func _input(event):
 func unlock_inventory() -> void:
 	inventory_unlocked = true
 
+#map
+@onready var camera = $"../Player/Camera2D"
+@onready var tilemap = $"../world/TileMap"
+
 #items
 @export var inv = Inv
 @export var inventory: Inv
@@ -46,6 +50,14 @@ func _ready() -> void:
 	inventory_ui.connect_player(self)
 	# Also initialize bar with current values
 	emit_signal("hp_changed", current_hp, max_hp)
+
+	var rect = tilemap.get_used_rect()
+	var cell_size = tilemap.tile_set.tile_size
+
+	camera.limit_left   = tilemap.position.x
+	camera.limit_top    = tilemap.position.y
+	camera.limit_right  = tilemap.position.x + rect.size.x * cell_size.x
+	camera.limit_bottom = tilemap.position.y + rect.size.y * cell_size.y
 
 func _on_body_entered(body: Node) -> void:
 	# Detect if the body is a world item

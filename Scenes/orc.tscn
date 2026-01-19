@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ca7ms7b8fo6p7"]
+[gd_scene load_steps=48 format=3 uid="uid://ca7ms7b8fo6p7"]
 
 [ext_resource type="Texture2D" uid="uid://qdkkuew7rrn4" path="res://Assets/Enemies/orc2_idle_with_shadow.png" id="1_3xw0u"]
 [ext_resource type="Script" uid="uid://fttghlgbpfc8" path="res://Scripts/enemy.gd" id="1_kapy6"]
@@ -327,6 +327,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6et41"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kapy6"]
 size = Vector2(22.5, 22.25)
 
@@ -339,6 +341,9 @@ script = ExtResource("1_kapy6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2w26")
 animation = &"IdleUp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6et41")
 
 [node name="BattleTriggerArea" type="Area2D" parent="."]
 
