@@ -1,7 +1,7 @@
 extends Control
 
 @export var images: Array[Texture2D]
-@export var subtitles: Array[String] = ["", "", "", "", "", ""]
+@export var subtitles: Array[String] = ["", "", "", "", "", "", ""]  # Changed to 7 elements for new scenes
 @onready var texture_rect = $TextureRect
 @onready var prompt_label = $PromptLabel
 @onready var subtitle_label = $SubtitleLabel
@@ -26,6 +26,7 @@ var current_index = 0
 var can_advance = false
 var prompt_visible = false
 var bgm_target_volume: float = 0.1  # Store BGM volume separately
+var is_final_bgm_playing = false  # Track which BGM is playing
 
 func _ready():
     # Make TextureRect fill screen
@@ -39,7 +40,7 @@ func _ready():
     fade_overlay.visible = true
     
     var stylebox = StyleBoxFlat.new()
-    stylebox.bg_color = Color(0, 0, 0, 1)
+    stylebox.bg_color = Color(0, 0, 0, 0.7)  # Slightly transparent for better readability
     stylebox.content_margin_left = 20   
     stylebox.content_margin_right = 20 
     stylebox.content_margin_top = 10   
@@ -54,9 +55,14 @@ func _ready():
     wind_vol(0.7)
     crystal_vol(0.6)
     
+    # DEBUG: Check if background music is set
     if background_music:
+        print("Background music loaded: ", background_music.resource_path)
         bgm_player.stream = background_music
         bgm_player.play()
+        is_final_bgm_playing = false
+    else:
+        print("WARNING: Background music not set!")
     
     # Fade in for slide 0
     fade_in_transition()
@@ -130,33 +136,45 @@ func play_slide_transition_sfx(old_index: int, new_index: int):
         sfx_player_wind.stream = wind_sound
         sfx_player_wind.play()
     
-    # Wind SFX between scene 3 and 4  
-    if old_index == 2 and new_index == 3 and wind_sound:
-        sfx_player_wind.stream = wind_sound
-        sfx_player_wind.play()
-    
-    # Crystal SFX between scene 4 and 5
     if old_index == 3 and new_index == 4 and crystal_sound:
         sfx_player_crystal.stream = crystal_sound
         sfx_player_crystal.play()
     
-    # BGM change between scene 5 and 6
-    if old_index == 4 and new_index == 5 and final_bgm:
-        change_bgm(final_bgm, 0)
+    # BGM change between scene 6 and 7 (new final scene)
+    if old_index == 5 and new_index == 6 and final_bgm:
+        change_bgm(final_bgm, 0.2)  # Changed from 0 to 2.0 for proper fade
 
-func change_bgm(new_music: AudioStream, fade_duration: float = 1.0):
-    # Fade out current BGM
-    var tween = create_tween()
-    tween.tween_property(bgm_player, "volume_db", -80.0, fade_duration/2)
-    await tween.finished
+func change_bgm(new_music: AudioStream, fade_duration: float = 2.0):  # Default to 2.0 seconds
+    if not new_music:
+        print("WARNING: No new music provided to change_bgm")
+        return
+    
+    print("Changing BGM from ", bgm_player.stream.resource_path if bgm_player.stream else "None", 
+          " to ", new_music.resource_path)
+    
+    # Fade out current BGM if it's playing
+    if bgm_player.playing and fade_duration > 0:
+        var tween = create_tween()
+        tween.tween_property(bgm_player, "volume_db", -60.0, fade_duration/2)
+        await tween.finished
+    elif bgm_player.playing:
+        # If fade_duration is 0, just stop immediately
+        bgm_player.stop()
     
     # Change to new music
     bgm_player.stream = new_music
     bgm_player.play()
     
     # Fade in new BGM to target volume
-    tween = create_tween()
-    tween.tween_property(bgm_player, "volume_db", linear_to_db(bgm_target_volume), fade_duration/2)
+    if fade_duration > 0:
+        bgm_player.volume_db = -80.0  # Start silent
+        var tween = create_tween()
+        tween.tween_property(bgm_player, "volume_db", linear_to_db(bgm_target_volume), fade_duration/2)
+    else:
+        bgm_player.volume_db = linear_to_db(bgm_target_volume)
+    
+    # Update tracking
+    is_final_bgm_playing = (new_music == final_bgm)
 
 func show_image(index):
     if index < images.size() and index < subtitles.size():
@@ -175,31 +193,31 @@ func show_image(index):
         prompt_visible = false
         prompt_label.hide()  # Hide prompt immediately
         
-        # Separate timers:
-        # 1. Short lockout timer (0.5s) - can advance after this
-        await get_tree().create_timer(0.5).timeout
+        # FASTER SUBTITLE APPEARANCE - Reduced timers
+        # 1. Very short lockout timer (0.3s) - can advance after this
+        await get_tree().create_timer(0.3).timeout
         can_advance = true
         
-        # 2. Longer prompt timer (3s) - prompt appears after this
-        await get_tree().create_timer(2.5).timeout  # Total 3s from start
+        # 2. Much shorter prompt timer (1.5s total) - prompt appears faster
+        await get_tree().create_timer(1.2).timeout  # Total 1.5s from start
         if can_advance:  # Only show if still on same slide
             prompt_visible = true
             
-            # Fade in the prompt label
+            # Fade in the prompt label quickly
             prompt_label.modulate.a = 0.0  # Start transparent
             prompt_label.show()
             var tween = create_tween()
-            tween.tween_property(prompt_label, "modulate:a", 1.0, 0.5)
+            tween.tween_property(prompt_label, "modulate:a", 1.0, 0.3)  # Faster fade in
         
-        # Check if this is the last slide (slide 5 for 6 scenes)
-        if index == 5:
+        # Check if this is the last slide (slide 6 for 7 scenes total)
+        if index == 6:  # Changed from 5 to 6 for new final scene
             await get_tree().create_timer(3.0).timeout
             fade_out_transition()
             await get_tree().create_timer(2.0).timeout
             queue_free()
             return
     else:
-        if current_index == 5:
+        if current_index == 6:  # Changed from 5 to 6
             fade_out_transition()
             await get_tree().create_timer(2.0).timeout
         queue_free()
@@ -236,3 +254,13 @@ func set_all_sfx_volume(vol: float):
     sfx_player_mirror.volume_db = volume_db
     sfx_player_wind.volume_db = volume_db
     sfx_player_crystal.volume_db = volume_db
+
+# DEBUG FUNCTION - Add this to check BGM status
+func _process(delta):
+    # You can remove this after debugging
+    if Engine.get_frames_drawn() % 60 == 0:  # Print every second
+        if bgm_player.playing:
+            print("BGM playing: ", bgm_player.stream.resource_path if bgm_player.stream else "None", 
+                  " | Volume: ", bgm_player.volume_db, "dB")
+        else:
+            print("BGM NOT PLAYING!")

@@ -16,10 +16,14 @@
 
 [node name="OutroCinematic" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0l72s")
-images = Array[Texture2D]([ExtResource("2_upkyl"), ExtResource("3_28qr1"), ExtResource("4_8vrgd"), ExtResource("5_l75do"), ExtResource("6_0scca"), ExtResource("7_cxiwy")])
-subtitles = Array[String](["asd", "asd", "asd", "asd", "[ The drifting motes coalesce. They spiral, condense, and solidify into a Crystalline Heart. It hovers, pulsing with a slow, steady, living light. Not a trophy. A key. The final shard. Your journey’s end, resting in the palm of the morning. ]", "[ Awake. A new Dawn Arises ] "])
+images = Array[Texture2D]([ExtResource("2_upkyl"), ExtResource("3_28qr1"), ExtResource("4_8vrgd"), ExtResource("5_l75do"), ExtResource("6_0scca"), ExtResource("6_0scca"), ExtResource("7_cxiwy")])
+subtitles = Array[String](["[ Cracks spiderweb across his stained-glass body. ]", "[ From them drifts not blood, but liquid starlight—his soul, seeping upward like reverse rain, evaporating into the still air.  ]", "[ From his feet to his crown, he unravels into shimmering motes that float apart like the ash of a forgotten prayer. ]", "[ He was no more. A sigh made visible ]", "[ The drifting motes coalesce. They spiral, condense, and solidify into a Crystalline Heart. ]", "[ It hovers, pulsing with a slow, steady, living light. Not a trophy. A key. The final shard. Your journey’s end, resting in the palm of the morning. ]", "[ Awake. The long night is over and a new Dawn Arises ] "])
 background_music = ExtResource("8_cxiwy")
 button_click_sound = ExtResource("8_8vrgd")
 mirror_break_sound = ExtResource("9_l75do")
@@ -29,8 +33,6 @@ final_bgm = ExtResource("8_upkyl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="PromptLabel" type="Label" parent="."]
 layout_mode = 0
@@ -39,9 +41,17 @@ offset_bottom = 23.0
 text = "Press [Space] to Continue"
 
 [node name="SubtitleLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 1.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="bgmplayer" type="AudioStreamPlayer" parent="."]
 
