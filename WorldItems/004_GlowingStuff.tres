@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://i7c1ik0qkogm"]
+
+[ext_resource type="Texture2D" uid="uid://codc08ihenlds" path="res://Assets/Items/glowing_stuff.png" id="1_i76p4"]
+[ext_resource type="Script" uid="uid://b88v346phya8d" path="res://Scripts/inventory_items.gd" id="2_xp2fk"]
+
+[resource]
+script = ExtResource("2_xp2fk")
+id = "004"
+display_name = "Glowing Stuff"
+icon = ExtResource("1_i76p4")
+metadata/_custom_type_script = "uid://b88v346phya8d"

@@ -23,8 +23,16 @@ func _input(event):
 		else:
 			print("Inventory is locked! Cannot pick up items.")
 
+var count = 0
+
+func soulbelt() -> void:
+	count += 1
+
 func unlock_inventory() -> void:
-	inventory_unlocked = true
+	if count == 3:
+		inventory_unlocked = true
+	else:
+		inventory_unlocked = false
 
 #map
 @onready var camera = $"../Player/Camera2D"

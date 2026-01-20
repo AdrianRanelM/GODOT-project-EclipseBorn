@@ -29,6 +29,7 @@ func _input(event):
 
 func pick_up(player: CharacterBody2D):
 	if player.has_method("unlock_inventory"):
+		player.soulbelt()
 		player.unlock_inventory()
 	queue_free()   # remove from world
 

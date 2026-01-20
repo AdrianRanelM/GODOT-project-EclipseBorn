@@ -5,13 +5,15 @@ extends Node2D
 # ===============================
 signal battle_finished(victory: bool)
 
+@onready var child_canvas_layer = $CanvasLayer
+
 func start_battle() -> void:
 	visible = true
-	canvas_layer.visible = true
+	child_canvas_layer.visible = true
  
 func end_battle(victory: bool) -> void:
 	visible = false
-	canvas_layer.visible = false
+	child_canvas_layer.visible = false
 	emit_signal("battle_finished", victory)
 
 # ===============================
@@ -21,7 +23,6 @@ func end_battle(victory: bool) -> void:
 @onready var player_group = $PlayerGroup
 @onready var enemy_group = $EnemyGroup
 @onready var action_label = $CanvasLayer/ActionDescription
-@onready var canvas_layer = $CanvasLayer
 
 #---health and mana---
 @onready var health_bar = $CanvasLayer/HealthPointsBar
