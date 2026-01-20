@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyshkl86q1p3f"]
+
+[ext_resource type="Script" uid="uid://ejfblofdms4t" path="res://Scripts/Battle Scripts/enemy_group.gd" id="1_5vdyj"]
+[ext_resource type="PackedScene" uid="uid://veq8m46km8yo" path="res://Scenes/Battle scenes/character_body_2d.tscn" id="2_am1p3"]
+[ext_resource type="Texture2D" uid="uid://c8071c44kwbtb" path="res://Assets/Battlers/Battlers/World04_003_ Outlaw.png" id="3_am1p3"]
+[ext_resource type="Script" uid="uid://fftngfevx0vs" path="res://Scripts/Battle Scripts/enemy_body.gd" id="3_imwxk"]
+
+[node name="EnemyGroup" type="Node2D"]
+script = ExtResource("1_5vdyj")
+
+[node name="Enemy1" parent="." groups=["characters"] instance=ExtResource("2_am1p3")]
+script = ExtResource("3_imwxk")
+MAX_HEALTH = 1.0
+MAX_MANA = 0.5
+
+[node name="Sprite2D" parent="Enemy1" index="0"]
+position = Vector2(50.5, 80.49999)
+scale = Vector2(1.828125, 1.9270833)
+texture = ExtResource("3_am1p3")
+
+[node name="ProgressBar" parent="Enemy1" index="2"]
+visible = false
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 998.0
+offset_bottom = 80.66664
+theme_override_font_sizes/font_size = 64
+
+[node name="ManaBar" parent="Enemy1" index="3"]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 966.6666
+offset_bottom = 59.66667
+theme_override_font_sizes/font_size = 64
+
+[node name="Enemy2" parent="." groups=["characters"] instance=ExtResource("2_am1p3")]
+script = ExtResource("3_imwxk")
+MAX_HEALTH = 1.0
+MAX_MANA = 0.5
+
+[node name="Sprite2D" parent="Enemy2" index="0"]
+position = Vector2(50.5, 80.49999)
+scale = Vector2(1.828125, 1.9270833)
+texture = ExtResource("3_am1p3")
+
+[node name="ProgressBar" parent="Enemy2" index="2"]
+visible = false
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 998.0
+offset_bottom = 80.66664
+theme_override_font_sizes/font_size = 64
+
+[node name="ManaBar" parent="Enemy2" index="3"]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 966.6666
+offset_bottom = 59.66667
+theme_override_font_sizes/font_size = 64
+
+[editable path="Enemy1"]
+[editable path="Enemy2"]

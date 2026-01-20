@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dqwv71nwykc0e"]
+
+[ext_resource type="Texture2D" uid="uid://doc7jq8srbqrd" path="res://Assets/Items/Red_orb.png" id="1_digsy"]
+[ext_resource type="Script" uid="uid://b88v346phya8d" path="res://inventory_items.gd" id="2_j1o7q"]
+
+[resource]
+script = ExtResource("2_j1o7q")
+id = "001"
+display_name = "Red orb"
+icon = ExtResource("1_digsy")
+description = "Heals 10 HP"
+heal_amount = 10
+metadata/_custom_type_script = "uid://b88v346phya8d"
