@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7rt4mwk31wbn"]
+
+[ext_resource type="Script" uid="uid://dhkvghc1dryk2" path="res://Scripts/Mainmenu Scripts/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://87lxk0kljkqp" path="res://Assets/UI/Mainmenu/imagination.2.png" id="2_jix8l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
+texture = ExtResource("2_jix8l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7vrkn")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = -146.0
+offset_right = 167.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0006938963, 0.0006938974, 0.00069390115, 1)
+theme_override_colors/font_pressed_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/font_hover_color = Color(0.004899817, 0.0048998264, 0.0048998524, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/font_disabled_color = Color(0.012118305, 0.01211836, 0.012118319, 0.5019608)
+theme_override_colors/icon_normal_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_focus_color = Color(0.0121183405, 0.0121183405, 0.0121183405, 1)
+theme_override_colors/icon_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_hover_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.016551724, 0.016551726, 0.016551724, 1)
+theme_override_colors/icon_disabled_color = Color(0.0023445897, 0.00234459, 0.00234459, 0.4)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_glbon")
+text = "Start"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -485.5
+offset_top = 50.0
+offset_right = 485.5
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 85
+text = "Eclipseborn
+ Realm of Eternal Night"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

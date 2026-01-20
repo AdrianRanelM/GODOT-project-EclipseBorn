@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://cnwlb8ka76nev"]
+
+[ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://06kmqu2adf07" path="res://Scenes/world_item.tscn" id="3_h2yge"]
+[ext_resource type="Resource" uid="uid://dp6jwi7oiloo7" path="res://player_inventory.tres" id="4_lquwl"]
+[ext_resource type="Resource" uid="uid://dqwv71nwykc0e" path="res://WorldItems/001.tres" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cj52ygd7l432i" path="res://Scenes/DialogueUI.tscn" id="5_k12tt"]
+[ext_resource type="PackedScene" uid="uid://dcol4k00jc87c" path="res://Scenes/inventory_ui.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://4yhtwgfgas4k" path="res://Scripts/world_item_unlock.gd" id="6_7mycd"]
+[ext_resource type="Resource" uid="uid://clve3sojkl1ui" path="res://WorldItems/002_SoulBelt.tres" id="7_272bh"]
+[ext_resource type="Resource" uid="uid://i7c1ik0qkogm" path="res://WorldItems/004_GlowingStuff.tres" id="9_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/orc.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://64oy0e0d1qyp" path="res://Scenes/Battle scenes/battle_scene.tscn" id="10_hptm8"]
+[ext_resource type="Resource" uid="uid://dgvwr7jvu6c5g" path="res://WorldItems/003_Scrap.tres" id="10_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://dnhmanvf55237" path="res://Scenes/Map scenes/world.tscn" id="11_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bbyksn5u7lv4u" path="res://Scenes/WorldTree.tscn" id="15_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://b4hx6kd1511ne" path="res://Scenes/NPC.tscn" id="16_b3802"]
+
+[node name="Game" type="Node2D"]
+
+[node name="NPC" parent="." instance=ExtResource("16_b3802")]
+y_sort_enabled = true
+position = Vector2(161, 101)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
+y_sort_enabled = true
+position = Vector2(104, 176)
+inventory = ExtResource("4_lquwl")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="Vignette" type="ColorRect" parent="Player/Camera2D/CanvasLayer"]
+material = ExtResource("3_5vw27")
+anchors_preset = -1
+anchor_left = -0.0026041667
+anchor_top = -0.012345679
+anchor_right = 0.9973958
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="InventoryUI" parent="Player/CanvasLayer" instance=ExtResource("5_lquwl")]
+visible = false
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="DialogueUI" parent="Player/CanvasLayer" instance=ExtResource("5_k12tt")]
+visible = false
+
+[node name="WorldItem" parent="." instance=ExtResource("3_h2yge")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(342, 185)
+item_data = ExtResource("5_7mycd")
+
+[node name="WorldItem3" parent="." instance=ExtResource("3_h2yge")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(745, 547)
+script = ExtResource("6_7mycd")
+item_data = ExtResource("7_272bh")
+
+[node name="WorldItem4" parent="." instance=ExtResource("3_h2yge")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(985, 185)
+script = ExtResource("6_7mycd")
+item_data = ExtResource("9_fdnlq")
+
+[node name="WorldItem2" parent="." instance=ExtResource("3_h2yge")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(585, -140)
+script = ExtResource("6_7mycd")
+item_data = ExtResource("10_jkdf5")
+
+[node name="Orc" parent="." instance=ExtResource("9_kek77")]
+y_sort_enabled = true
+position = Vector2(1951, 202)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="BattleScene" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+process_mode = 2
+visible = false
+
+[node name="world" parent="." instance=ExtResource("11_d1ilt")]
+z_index = -1
+
+[node name="WorldTree" parent="." instance=ExtResource("15_h1bgf")]
+position = Vector2(1323, 152)
