@@ -108,4 +108,5 @@ visible = false
 z_index = -1
 
 [node name="WorldTree" parent="." instance=ExtResource("15_h1bgf")]
+visible = false
 position = Vector2(1323, 152)
