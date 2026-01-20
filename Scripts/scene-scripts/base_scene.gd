@@ -9,3 +9,7 @@ func _ready() -> void:
 			
 		player = scene_manager.player
 		add_child(player)
+		
+		var spawn_point = get_node_or_null("SpawnPoint")
+		if spawn_point:
+			player.global_position = spawn_point.global_position

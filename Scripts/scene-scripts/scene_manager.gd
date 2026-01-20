@@ -1,4 +1,4 @@
-class_name SceneManager extends Node
+extends Node
 
 var player: CharacterBody2D
 
