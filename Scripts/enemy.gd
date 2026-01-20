@@ -40,6 +40,7 @@ func _ready() -> void:
 	battle_trigger.body_entered.connect(_on_battle_trigger)
 
 func _physics_process(delta: float) -> void:
+	z_index = int(global_position.y)
 	if target:
 		_chase_target()
 	else:

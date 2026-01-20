@@ -98,6 +98,8 @@ func receive_item(item: InvItem, world_item: Node) -> void:
 
 #movement
 func _physics_process(_delta):
+	# use global_position.y or a foot offset if your sprite origin is not at feet
+	z_index = int(global_position.y)
 	var direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
 	
 	if direction.length() > 0:
