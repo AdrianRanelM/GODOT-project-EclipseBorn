@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvorjjnn7h5t8"]
+[gd_scene load_steps=23 format=3 uid="uid://bvorjjnn7h5t8"]
 
 [ext_resource type="Texture2D" uid="uid://bkhva0rvcpj82" path="res://Art/Tileset/dungeon-asset/PNG/Objects.png" id="1_h72ia"]
 [ext_resource type="Texture2D" uid="uid://b3w464kdlsmm3" path="res://Art/Tileset/dungeon-asset/PNG/walls_floor.png" id="2_p3a3v"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://wfoci7tx4gsl" path="res://Art/Tileset/cursed-land/PNG/Objects_separetely/Bones_shadow2_8.png" id="8_l0ts0"]
 [ext_resource type="Texture2D" uid="uid://cfcx3u8n3qxd8" path="res://Art/Tileset/cursed-land/PNG/bridges.png" id="9_aemcb"]
 [ext_resource type="PackedScene" uid="uid://bslaimi150hm1" path="res://Scenes/scene_trigger.tscn" id="10_y3g1o"]
+[ext_resource type="PackedScene" uid="uid://b26rgpiytmtvk" path="res://Actors/Sunny/sunny.tscn" id="11_ljcbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2n1nq"]
 texture = ExtResource("1_h72ia")
@@ -1503,3 +1504,6 @@ position = Vector2(449, 29)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 shape = SubResource("CircleShape2D_mg525")
+
+[node name="Player" parent="." instance=ExtResource("11_ljcbh")]
+position = Vector2(449, 19)

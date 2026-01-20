@@ -1,11 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://c832l6hyh51tn"]
+[gd_scene load_steps=29 format=3 uid="uid://c832l6hyh51tn"]
 
 [ext_resource type="Texture2D" uid="uid://1gh037504y80" path="res://Art/Tileset/dungeon-asset/Tiled_files/decorative_cracks_walls.png" id="1_alo08"]
-[ext_resource type="Script" uid="uid://dw0pp4r63iuw0" path="res://Scripts/inside_wiz_tower.gd" id="1_wltik"]
+[ext_resource type="Script" uid="uid://bdltpcv03inoj" path="res://Scripts/inside_wiz_tower.gd" id="1_wltik"]
 [ext_resource type="Texture2D" uid="uid://cb421ug05c1x8" path="res://Art/Tileset/dungeon-asset/Tiled_files/decorative_cracks_floor.png" id="2_wltik"]
 [ext_resource type="Texture2D" uid="uid://bcartweags2ep" path="res://Art/Tileset/dungeon-asset/Tiled_files/walls_floor.png" id="3_f5a8f"]
 [ext_resource type="Texture2D" uid="uid://c34ckqkd502kk" path="res://Art/Tileset/dungeon-asset/Tiled_files/Objects.png" id="4_gyy2x"]
 [ext_resource type="PackedScene" uid="uid://bslaimi150hm1" path="res://Scenes/scene_trigger.tscn" id="6_f5a8f"]
+[ext_resource type="PackedScene" uid="uid://b26rgpiytmtvk" path="res://Actors/Sunny/sunny.tscn" id="7_gyy2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_urs7w"]
 texture = ExtResource("1_alo08")
@@ -1470,3 +1471,6 @@ connected_scene = "valerius_room"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 shape = SubResource("CircleShape2D_vmccp")
+
+[node name="Player" parent="." instance=ExtResource("7_gyy2x")]
+position = Vector2(233, 201)
