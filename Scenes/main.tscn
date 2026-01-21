@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnwlb8ka76nev"]
+[gd_scene load_steps=20 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://dnhmanvf55237" path="res://Scenes/Map scenes/world.tscn" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bbyksn5u7lv4u" path="res://Scenes/WorldTree.tscn" id="15_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://b4hx6kd1511ne" path="res://Scenes/NPC.tscn" id="16_b3802"]
+[ext_resource type="PackedScene" uid="uid://bvorjjnn7h5t8" path="res://Scenes/Map scenes/valerius_room.tscn" id="16_hibaj"]
+[ext_resource type="PackedScene" uid="uid://daeewwuxpafga" path="res://Scripts/transition.tscn" id="18_b3802"]
+[ext_resource type="PackedScene" uid="uid://c832l6hyh51tn" path="res://Scenes/Map scenes/inside_wiz_tower.tscn" id="19_fevyy"]
 
 [node name="Game" type="Node2D"]
 
@@ -75,27 +78,23 @@ item_data = ExtResource("5_7mycd")
 [node name="WorldItem3" parent="." instance=ExtResource("3_h2yge")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(745, 547)
+position = Vector2(549, 349)
 script = ExtResource("6_7mycd")
 item_data = ExtResource("7_272bh")
 
 [node name="WorldItem4" parent="." instance=ExtResource("3_h2yge")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(985, 185)
+position = Vector2(312, 191)
 script = ExtResource("6_7mycd")
 item_data = ExtResource("9_fdnlq")
 
 [node name="WorldItem2" parent="." instance=ExtResource("3_h2yge")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(585, -140)
+position = Vector2(425, 23)
 script = ExtResource("6_7mycd")
 item_data = ExtResource("10_jkdf5")
-
-[node name="Orc" parent="." instance=ExtResource("9_kek77")]
-y_sort_enabled = true
-position = Vector2(1951, 202)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -107,5 +106,24 @@ visible = false
 [node name="world" parent="." instance=ExtResource("11_d1ilt")]
 z_index = -1
 
+[node name="InsideWizTower" parent="." instance=ExtResource("19_fevyy")]
+position = Vector2(6, 835)
+
+[node name="ValeriusRoom" parent="." instance=ExtResource("16_hibaj")]
+position = Vector2(0, 1411)
+
+[node name="ColorRect" type="ColorRect" parent="ValeriusRoom"]
+z_index = -10
+offset_left = -60.0
+offset_top = -45.0
+offset_right = 543.7278
+offset_bottom = 313.0
+color = Color(0, 0, 0, 1)
+
 [node name="WorldTree" parent="." instance=ExtResource("15_h1bgf")]
-position = Vector2(1323, 152)
+position = Vector2(1324, 151)
+
+[node name="Orc" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(1442, 524)
+
+[node name="Transition" parent="." instance=ExtResource("18_b3802")]

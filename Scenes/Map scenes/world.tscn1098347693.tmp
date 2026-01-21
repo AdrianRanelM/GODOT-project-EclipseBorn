@@ -1,33 +1,32 @@
-[gd_scene load_steps=67 format=3 uid="uid://dnhmanvf55237"]
+[gd_scene load_steps=66 format=3 uid="uid://dnhmanvf55237"]
 
-[ext_resource type="Texture2D" uid="uid://consg4v0w8d2j" path="res://Assets/Map/dungeon-asset/Tiled_files/doors_lever_chest_animation.png" id="1_hmc15"]
-[ext_resource type="Texture2D" uid="uid://e8uu1dd331og" path="res://Assets/Map/forest-objects/PNG/Assets_source.png" id="1_pt3ps"]
-[ext_resource type="Texture2D" uid="uid://b0ckfw32b7ro8" path="res://Assets/Map/cursed-land/PNG/Objects.png" id="2_pt3ps"]
-[ext_resource type="Texture2D" uid="uid://bcsamm3rjct65" path="res://Assets/Map/cursed-land/PNG/spots.png" id="3_hmc15"]
-[ext_resource type="Texture2D" uid="uid://cfcx3u8n3qxd8" path="res://Assets/Map/cursed-land/PNG/bridges.png" id="4_dt0r1"]
-[ext_resource type="Texture2D" uid="uid://pc8enrhh2i0y" path="res://Assets/Map/ruins/PNG/Assets/Brown-gray_ruins4.png" id="5_pyn1s"]
-[ext_resource type="Texture2D" uid="uid://cohbfa32k5ihl" path="res://Assets/Map/ruins/PNG/Assets_shadow/Blue-gray_ruins3.png" id="6_no8kt"]
-[ext_resource type="Texture2D" uid="uid://bcartweags2ep" path="res://Assets/Map/dungeon-asset/Tiled_files/walls_floor.png" id="7_xbk3s"]
-[ext_resource type="Texture2D" uid="uid://bckbekd73bave" path="res://Assets/Map/PNG/Cave_objects_source.png" id="9_pyn1s"]
-[ext_resource type="Texture2D" uid="uid://d0coq24adsyi2" path="res://Assets/Map/fields/2 Objects/4 Stone/2.png" id="12_1cojt"]
-[ext_resource type="Texture2D" uid="uid://brse2r6xixnmi" path="res://Assets/Map/fields/2 Objects/4 Stone/3.png" id="13_yq1aw"]
-[ext_resource type="Texture2D" uid="uid://bbqn1o6ngjdr5" path="res://Assets/Map/fields/2 Objects/4 Stone/1.png" id="14_pyn1s"]
-[ext_resource type="Texture2D" uid="uid://dgli3mpiqkg6k" path="res://Assets/Map/overworld/punyworld-overworld-tileset - EditedCopy.png" id="15_0pcbe"]
-[ext_resource type="Texture2D" uid="uid://ylact1uybxxk" path="res://Assets/Map/fields/2 Objects/4 Stone/5.png" id="15_no8kt"]
-[ext_resource type="Texture2D" uid="uid://yx5rnnbifuuo" path="res://Assets/Map/ruins/PNG/Assets_texture_shadow_dark_source - EditedCopy.png" id="16_axeuq"]
-[ext_resource type="Texture2D" uid="uid://dglpldwkmbyfx" path="res://Assets/Map/cursed-land/PNG/details.png" id="16_qebug"]
-[ext_resource type="Texture2D" uid="uid://dnruvt2lk7nfs" path="res://Assets/Map/fields/2 Objects/4 Stone/7.png" id="16_xbk3s"]
-[ext_resource type="Texture2D" uid="uid://d3rlkon11h8pg" path="res://Assets/Map/fields/2 Objects/4 Stone/16.png" id="17_i4fjy"]
-[ext_resource type="Texture2D" uid="uid://c34ckqkd502kk" path="res://Assets/Map/dungeon-asset/Tiled_files/Objects.png" id="17_opbav"]
-[ext_resource type="Texture2D" uid="uid://bx1to7fqgbg5v" path="res://Assets/Map/dungeon-asset/Tiled_files/decorative_cracks_coasts_animation.png" id="18_coyub"]
-[ext_resource type="Texture2D" uid="uid://cojtfosx0y4gj" path="res://Assets/Map/fields/2 Objects/4 Stone/4.png" id="18_pt3ps"]
-[ext_resource type="Texture2D" uid="uid://r65yu2gcwd8i" path="res://Assets/Map/fields/2 Objects/4 Stone/6.png" id="19_hmc15"]
-[ext_resource type="Texture2D" uid="uid://cu83jihf1u2gr" path="res://Assets/Map/fields/2 Objects/4 Stone/10.png" id="20_dt0r1"]
-[ext_resource type="Texture2D" uid="uid://c8bsp6hid3mq5" path="res://Assets/Map/forest-objects/PNG/Assets_no_shadow/Tree_idol_human.png" id="23_no8kt"]
+[ext_resource type="Texture2D" uid="uid://consg4v0w8d2j" path="res://Assets/Art/Tileset/dungeon-asset/Tiled_files/doors_lever_chest_animation.png" id="1_hmc15"]
+[ext_resource type="Texture2D" uid="uid://e8uu1dd331og" path="res://Assets/Art/Tileset/forest-objects/PNG/Assets_source.png" id="1_pt3ps"]
+[ext_resource type="Texture2D" uid="uid://b0ckfw32b7ro8" path="res://Assets/Art/Tileset/cursed-land/PNG/Objects.png" id="2_pt3ps"]
+[ext_resource type="Texture2D" uid="uid://bcsamm3rjct65" path="res://Assets/Art/Tileset/cursed-land/PNG/spots.png" id="3_hmc15"]
+[ext_resource type="Texture2D" uid="uid://cfcx3u8n3qxd8" path="res://Assets/Art/Tileset/cursed-land/PNG/bridges.png" id="4_dt0r1"]
+[ext_resource type="Texture2D" uid="uid://pc8enrhh2i0y" path="res://Assets/Art/Tileset/ruins/PNG/Assets/Brown-gray_ruins4.png" id="5_pyn1s"]
+[ext_resource type="Texture2D" uid="uid://cohbfa32k5ihl" path="res://Assets/Art/Tileset/ruins/PNG/Assets_shadow/Blue-gray_ruins3.png" id="6_no8kt"]
+[ext_resource type="Texture2D" uid="uid://bcartweags2ep" path="res://Assets/Art/Tileset/dungeon-asset/Tiled_files/walls_floor.png" id="7_xbk3s"]
+[ext_resource type="Texture2D" uid="uid://bckbekd73bave" path="res://Assets/Art/Tileset/PNG/Cave_objects_source.png" id="9_pyn1s"]
+[ext_resource type="Texture2D" uid="uid://d0coq24adsyi2" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/2.png" id="12_1cojt"]
+[ext_resource type="Texture2D" uid="uid://brse2r6xixnmi" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/3.png" id="13_yq1aw"]
+[ext_resource type="Texture2D" uid="uid://bbqn1o6ngjdr5" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/1.png" id="14_pyn1s"]
+[ext_resource type="Texture2D" uid="uid://dgli3mpiqkg6k" path="res://Assets/Art/Tileset/overworld/punyworld-overworld-tileset - EditedCopy.png" id="15_0pcbe"]
+[ext_resource type="Texture2D" uid="uid://ylact1uybxxk" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/5.png" id="15_no8kt"]
+[ext_resource type="Texture2D" uid="uid://yx5rnnbifuuo" path="res://Assets/Art/Tileset/ruins/PNG/Assets_texture_shadow_dark_source - EditedCopy.png" id="16_axeuq"]
+[ext_resource type="Texture2D" uid="uid://dglpldwkmbyfx" path="res://Assets/Art/Tileset/cursed-land/PNG/details.png" id="16_qebug"]
+[ext_resource type="Texture2D" uid="uid://dnruvt2lk7nfs" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/7.png" id="16_xbk3s"]
+[ext_resource type="Texture2D" uid="uid://d3rlkon11h8pg" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/16.png" id="17_i4fjy"]
+[ext_resource type="Texture2D" uid="uid://c34ckqkd502kk" path="res://Assets/Art/Tileset/dungeon-asset/Tiled_files/Objects.png" id="17_opbav"]
+[ext_resource type="Texture2D" uid="uid://bx1to7fqgbg5v" path="res://Assets/Art/Tileset/dungeon-asset/Tiled_files/decorative_cracks_coasts_animation.png" id="18_coyub"]
+[ext_resource type="Texture2D" uid="uid://cojtfosx0y4gj" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/4.png" id="18_pt3ps"]
+[ext_resource type="Texture2D" uid="uid://r65yu2gcwd8i" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/6.png" id="19_hmc15"]
+[ext_resource type="Texture2D" uid="uid://cu83jihf1u2gr" path="res://Assets/Art/Tileset/fields/2 Objects/4 Stone/10.png" id="20_dt0r1"]
+[ext_resource type="Texture2D" uid="uid://c8bsp6hid3mq5" path="res://Assets/Art/Tileset/forest-objects/PNG/Assets_no_shadow/Tree_idol_human.png" id="23_no8kt"]
 [ext_resource type="Texture2D" uid="uid://duxt00einda43" path="res://Assets/Map/cave-objects/PNG/Objects_separately/32/Human_skeleton_light_shadow.png" id="25_pt3ps"]
-[ext_resource type="Texture2D" uid="uid://b1efs02tugxqq" path="res://Assets/Map/cursed-land/PNG/Objects_separetely/Bones_shadow1_9.png" id="26_dt0r1"]
-[ext_resource type="Script" uid="uid://c5duuhapwkjm3" path="res://Scripts/scene-scripts/scene_trigger.gd" id="27_dxvsy"]
-[ext_resource type="PackedScene" uid="uid://daeewwuxpafga" path="res://Scripts/transition.tscn" id="28_msqh3"]
+[ext_resource type="Texture2D" uid="uid://b1efs02tugxqq" path="res://Assets/Art/Tileset/cursed-land/PNG/Objects_separetely/Bones_shadow1_9.png" id="26_dt0r1"]
+[ext_resource type="PackedScene" path="res://Scenes/Map scenes/scene_trigger.tscn" id="27_r2lri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qebug"]
 texture = ExtResource("1_hmc15")
@@ -8229,8 +8228,8 @@ size = Vector2(101, 43)
 radius = 26.0
 height = 66.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_75hhy"]
-size = Vector2(21.875, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2rbt"]
+size = Vector2(22, 38)
 
 [node name="world" type="Node2D"]
 
@@ -8464,7 +8463,6 @@ texture = ExtResource("23_no8kt")
 [node name="BlueGrayRuins3" type="Sprite2D" parent="StaticBody2D"]
 modulate = Color(0.59, 0.56049997, 0.56049997, 1)
 top_level = true
-z_index = 1
 y_sort_enabled = true
 position = Vector2(393.00003, 171)
 scale = Vector2(1.5, 1.5)
@@ -8496,11 +8494,8 @@ z_index = 1
 position = Vector2(1798, -61)
 texture = ExtResource("26_dt0r1")
 
-[node name="WorldToWizTower" type="Area2D" parent="."]
-position = Vector2(270, 189)
-script = ExtResource("27_dxvsy")
-transition_scene = ExtResource("28_msqh3")
+[node name="SceneTrigger2" parent="." instance=ExtResource("27_r2lri")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldToWizTower"]
-position = Vector2(1667.9375, -174)
-shape = SubResource("RectangleShape2D_75hhy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger2"]
+position = Vector2(1938, 8)
+shape = SubResource("RectangleShape2D_o2rbt")

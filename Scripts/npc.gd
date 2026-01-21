@@ -11,7 +11,7 @@ var player_ref: Node = null
 var can_talk: bool = false
 
 # Conversation stack instance (ConversationStack must be class_name ConversationStack)
-var convo_stack: ConversationStack = ConversationStack.new()
+var convo_stack: Stack = Stack.new()
 
 func _ready() -> void:
 	# Connect area signals

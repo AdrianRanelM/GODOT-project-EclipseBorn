@@ -2,7 +2,7 @@
 # Simple stack for dialogue frames. Each frame is a Dictionary:
 # { "speaker": String, "text": String, "meta": Variant }
 extends RefCounted
-class_name ConversationStack
+class_name Stack
 
 var _stack: Array = []
 

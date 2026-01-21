@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerStats="*res://Scripts/player_stats.gd"
+InvSing="*res://Scripts/inventory_singleton.gd"
 
 [global_group]
 
