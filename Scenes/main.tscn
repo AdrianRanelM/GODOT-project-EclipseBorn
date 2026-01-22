@@ -129,5 +129,8 @@ position = Vector2(1678, 220)
 
 [node name="Transition" parent="." instance=ExtResource("18_b3802")]
 
+[node name="Valerius2" parent="." instance=ExtResource("20_hibaj")]
+position = Vector2(338, 241)
+
 [node name="Valerius" parent="." instance=ExtResource("20_hibaj")]
 position = Vector2(132, 1530)
