@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c35iqe0lidxtf"
+path="res://.godot/imported/wind.mp3-cdf07c7c89e7ed563e3cec08b458539e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Cinematic Audio/SFX/wind.mp3"
+dest_files=["res://.godot/imported/wind.mp3-cdf07c7c89e7ed563e3cec08b458539e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

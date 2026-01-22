@@ -8202,19 +8202,17 @@ radius = 6.0
 radius = 51.0
 height = 176.0
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xbk3s"]
-distance = -258.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxvsy"]
+size = Vector2(1886, 180.5)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i4fjy"]
-normal = Vector2(1, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msqh3"]
+size = Vector2(141, 692)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pt3ps"]
-normal = Vector2(-0.99989647, 0.014387)
-distance = -3.0428505
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul0rv"]
+size = Vector2(2617, 89)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hmc15"]
-normal = Vector2(0, 1)
-distance = 13.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtsf4"]
+size = Vector2(339, 799)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmc15"]
 size = Vector2(393, 152)
@@ -8420,20 +8418,20 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_i4fjy")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 126)
-shape = SubResource("WorldBoundaryShape2D_xbk3s")
+position = Vector2(802, -90.25)
+shape = SubResource("RectangleShape2D_dxvsy")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 180)
-shape = SubResource("WorldBoundaryShape2D_i4fjy")
+position = Vector2(-70, 204)
+shape = SubResource("RectangleShape2D_msqh3")
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2207, 558)
-shape = SubResource("WorldBoundaryShape2D_pt3ps")
+position = Vector2(1158.5, 592.5)
+shape = SubResource("RectangleShape2D_ul0rv")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(342, -13)
-shape = SubResource("WorldBoundaryShape2D_hmc15")
+position = Vector2(2299.5, 234.5)
+shape = SubResource("RectangleShape2D_vtsf4")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1937.5, -77)

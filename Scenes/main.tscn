@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnwlb8ka76nev"]
+[gd_scene load_steps=21 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bvorjjnn7h5t8" path="res://Scenes/Map scenes/valerius_room.tscn" id="16_hibaj"]
 [ext_resource type="PackedScene" uid="uid://daeewwuxpafga" path="res://Scripts/transition.tscn" id="18_b3802"]
 [ext_resource type="PackedScene" uid="uid://c832l6hyh51tn" path="res://Scenes/Map scenes/inside_wiz_tower.tscn" id="19_fevyy"]
+[ext_resource type="PackedScene" uid="uid://c4t8p8wybobw7" path="res://Scenes/Valerius.tscn" id="20_hibaj"]
 
 [node name="Game" type="Node2D"]
 
@@ -28,7 +29,7 @@ position = Vector2(161, 101)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
 y_sort_enabled = true
-position = Vector2(104, 176)
+position = Vector2(104, 180)
 inventory = ExtResource("4_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -124,6 +125,9 @@ color = Color(0, 0, 0, 1)
 position = Vector2(1324, 151)
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
-position = Vector2(1442, 524)
+position = Vector2(1678, 220)
 
 [node name="Transition" parent="." instance=ExtResource("18_b3802")]
+
+[node name="Valerius" parent="." instance=ExtResource("20_hibaj")]
+position = Vector2(132, 1530)

@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://ipeyg2a52cw5"]
 
 [ext_resource type="Script" uid="uid://dju1caywh7g7c" path="res://Scripts/Cinematic Scripts/intro_cinematic.gd" id="1_6ydyj"]
-[ext_resource type="Texture2D" uid="uid://y2n6hf7drk5i" path="res://Assets/Cinematic Scenes/Scene 1-1.png" id="2_5pgor"]
-[ext_resource type="Texture2D" uid="uid://dcirayn1wckyy" path="res://Assets/Cinematic Scenes/Scene 1-2.png" id="3_jamx0"]
-[ext_resource type="Texture2D" uid="uid://70b4liw7wfbj" path="res://Assets/Cinematic Scenes/Scene 2-1.png" id="4_pnu8h"]
-[ext_resource type="Texture2D" uid="uid://dc6mybkmbi68v" path="res://Assets/Cinematic Scenes/Scene 3-1.png" id="5_uabi4"]
-[ext_resource type="Texture2D" uid="uid://b3bx5ycayycao" path="res://Assets/Cinematic Scenes/Scene 3-2.png" id="6_bdypj"]
-[ext_resource type="Texture2D" uid="uid://dughm2h07cdx8" path="res://Assets/Cinematic Scenes/Scene 3-3.png" id="7_2ff7f"]
-[ext_resource type="Texture2D" uid="uid://b5laeyxlyug4d" path="res://Assets/Cinematic Scenes/Scene 4-1.png" id="8_kc251"]
-[ext_resource type="Texture2D" uid="uid://jdnbk0wwhaxx" path="res://Assets/Cinematic Scenes/Scene 5-1.png" id="9_m46jl"]
-[ext_resource type="Texture2D" uid="uid://c2yxeswtiua0" path="res://Assets/Cinematic Scenes/Scene 4-2.png" id="9_pnu8h"]
-[ext_resource type="Texture2D" uid="uid://b007332ba5pas" path="res://Assets/Cinematic Scenes/Scene 5-2.png" id="10_cxjvu"]
+[ext_resource type="Texture2D" uid="uid://y2n6hf7drk5i" path="res://Assets/Cinematic Scenes/Intro/Scene 1-1.png" id="2_5pgor"]
+[ext_resource type="Texture2D" uid="uid://dcirayn1wckyy" path="res://Assets/Cinematic Scenes/Intro/Scene 1-2.png" id="3_jamx0"]
+[ext_resource type="Texture2D" uid="uid://70b4liw7wfbj" path="res://Assets/Cinematic Scenes/Intro/Scene 2-1.png" id="4_pnu8h"]
+[ext_resource type="Texture2D" uid="uid://dc6mybkmbi68v" path="res://Assets/Cinematic Scenes/Intro/Scene 3-1.png" id="5_uabi4"]
+[ext_resource type="Texture2D" uid="uid://b3bx5ycayycao" path="res://Assets/Cinematic Scenes/Intro/Scene 3-2.png" id="6_bdypj"]
+[ext_resource type="Texture2D" uid="uid://dughm2h07cdx8" path="res://Assets/Cinematic Scenes/Intro/Scene 3-3.png" id="7_2ff7f"]
+[ext_resource type="Texture2D" uid="uid://b5laeyxlyug4d" path="res://Assets/Cinematic Scenes/Intro/Scene 4-1.png" id="8_kc251"]
+[ext_resource type="Texture2D" uid="uid://jdnbk0wwhaxx" path="res://Assets/Cinematic Scenes/Intro/Scene 5-1.png" id="9_m46jl"]
+[ext_resource type="Texture2D" uid="uid://c2yxeswtiua0" path="res://Assets/Cinematic Scenes/Intro/Scene 4-2.png" id="9_pnu8h"]
+[ext_resource type="Texture2D" uid="uid://b007332ba5pas" path="res://Assets/Cinematic Scenes/Intro/Scene 5-2.png" id="10_cxjvu"]
 [ext_resource type="AudioStream" uid="uid://dyg1vyhtlw1m6" path="res://Assets/Cinematic Audio/BGM/Wisteria - Intro BGM.mp3" id="12_uabi4"]
 [ext_resource type="AudioStream" uid="uid://b2chihc801hhh" path="res://Assets/Cinematic Audio/SFX/pageturn.mp3" id="13_bdypj"]
 [ext_resource type="AudioStream" uid="uid://ci42sxrdb4r0t" path="res://Assets/Cinematic Audio/SFX/glassbreak.mp3" id="14_2ff7f"]
@@ -63,3 +63,13 @@ theme_override_font_sizes/font_size = 14
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
