@@ -1,5 +1,7 @@
 extends ConversationNPC
 
+
+
 func _load_initial_dialogue() -> void:
 	# Randomize their dialogue
 	var lines = [

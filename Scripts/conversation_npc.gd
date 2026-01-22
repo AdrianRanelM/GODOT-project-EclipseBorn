@@ -2,7 +2,7 @@ class_name ConversationNPC
 extends CharacterBody2D
 
 # --- Configuration ---
-@export var npc_name: String = "Stranger"
+@export var npc_name: String = ""
 @export var dialogue_ui_path: NodePath
 
 # --- Internal References ---

@@ -27,6 +27,7 @@
 [node name="NPC" parent="." instance=ExtResource("16_b3802")]
 y_sort_enabled = true
 position = Vector2(161, 101)
+npc_name = "Stranger"
 dialogue_ui_path = NodePath("")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
@@ -126,12 +127,13 @@ color = Color(0, 0, 0, 1)
 [node name="WorldTree" parent="." instance=ExtResource("15_h1bgf")]
 position = Vector2(1324, 151)
 script = ExtResource("18_pdsj5")
+npc_name = "Druid"
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
-position = Vector2(1678, 220)
+position = Vector2(1689, 202)
 
 [node name="Transition" parent="." instance=ExtResource("18_b3802")]
 
 [node name="Valerius" parent="." instance=ExtResource("20_hibaj")]
-position = Vector2(61, 1525)
+position = Vector2(310, 1540)
 script = null

@@ -8,7 +8,7 @@ class_name EnemyBase
 @export var chase_speed: float = 70.0
 
 # This allows you to pick a different .tscn for every enemy in the Inspector
-@export_file("*.tscn") var battle_scene_file: String = "res://Scenes/BattleScene.tscn"
+@export_file("*.tscn") var battle_scene_file: String = "res://Scenes/Battle scenes/battle_scene.tscn"
 
 var current_hp: int
 var target: Node = null
