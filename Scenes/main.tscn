@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnwlb8ka76nev"]
+[gd_scene load_steps=24 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://cbd45bk7r3pgi" path="res://Scripts/world_tree.gd" id="18_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://c832l6hyh51tn" path="res://Scenes/Map scenes/inside_wiz_tower.tscn" id="19_fevyy"]
 [ext_resource type="PackedScene" uid="uid://c4t8p8wybobw7" path="res://Scenes/Valerius.tscn" id="20_hibaj"]
+[ext_resource type="PackedScene" uid="uid://daqmnq0ehpu5p" path="res://Scenes/slime_1.tscn" id="22_gt3je"]
+[ext_resource type="PackedScene" uid="uid://bw3qdeo876gek" path="res://Scenes/slime_2.tscn" id="23_3pmx8"]
 
 [node name="Game" type="Node2D"]
 
@@ -129,11 +131,32 @@ position = Vector2(1324, 151)
 script = ExtResource("18_pdsj5")
 npc_name = "Druid"
 
+[node name="Orc3" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(1500, 412)
+
+[node name="Orc2" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(1977, 355)
+
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(1689, 202)
 
 [node name="Transition" parent="." instance=ExtResource("18_b3802")]
 
 [node name="Valerius" parent="." instance=ExtResource("20_hibaj")]
-position = Vector2(310, 1540)
-script = null
+position = Vector2(285, 1523)
+
+[node name="Slime3" parent="." instance=ExtResource("22_gt3je")]
+position = Vector2(85, 933)
+chase_speed = 50.0
+
+[node name="Slime1" parent="." instance=ExtResource("22_gt3je")]
+position = Vector2(150, 857)
+chase_speed = 50.0
+
+[node name="Slime4" parent="." instance=ExtResource("23_3pmx8")]
+position = Vector2(299, 990)
+chase_speed = 60.0
+
+[node name="Slime2" parent="." instance=ExtResource("23_3pmx8")]
+position = Vector2(372, 899)
+chase_speed = 60.0
