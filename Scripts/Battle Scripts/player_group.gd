@@ -12,10 +12,10 @@ var targeting_allies: bool = false
 # Dictionary to manage skill costs in one place
 var move_costs = {
 	"attack": 0,
-	"fireball": 3,
-	"heal": 2,
-	"double_strike": 2, # Added cost
-	"lifesteal": 2      # Added cost
+	"fireball": 15,
+	"heal": 15,
+	"double_strike": 20, # Added cost
+	"lifesteal": 30      # Added cost
 }
 
 @onready var choice_menu = $"../CanvasLayer/choice"

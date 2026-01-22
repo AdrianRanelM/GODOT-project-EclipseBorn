@@ -1,0 +1,15 @@
+class_name BaseScene extends Node
+
+@onready var player: Player = $Player
+
+func _ready() -> void:
+	if scene_manager.player:
+		if player:
+			player.queue_free()
+			
+		player = scene_manager.player
+		add_child(player)
+		
+		var spawn_point = get_node_or_null("SpawnPoint")
+		if spawn_point:
+			player.global_position = spawn_point.global_position

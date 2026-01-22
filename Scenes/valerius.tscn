@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhg2fnii8iwlc"]
+
+[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/enemy_base.tscn" id="1_lkrvi"]
+[ext_resource type="Script" uid="uid://l36ctcjlo1ky" path="res://Scripts/Valerius.gd" id="2_hqkhh"]
+
+[node name="Valerius" instance=ExtResource("1_lkrvi")]
+script = ExtResource("2_hqkhh")

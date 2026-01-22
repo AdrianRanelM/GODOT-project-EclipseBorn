@@ -205,14 +205,14 @@ func _execute_move_logic(attacker, target, type):
 			target.show_floating_text(attacker.attack_damage, "damage")
 			message = str(a_name) + " attacked " + str(t_name) + "!"
 		"fireball":
-			attacker.mana -= 3
-			var dmg = attacker.attack_damage * 3
+			attacker.mana -= 15
+			var dmg = attacker.attack_damage * 2
 			target.take_damage(dmg)
 			target.show_floating_text(dmg, "damage")
 			message = str(a_name) + " blasted " + str(t_name) + " with Fireball!"
 			
 		"double_strike":
-			attacker.mana -= 2
+			attacker.mana -= 20
 			var strike_dmg = floor(attacker.attack_damage * 0.75)
 			target.take_damage(strike_dmg)
 			target.show_floating_text(strike_dmg, "damage")
@@ -222,7 +222,7 @@ func _execute_move_logic(attacker, target, type):
 			message = str(a_name) + " used Double Strike on " + str(t_name) + "!"
 
 		"lifesteal":
-			attacker.mana -= 2
+			attacker.mana -= 30
 			var damage_dealt = attacker.attack_damage * 1.5
 			var heal_amount = floor(damage_dealt * 0.5)
 			target.take_damage(damage_dealt)
@@ -232,8 +232,8 @@ func _execute_move_logic(attacker, target, type):
 			message = str(a_name) + " drained HP from " + str(t_name) + "!"
 			
 		"heal":
-			attacker.mana -= 2
-			target.health += 5
+			attacker.mana -= 15
+			target.health += 30
 			target.show_floating_text(5, "heal")
 			message = str(a_name) + " healed " + str(t_name) + "!"
 
@@ -245,7 +245,7 @@ func _execute_move_logic(attacker, target, type):
 
 func _on_double_strike_button_pressed() -> void:
 	var player = player_group.players[0]
-	if player.mana >= 2:
+	if player.mana >= 20:
 		var action = {
 			"attacker": player,
 			"target": enemy_group.enemies[0],
@@ -258,7 +258,7 @@ func _on_double_strike_button_pressed() -> void:
 
 func _on_lifesteal_button_pressed() -> void:
 	var player = player_group.players[0]
-	if player.mana >= 2:
+	if player.mana >= 30:
 		var action = {
 			"attacker": player,
 			"target": enemy_group.enemies[0],

@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://daeewwuxpafga"]
+
+[ext_resource type="Script" uid="uid://cme67ajlpap1s" path="res://transition.gd" id="1_qdp6f"]
+[ext_resource type="Shader" uid="uid://2ok2012fr0r4" path="res://transition.gdshader" id="2_8cy1h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuec5"]
+shader = ExtResource("2_8cy1h")
+shader_parameter/radius = 1.5
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/softness = 0.20000000298023
+
+[sub_resource type="Animation" id="Animation_53ni8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_fuec5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_djs45"]
+resource_name = "transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_fuec5"), SubResource("ShaderMaterial_fuec5"), SubResource("ShaderMaterial_fuec5"), SubResource("ShaderMaterial_fuec5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.5, -0.5, -0.5, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ej2nx"]
+_data = {
+&"RESET": SubResource("Animation_53ni8"),
+&"transition": SubResource("Animation_djs45")
+}
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("1_qdp6f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fuec5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ej2nx")
+}

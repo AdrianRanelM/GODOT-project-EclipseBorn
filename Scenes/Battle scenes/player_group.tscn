@@ -9,6 +9,7 @@ script = ExtResource("1_ao132")
 [node name="Sonny" parent="." groups=["characters"] instance=ExtResource("2_c8kvg")]
 MAX_HEALTH = 100.0
 MAX_MANA = 100.0
+attack_damage = 10
 unit_name = "Sonny"
 
 [node name="Sprite2D" parent="Sonny" index="0"]

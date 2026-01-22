@@ -1,0 +1,600 @@
+[gd_scene load_steps=63 format=3 uid="uid://h88wsincdgcd"]
+
+[ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://Scripts/Battle Scripts/battle_manager.gd" id="1_eyamk"]
+[ext_resource type="Script" uid="uid://dmanmawmg4el" path="res://Scripts/Battle Scripts/battle_camera.gd" id="2_ec43m"]
+[ext_resource type="Script" uid="uid://ejfblofdms4t" path="res://Scripts/Battle Scripts/enemy_group.gd" id="4_uljpa"]
+[ext_resource type="Script" uid="uid://s5puc78ndq01" path="res://Scripts/Battle Scripts/Valerious_Script.gd" id="5_2othe"]
+[ext_resource type="PackedScene" uid="uid://c0li4c8lap1in" path="res://Scenes/Battle scenes/player_group.tscn" id="5_5852k"]
+[ext_resource type="PackedScene" uid="uid://veq8m46km8yo" path="res://Scenes/Battle scenes/character_body_2d.tscn" id="5_igs5l"]
+[ext_resource type="Texture2D" uid="uid://7dltfgh35mp" path="res://Assets/UI/Battle/BattleUI.png" id="6_igs5l"]
+[ext_resource type="Texture2D" uid="uid://rw1oola2mq1o" path="res://Scenes/Battle scenes/Vampires1_Idle_with_shadow.png" id="7_dwpct"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="7_itx1r"]
+[ext_resource type="Texture2D" uid="uid://c2h7k6gfs61bq" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_attack_without_shadow.png" id="8_dwpct"]
+[ext_resource type="Texture2D" uid="uid://dswjqw05sgspv" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Death_without_shadow.png" id="9_mnm4r"]
+[ext_resource type="Texture2D" uid="uid://bn0uuvgkq5xdi" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Hurt_without_shadow.png" id="10_11d73"]
+[ext_resource type="Texture2D" uid="uid://mc5l3s05j87w" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Idle_without_shadow.png" id="11_0pyhg"]
+[ext_resource type="Texture2D" uid="uid://cikods4vulcoy" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Run_without_shadow.png" id="12_galc1"]
+[ext_resource type="Texture2D" uid="uid://d012go1srbgq0" path="res://Assets/UI/Health/hpbr.png" id="13_44bnk"]
+[ext_resource type="Texture2D" uid="uid://dvmigmpxxd8sf" path="res://Assets/UI/Health/hpbar.png" id="14_jdwiy"]
+[ext_resource type="Texture2D" uid="uid://c7g0uqnbofxgt" path="res://Assets/UI/Health/mnbr.png" id="15_p7sc3"]
+[ext_resource type="PackedScene" uid="uid://dcol4k00jc87c" path="res://Scenes/inventory_ui.tscn" id="16_aaml4"]
+[ext_resource type="AudioStream" uid="uid://k47ofvpgc5ox" path="res://Scripts/Battle Scripts/ddttrpg-battlecombatfight-music--1-hour (1).wav" id="17_kf7j1"]
+[ext_resource type="AudioStream" uid="uid://cs23kndx1whw4" path="res://Scripts/Battle Scripts/victoryfanfare.wav" id="18_o8tv5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2othe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swtkm"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i03pl"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0km8l"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l80v8"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x0tl"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7fx4"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xf0p"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3slv"]
+atlas = ExtResource("8_dwpct")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qaw5"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6smt"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjvym"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpgxv"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3qby"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0tuc"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na3od"]
+atlas = ExtResource("9_mnm4r")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkjwv"]
+atlas = ExtResource("10_11d73")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3af4a"]
+atlas = ExtResource("10_11d73")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtvr7"]
+atlas = ExtResource("10_11d73")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo0gp"]
+atlas = ExtResource("10_11d73")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lslfh"]
+atlas = ExtResource("10_11d73")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hiys"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64mqf"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsk6e"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hton"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6058"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd3lj"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g5yb"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luai7"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3aps"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxk58"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfioh"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqf8g"]
+atlas = ExtResource("11_0pyhg")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aggr"]
+atlas = ExtResource("12_galc1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvwkw"]
+atlas = ExtResource("12_galc1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6la6"]
+atlas = ExtResource("12_galc1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yysc5"]
+atlas = ExtResource("12_galc1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xxnx"]
+atlas = ExtResource("12_galc1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaj5u"]
+atlas = ExtResource("12_galc1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5btl"]
+atlas = ExtResource("12_galc1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkxht"]
+atlas = ExtResource("12_galc1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkosg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swtkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i03pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0km8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l80v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x0tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7fx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xf0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3slv")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qaw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6smt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjvym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpgxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3qby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0tuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na3od")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkjwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3af4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtvr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo0gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lslfh")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_5hiys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64mqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsk6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6058")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd3lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g5yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luai7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3aps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxk58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfioh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqf8g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_5aggr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvwkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6la6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yysc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xxnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaj5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5btl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkxht")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_eyamk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 324)
+script = ExtResource("2_ec43m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.16206557, 0.1620656, 0.16206557, 1)
+self_modulate = Color(0.37413913, 0.37413928, 0.37413943, 1)
+offset_right = 1151.7693
+offset_bottom = 651.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = SubResource("CanvasTexture_2othe")
+expand_mode = 1
+
+[node name="EnemyGroup" type="Node2D" parent="."]
+position = Vector2(311, 119)
+script = ExtResource("4_uljpa")
+
+[node name="Enemy1" parent="EnemyGroup" groups=["characters"] instance=ExtResource("5_igs5l")]
+script = ExtResource("5_2othe")
+MAX_HEALTH = 100.0
+MAX_MANA = 50.0
+attack_damage = 10
+
+[node name="Sprite2D" parent="EnemyGroup/Enemy1" index="0"]
+position = Vector2(266, 44.999992)
+scale = Vector2(6.3085938, 6.354167)
+texture = ExtResource("7_dwpct")
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="ProgressBar" parent="EnemyGroup/Enemy1" index="2"]
+visible = false
+offset_left = -22.0
+offset_top = -46.0
+offset_right = 998.0
+offset_bottom = 80.66664
+theme_override_font_sizes/font_size = 64
+
+[node name="ManaBar" parent="EnemyGroup/Enemy1" index="3"]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 966.6666
+offset_bottom = 59.66667
+theme_override_font_sizes/font_size = 64
+
+[node name="PlayerGroup" parent="." groups=["PlayerGroup"] instance=ExtResource("5_5852k")]
+visible = false
+z_index = 3
+position = Vector2(192, 292)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 160.0
+offset_top = 311.0
+offset_right = 990.0
+offset_bottom = 643.0
+texture = ExtResource("6_igs5l")
+
+[node name="ActionDescription" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.5
+offset_top = 15.0
+offset_right = 257.5
+offset_bottom = 70.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 40
+
+[node name="choice" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -297.0
+offset_right = -23.0
+offset_bottom = 209.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 10
+size_flags_vertical = 6
+mouse_filter = 2
+
+[node name="attack" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "ATTACK"
+
+[node name="items" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "ITEMS"
+
+[node name="magic" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "SKILLS"
+
+[node name="run" type="Button" parent="CanvasLayer/choice"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "RUN
+"
+
+[node name="skill" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -294.0
+offset_right = -15.0
+offset_bottom = 206.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="fireball" type="Button" parent="CanvasLayer/skill"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "FIREBALL"
+
+[node name="heal" type="Button" parent="CanvasLayer/skill"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "HEAL"
+
+[node name="DoubleStrikeButton" type="Button" parent="CanvasLayer/skill"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "2x KICK"
+
+[node name="LifestealButton" type="Button" parent="CanvasLayer/skill"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "LEECH"
+
+[node name="return" type="Button" parent="CanvasLayer/skill"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "CANCEL
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(288, 472)
+scale = Vector2(4.359375, 4.359375)
+sprite_frames = SubResource("SpriteFrames_qkosg")
+animation = &"idle"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 392.0
+offset_top = 372.0
+offset_right = 448.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 23
+text = "HP"
+
+[node name="HealthPointsBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 384.0
+offset_right = 705.37146
+offset_bottom = 432.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("13_44bnk")
+texture_progress = ExtResource("14_jdwiy")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 392.0
+offset_top = 454.0
+offset_right = 441.0
+offset_bottom = 478.0
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 23
+text = "MP"
+
+[node name="ManaPointsBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 464.0
+offset_right = 705.37146
+offset_bottom = 512.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("13_44bnk")
+texture_progress = ExtResource("15_p7sc3")
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("16_aaml4")]
+visible = false
+z_index = 6
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/InventoryUI"]
+z_index = -1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.3764706)
+
+[node name="Button" type="Button" parent="CanvasLayer/InventoryUI"]
+z_index = 6
+layout_mode = 0
+offset_left = 883.0
+offset_top = 501.0
+offset_right = 1106.0
+offset_bottom = 603.0
+theme_override_fonts/font = ExtResource("7_itx1r")
+theme_override_font_sizes/font_size = 64
+text = "BACK"
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_kf7j1")
+
+[node name="VictoryFanfare" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_o8tv5")
+
+[connection signal="pressed" from="CanvasLayer/choice/attack" to="PlayerGroup" method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/choice/items" to="PlayerGroup" method="_on_items_pressed"]
+[connection signal="pressed" from="CanvasLayer/choice/magic" to="PlayerGroup" method="_on_magic_pressed"]
+[connection signal="pressed" from="CanvasLayer/skill/fireball" to="PlayerGroup" method="_on_fireball_pressed"]
+[connection signal="pressed" from="CanvasLayer/skill/heal" to="PlayerGroup" method="_on_heal_pressed"]
+[connection signal="pressed" from="CanvasLayer/skill/DoubleStrikeButton" to="PlayerGroup" method="_on_double_strike_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/skill/LifestealButton" to="PlayerGroup" method="_on_lifesteal_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/skill/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="CanvasLayer/InventoryUI/Button" to="PlayerGroup" method="_on_inv_ui_back_pressed"]
+
+[editable path="EnemyGroup/Enemy1"]

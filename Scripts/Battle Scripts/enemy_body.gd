@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name EnemyBattleBase
 
 signal damaged(intensity: float)
 
@@ -8,9 +9,9 @@ signal damaged(intensity: float)
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D 
 
-@export var MAX_HEALTH: float = 1
-@export var MAX_MANA: float = 0.5
-@export var attack_damage: int = 1
+@export var MAX_HEALTH: float = 100
+@export var MAX_MANA: float = 50
+@export var attack_damage: int = 10
 
 @export var unit_name: String = "Character"
 
@@ -19,7 +20,7 @@ var is_dead: bool = false
 var pulse_tween: Tween
 var bounce_tween: Tween
 
-var health: float = 7:
+var health: float = 100:
 	set(value):
 		var old_health = health
 		health = clamp(value, 0, MAX_HEALTH)
