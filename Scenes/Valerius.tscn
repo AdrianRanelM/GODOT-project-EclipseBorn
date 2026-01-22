@@ -1,6 +1,6 @@
 [gd_scene load_steps=48 format=3 uid="uid://c4t8p8wybobw7"]
 
-[ext_resource type="Script" path="res://Scripts/valerius.gd" id="1_322k8"]
+[ext_resource type="Script" uid="uid://cexfl5o0ydpbf" path="res://Scripts/valerius.gd" id="1_322k8"]
 [ext_resource type="Texture2D" uid="uid://rw1oola2mq1o" path="res://Assets/Enemies/Vampires1/With_shadow/Vampires1_Idle_with_shadow.png" id="2_q4j23"]
 [ext_resource type="Texture2D" uid="uid://b6vwmv44dltce" path="res://Assets/Enemies/Vampires1/With_shadow/Vampires1_Walk_with_shadow.png" id="3_4quwy"]
 
@@ -341,7 +341,7 @@ script = ExtResource("1_322k8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.0351564, 1.0351564)
 sprite_frames = SubResource("SpriteFrames_i35hg")
-animation = &"IdleUp"
+animation = &"IdleRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rqhjl")
