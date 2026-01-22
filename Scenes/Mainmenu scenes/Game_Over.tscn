@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://rp8ehcveyyiy"]
+
+[ext_resource type="Texture2D" uid="uid://dtw6epqxueh04" path="res://Assets/UI/Mainmenu/NoMoon.png" id="1_5ruhh"]
+[ext_resource type="Script" path="res://Scripts/Mainmenu Scripts/game_over.gd" id="1_5wgwi"]
+[ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="2_5wgwi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yh1op"]
+texture = ExtResource("1_5ruhh")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wgwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yh1op"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wgwi")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yh1op")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -180.5
+offset_right = 303.0
+offset_bottom = -43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5wgwi")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -25.5
+offset_right = 134.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5wgwi")
+theme_override_font_sizes/font_size = 50
+text = "CONTINUE?"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = 53.5
+offset_right = 54.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99705297, 0.99705297, 0.99705297, 1)
+theme_override_colors/font_focus_color = Color(3.723471e-05, 3.7228703e-05, 3.7230195e-05, 1)
+theme_override_colors/font_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/font_hover_color = Color(0.0006938963, 0.0006938974, 0.00069390115, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_normal_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_focus_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_pressed_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_hover_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_fonts/font = ExtResource("2_5wgwi")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5wgwi")
+text = "YES"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.5
+offset_top = -190.0
+offset_right = 41.5
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9852814, 0.9852814, 0.9852814, 1)
+theme_override_colors/font_focus_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/font_pressed_color = Color(3.723037e-05, 3.723037e-05, 3.7230366e-05, 1)
+theme_override_colors/font_hover_color = Color(0.004899817, 0.0048998264, 0.0048998524, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_colors/icon_normal_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_focus_color = Color(0.008202022, 0.008202025, 0.008202025, 1)
+theme_override_colors/icon_pressed_color = Color(0.0023445897, 0.00234459, 0.00234459, 1)
+theme_override_colors/icon_hover_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.004899827, 0.004899827, 0.004899827, 1)
+theme_override_fonts/font = ExtResource("2_5wgwi")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yh1op")
+text = "NO"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://64oy0e0d1qyp"]
+[gd_scene load_steps=6 format=3 uid="uid://dacpogc1kd7ux"]
 
 [ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://battle_manager.gd" id="1_5joda"]
 [ext_resource type="Texture2D" uid="uid://cvlh5io6ckd02" path="res://battleback9.png" id="1_r5l0u"]

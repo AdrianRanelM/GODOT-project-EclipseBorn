@@ -51,7 +51,8 @@ func sfx_vol(vol: float) -> void:
 func fade_in_transition() -> void:
 	fade_overlay.modulate.a = 1.0
 	var tween = create_tween()
-	tween.tween_property(fade_overlay, "modulate:a", 0.0, 3.0)
+	# Changed 3.0 to 1.0 for a snappier start
+	tween.tween_property(fade_overlay, "modulate:a", 0.0, 1.0) 
 	await tween.finished
 
 func fade_out_transition() -> void:
@@ -116,11 +117,14 @@ func _build_linked_list() -> void:
 
 # --- Show a slide (defined before _ready) ---
 func _show_slide(slide) -> void:
-	if slide == null:
-		queue_free()
+	# Check if this is the last slide
+	if slide.index == 9 or slide.is_last:
+		await get_tree().create_timer(2.0).timeout
+		finish_cutscene() # Use the new function
 		return
 
-	if current_slide != null:
+	# Only use transition if we are moving FROM an existing slide to a NEW one
+	if current_slide != null and current_slide != slide:
 		await transition_with_morph(slide.texture)
 	else:
 		texture_rect.texture = slide.texture
@@ -132,29 +136,24 @@ func _show_slide(slide) -> void:
 
 	subtitle_label.text = slide.subtitle
 	current_slide = slide
-	can_advance = false
-	prompt_label.hide()
-
-	# Last-slide behavior preserved (index 9 and scene path unchanged)
+	
+	# Check if this is the last slide to handle scene change
 	if slide.index == 9 or slide.is_last:
 		await get_tree().create_timer(2.0).timeout
 		await fade_out_transition()
-		await get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 		return
 
-	await get_tree().create_timer(0.5).timeout
 	can_advance = true
 	prompt_label.show()
 
 # --- Ready: setup and start ---
 func _ready() -> void:
-	# Make TextureRect fill screen
+	# 1. UI Setup - Make UI fill screen and look correct
 	texture_rect.size = get_viewport_rect().size
 	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 
-	# Setup fade overlay
 	fade_overlay.size = get_viewport_rect().size
 	fade_overlay.color = Color.BLACK
 	fade_overlay.visible = true
@@ -169,7 +168,7 @@ func _ready() -> void:
 	subtitle_label.add_theme_stylebox_override("normal", stylebox)
 	prompt_label.add_theme_stylebox_override("normal", stylebox)
 
-	# Set default volumes
+	# 2. Audio Setup
 	bgm_vol(0.1)
 	sfx_vol(0.5)
 
@@ -177,11 +176,24 @@ func _ready() -> void:
 		bgm_player.stream = background_music
 		bgm_player.play()
 
-	# Build linked list and show first slide
+	# 3. Data Setup - Build the list and prepare the first slide
 	_build_linked_list()
-	await fade_in_transition()
+	
 	if head:
-		_show_slide(head)
+		# Set the texture and text IMMEDIATELY so it is there 
+		# when the black fade-overlay starts to disappear
+		texture_rect.texture = head.texture
+		subtitle_label.text = head.subtitle
+		current_slide = head
+		texture_rect.modulate.a = 1.0
+	
+	# 4. The Transition - Now remove the black curtain
+	# (Ensure your fade_in_transition duration is set to 1.0 or 0.5 for a faster start)
+	await fade_in_transition()
+
+	# 5. Enable Gameplay - Allow player to advance after the fade is done
+	can_advance = true
+	prompt_label.show()
 
 # --- Input handling ---
 func _input(event) -> void:
@@ -197,7 +209,10 @@ func _input(event) -> void:
 		elif current_slide == null and head:
 			_show_slide(head)
 		else:
-			if current_slide and current_slide.index == 9:
-				await fade_out_transition()
-				await get_tree().create_timer(1.0).timeout
-			queue_free()
+			# This triggers if we are on the last slide and the player clicks
+			finish_cutscene() # Use the new function
+
+func finish_cutscene() -> void:
+	can_advance = false # Prevent double-clicking
+	await fade_out_transition()
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")

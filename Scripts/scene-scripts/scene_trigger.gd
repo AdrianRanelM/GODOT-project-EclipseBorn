@@ -45,7 +45,6 @@ func _on_body_entered(body: Node) -> void:
 	var destination_name = WORLD_NODES[target_world]
 
 	# Handle collisions and teleport
-	_disable_other_world_collisions(target_world)
 	_play_transition_and_teleport(destination_pos, destination_name)
 
 func _play_transition_and_teleport(target_position: Vector2, world_name: String) -> void:
@@ -81,20 +80,3 @@ func _play_transition_and_teleport(target_position: Vector2, world_name: String)
 	# Small cooldown to prevent double-triggering
 	await get_tree().create_timer(0.3).timeout
 	is_teleporting = false
-
-# --------------------------------
-# COLLISION CONTROL
-# --------------------------------
-func _disable_other_world_collisions(active_world: World) -> void:
-	for world_id in WORLD_NODES.keys():
-		var node_name = WORLD_NODES[world_id]
-		var world_node = get_tree().root.find_child(node_name, true, false)
-		
-		if world_node:
-			_set_collision_enabled(world_node, world_id == active_world)
-
-func _set_collision_enabled(node: Node, enabled: bool) -> void:
-	for child in node.get_children():
-		if child is CollisionObject2D or child is TileMap:
-			child.set_deferred("collision_layer", 1 if enabled else 0)
-			child.set_deferred("collision_mask", 1 if enabled else 0)

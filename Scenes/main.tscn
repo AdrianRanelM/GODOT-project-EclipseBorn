@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnwlb8ka76nev"]
+[gd_scene load_steps=22 format=3 uid="uid://cnwlb8ka76nev"]
 
 [ext_resource type="PackedScene" uid="uid://cc6tt345h07oc" path="res://Scenes/PlayerChar.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://ctrlckjwauutm" path="res://vignetteshader.tres" id="3_5vw27"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://4yhtwgfgas4k" path="res://Scripts/world_item_unlock.gd" id="6_7mycd"]
 [ext_resource type="Resource" uid="uid://clve3sojkl1ui" path="res://WorldItems/002_SoulBelt.tres" id="7_272bh"]
 [ext_resource type="Resource" uid="uid://i7c1ik0qkogm" path="res://WorldItems/004_GlowingStuff.tres" id="9_fdnlq"]
-[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/enemy_base.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://ca7ms7b8fo6p7" path="res://Scenes/orc.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://64oy0e0d1qyp" path="res://Scenes/Battle scenes/battle_scene.tscn" id="10_hptm8"]
 [ext_resource type="Resource" uid="uid://dgvwr7jvu6c5g" path="res://WorldItems/003_Scrap.tres" id="10_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://dnhmanvf55237" path="res://Scenes/Map scenes/world.tscn" id="11_d1ilt"]
@@ -18,18 +18,20 @@
 [ext_resource type="PackedScene" uid="uid://b4hx6kd1511ne" path="res://Scenes/NPC.tscn" id="16_b3802"]
 [ext_resource type="PackedScene" uid="uid://bvorjjnn7h5t8" path="res://Scenes/Map scenes/valerius_room.tscn" id="16_hibaj"]
 [ext_resource type="PackedScene" uid="uid://daeewwuxpafga" path="res://Scripts/transition.tscn" id="18_b3802"]
+[ext_resource type="Script" uid="uid://cbd45bk7r3pgi" path="res://Scripts/world_tree.gd" id="18_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://c832l6hyh51tn" path="res://Scenes/Map scenes/inside_wiz_tower.tscn" id="19_fevyy"]
-[ext_resource type="PackedScene" uid="uid://bhg2fnii8iwlc" path="res://Scenes/valerius.tscn" id="20_hibaj"]
+[ext_resource type="PackedScene" uid="uid://c4t8p8wybobw7" path="res://Scenes/Valerius.tscn" id="20_hibaj"]
 
 [node name="Game" type="Node2D"]
 
 [node name="NPC" parent="." instance=ExtResource("16_b3802")]
 y_sort_enabled = true
 position = Vector2(161, 101)
+dialogue_ui_path = NodePath("")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
 y_sort_enabled = true
-position = Vector2(104, 176)
+position = Vector2(83, 180)
 inventory = ExtResource("4_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -123,11 +125,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="WorldTree" parent="." instance=ExtResource("15_h1bgf")]
 position = Vector2(1324, 151)
+script = ExtResource("18_pdsj5")
 
 [node name="Orc" parent="." instance=ExtResource("9_kek77")]
-position = Vector2(1442, 524)
+position = Vector2(1678, 220)
 
 [node name="Transition" parent="." instance=ExtResource("18_b3802")]
 
 [node name="Valerius" parent="." instance=ExtResource("20_hibaj")]
-position = Vector2(346, 114)
+position = Vector2(61, 1525)
+script = null

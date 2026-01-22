@@ -65,6 +65,7 @@ func _roam(delta: float) -> void:
 	if roam_timer <= 0:
 		var dirs = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2.ZERO]
 		roam_direction = dirs.pick_random()
+		print("New roam direction: ", roam_direction) # DEBUG LINE
 		roam_timer = roam_interval
 	velocity = roam_direction * roam_speed
 
@@ -98,7 +99,9 @@ func _play_anim(type: String):
 
 # --- Dynamic Battle Loading ---
 func _on_battle_trigger(body: Node) -> void:
+	print("Something entered the trigger: ", body.name) # DEBUG LINE
 	if body.is_in_group("player"):
+		print("Player detected! Starting combat...") # DEBUG LINE
 		_start_combat()
 
 func _start_combat() -> void:

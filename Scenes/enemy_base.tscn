@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ca7ms7b8fo6p7"]
+[gd_scene load_steps=48 format=3 uid="uid://d1mq8minegve7"]
 
 [ext_resource type="Texture2D" uid="uid://qdkkuew7rrn4" path="res://Assets/Enemies/Orc/orc2_idle_with_shadow.png" id="1_3xw0u"]
 [ext_resource type="Script" uid="uid://fttghlgbpfc8" path="res://Scripts/enemy_base.gd" id="1_kapy6"]

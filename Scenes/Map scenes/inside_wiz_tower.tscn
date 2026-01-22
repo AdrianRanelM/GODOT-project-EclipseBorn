@@ -1402,7 +1402,7 @@ layer_3/tile_data = PackedInt32Array(-196580, 524294, 1, -131044, 524294, 2, -65
 position = Vector2(-274, -274)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(213, 335.5)
+position = Vector2(213, 337.5)
 shape = SubResource("RectangleShape2D_8ss6h")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
@@ -1452,7 +1452,7 @@ position = Vector2(610.25, 403.75)
 shape = SubResource("RectangleShape2D_urs7w")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(547.25, 366.75)
+position = Vector2(547.25, 370.75)
 shape = SubResource("RectangleShape2D_vmccp")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]

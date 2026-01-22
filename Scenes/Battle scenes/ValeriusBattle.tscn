@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://Scripts/Battle Scripts/battle_manager.gd" id="1_eyamk"]
 [ext_resource type="Script" uid="uid://dmanmawmg4el" path="res://Scripts/Battle Scripts/battle_camera.gd" id="2_ec43m"]
 [ext_resource type="Script" uid="uid://ejfblofdms4t" path="res://Scripts/Battle Scripts/enemy_group.gd" id="4_uljpa"]
-[ext_resource type="Script" uid="uid://s5puc78ndq01" path="res://Scripts/Battle Scripts/Valerious_Script.gd" id="5_2othe"]
+[ext_resource type="Script" path="res://Scripts/Battle Scripts/Valerious_Script.gd" id="5_2othe"]
 [ext_resource type="PackedScene" uid="uid://c0li4c8lap1in" path="res://Scenes/Battle scenes/player_group.tscn" id="5_5852k"]
 [ext_resource type="PackedScene" uid="uid://veq8m46km8yo" path="res://Scenes/Battle scenes/character_body_2d.tscn" id="5_igs5l"]
+[ext_resource type="Texture2D" uid="uid://rw1oola2mq1o" path="res://Assets/Enemies/Vampires1/With_shadow/Vampires1_Idle_with_shadow.png" id="6_2othe"]
 [ext_resource type="Texture2D" uid="uid://7dltfgh35mp" path="res://Assets/UI/Battle/BattleUI.png" id="6_igs5l"]
-[ext_resource type="Texture2D" uid="uid://rw1oola2mq1o" path="res://Scenes/Battle scenes/Vampires1_Idle_with_shadow.png" id="7_dwpct"]
 [ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="7_itx1r"]
 [ext_resource type="Texture2D" uid="uid://c2h7k6gfs61bq" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_attack_without_shadow.png" id="8_dwpct"]
 [ext_resource type="Texture2D" uid="uid://dswjqw05sgspv" path="res://Assets/Protag/PNG/Swordsman_lvl1/Without_shadow/Swordsman_lvl1_Death_without_shadow.png" id="9_mnm4r"]
@@ -361,7 +361,7 @@ attack_damage = 10
 [node name="Sprite2D" parent="EnemyGroup/Enemy1" index="0"]
 position = Vector2(266, 44.999992)
 scale = Vector2(6.3085938, 6.354167)
-texture = ExtResource("7_dwpct")
+texture = ExtResource("6_2othe")
 hframes = 4
 vframes = 4
 frame = 3

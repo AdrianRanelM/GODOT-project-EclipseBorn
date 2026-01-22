@@ -1,9 +1,9 @@
 [gd_scene load_steps=60 format=3 uid="uid://64oy0e0d1qyp"]
 
-[ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://Scripts/Battle Scripts/battle_manager.gd" id="1_5joda"]
+[ext_resource type="Script" uid="uid://r1he87dhd10d" path="res://battle_manager.gd" id="1_5joda"]
 [ext_resource type="Texture2D" uid="uid://cvlh5io6ckd02" path="res://Assets/Battles/battleback9.png" id="1_r5l0u"]
 [ext_resource type="PackedScene" uid="uid://cyshkl86q1p3f" path="res://Scenes/Battle scenes/enemy_group.tscn" id="2_5g7vw"]
-[ext_resource type="Script" uid="uid://dmanmawmg4el" path="res://Scripts/Battle Scripts/battle_camera.gd" id="2_gf131"]
+[ext_resource type="Script" uid="uid://dmanmawmg4el" path="res://battle_camera.gd" id="2_gf131"]
 [ext_resource type="PackedScene" uid="uid://c0li4c8lap1in" path="res://Scenes/Battle scenes/player_group.tscn" id="3_5g7vw"]
 [ext_resource type="Texture2D" uid="uid://7dltfgh35mp" path="res://Assets/UI/Battle/BattleUI.png" id="6_n562u"]
 [ext_resource type="FontFile" uid="uid://bq3qhq1g15yxo" path="res://Assets/Font/Minecraft.ttf" id="7_wciqh"]
